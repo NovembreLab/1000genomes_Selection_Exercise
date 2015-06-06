@@ -142,16 +142,9 @@ hr {
 </head>
 
 <body>
-<style type="text/css">
-  body {
-    font-family: 'Lato', arial, serif;
-    text-align: center;
-  }
-</style>
-
 <h1>Understanding Natural Selection from Population Genomic Data</h1>
 
-<p>An introduction </p>
+<p>still in progress (not tested). Using Duffy as an example <a href="http://www.snpedia.com/index.php/Rs2814778">http://www.snpedia.com/index.php/Rs2814778</a></p>
 
 <h2>1. Setting up your Enviroment</h2>
 
@@ -159,7 +152,50 @@ hr {
 
 <h3>1.2 Downloading Data</h3>
 
+<h4>1000genomes_phase3</h4>
+
+<pre><code class="bash">cd data/
+
+# download and filter a region (1:145000000-175000000) from the 1000genomes project
+tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr1.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz 1:145000000-175000000 | gzip -c &gt; 1000genomes_phase3_chr1_145000000_175000000.vcf.gz
+
+# download 1000genomes_phase3 individual information
+wget ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/integrated_call_samples_v3.20130502.ALL.panel
+</code></pre>
+
 <h3>1.3 Filtering Data and QC</h3>
+
+<h4>Preparing CLST Files</h4>
+
+<pre><code class="bash"># remove the first line and format file as IID | IID | CLST for YRI, CEU, and CHB
+sed &#39;1d&#39; integrated_call_samples_v3.20130502.ALL.panel | awk &#39;{if($3 == &quot;YRI&quot; || $3 == &quot;CEU&quot; || $3 == &quot;CHB&quot;) print $1, $1, $3} &gt; yri_ceu_chb_clst.txt
+
+# write a file of just IIDs 
+awk &#39;{print $1} yri_ceu_chb_clst.txt &gt; yri_ceu_chb_iids.txt
+
+# write a file of just IIDs from YRI 
+awk &#39;{if($3 == &quot;YRI&quot;) print $1}&#39; &gt; yri_iids.txt
+
+cd ..
+</code></pre>
+
+<h4>Preparing Genomic Data</h4>
+
+<pre><code class="bash"># filter out indels, multi-allelic sites, and individuals not from YRI, CEU, CHB 
+# this will be used for cross-population based selection analysis
+vcftools --gzvcf data/1000genomes_phase3_chr1_145000000_175000000.vcf.gz \
+         --remove-indels \
+         --keep data/yri_ceu_chb_iids.txt \
+         --recode \
+         --out data/yri_ceu_chb_chr1_145000000_175000000_filtered
+
+# filter out indivduals not from YRI
+# this will be used for haplotype based selection analysis 
+vcftools --gzvcf data/yri_ceu_chb_chr1_145000000_175000000_filtered.vcf.gz \
+         --keep data/yri_iids.txt  \
+         --recode \
+         --out data/yri_chr1_145000000_175000000_filtered
+</code></pre>
 
 <h3>Questions</h3>
 
@@ -179,7 +215,7 @@ hr {
 
 <h2>3. Assesing Significance</h2>
 
-<h3>3.1 Genome(region)-Wide Null Distribution</h3>
+<h3>3.1 Genome(Region)-Wide Null Distribution</h3>
 
 <h3>3.2 Simulating a Null Model</h3>
 
