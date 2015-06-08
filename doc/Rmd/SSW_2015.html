@@ -137,6 +137,10 @@ hr {
 
 
 
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
 
 
 </head>
@@ -144,11 +148,69 @@ hr {
 <body>
 <h1>Understanding Natural Selection from Population Genomic Data</h1>
 
-<p>still in progress (not tested). Using Duffy as an example <a href="http://www.snpedia.com/index.php/Rs2814778">http://www.snpedia.com/index.php/Rs2814778</a></p>
+<ul>
+<li>still in progress (not tested). </li>
+<li>using Duffy as an example <a href="http://www.snpedia.com/index.php/Rs2814778">http://www.snpedia.com/index.php/Rs2814778</a></li>
+</ul>
 
 <h2>1. Setting up your Enviroment</h2>
 
 <h3>1.1 Downloading and Building Methods</h3>
+
+<h4>Download</h4>
+
+<pre><code class="bash">cd src/
+
+# download tabix
+git clone https://github.com/samtools/tabix
+
+# download htslib &amp; bcftools
+wget http://sourceforge.net/projects/samtools/files/samtools/1.2/htslib-1.2.1.tar.bz2
+wget http://sourceforge.net/projects/samtools/files/samtools/1.2/bcftools-1.2.tar.bz2
+
+# clone selscan
+git clone https://github.com/szpiech/selscan
+
+# download plink (double check that the correct OS is specified)
+wget https://www.cog-genomics.org/static/bin/plink150602/plink_linux_x86_64_dev.zip
+</code></pre>
+
+<h4>Build</h4>
+
+<pre><code class="bash"># tabix
+cd tabix/
+make
+mv tabix ../../bin/
+
+# bcftools
+cd ../
+tar xvjf htslib-1.2.1.tar.bz2
+tar xvjf bcftools-1.2.tar.bz2
+cd bcftools/
+make
+mv bcftools ../../bin/
+
+# plink
+cd ../
+mkdir plink
+unzip plink_linux_x86_64_dev.zip -d plink_linux_x86_64_dev.zip
+mv plink/plink ../bin
+
+# selscan
+cd selscan/
+
+# open Makefile make sure the correct OS is specified 
+cd src/ 
+make
+mv norm ../../bin/
+mv selscan ../../bin/
+
+# lets go home
+cd ../../
+ls bin/
+
+# you should see binaries for tabix, bcftools, plink, selscan, and norm
+</code></pre>
 
 <h3>1.2 Downloading Data</h3>
 
@@ -156,8 +218,8 @@ hr {
 
 <pre><code class="bash">cd data/
 
-# download and filter a region (1:145000000-175000000) from the 1000genomes project
-tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr1.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz 1:145000000-175000000 | gzip -c &gt; 1000genomes_phase3_chr1_145000000_175000000.vcf.gz
+# download and filter a region (1:150000000-170000000) from the 1000genomes project
+../bin/tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr1.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz 1:150000000-170000000 | gzip -c &gt; 1000genomes_phase3_chr1_150000000_170000000.vcf.gz
 
 # download 1000genomes_phase3 individual information
 wget ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/integrated_call_samples_v3.20130502.ALL.panel
@@ -165,51 +227,118 @@ wget ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/integrated_call_s
 
 <h3>1.3 Filtering Data and QC</h3>
 
-<h4>Preparing CLST Files</h4>
+<h4>Preparing CLST / IID Files</h4>
 
 <pre><code class="bash"># remove the first line and format file as IID | IID | CLST for YRI, CEU, and CHB
-sed &#39;1d&#39; integrated_call_samples_v3.20130502.ALL.panel | awk &#39;{if($3 == &quot;YRI&quot; || $3 == &quot;CEU&quot; || $3 == &quot;CHB&quot;) print $1, $1, $3} &gt; yri_ceu_chb_clst.txt
+sed &#39;1d&#39; integrated_call_samples_v3.20130502.ALL.panel | awk &#39;{if($2 == &quot;YRI&quot; || $2 == &quot;CEU&quot; || $2 == &quot;CHB&quot;) print $1, $1, $2}&#39; &gt; yri_ceu_chb_clst.txt
 
 # write a file of just IIDs 
-awk &#39;{print $1} yri_ceu_chb_clst.txt &gt; yri_ceu_chb_iids.txt
+awk &#39;{print $1}&#39; yri_ceu_chb_clst.txt &gt; yri_ceu_chb_iids.txt
 
-# write a file of just IIDs from YRI 
-awk &#39;{if($3 == &quot;YRI&quot;) print $1}&#39; &gt; yri_iids.txt
+# write a clst file for just YRI and CEU
+awk &#39;{if($3 == &quot;YRI&quot; || $3 == &quot;CEU&quot;) print $0}&#39; yri_ceu_chb_clst.txt &gt; yri_ceu_clst.txt
 
-cd ..
+# write a clst file for just YRI and CHB 
+awk &#39;{if($3 == &quot;YRI&quot; || $3 == &quot;CHB&quot;) print $0}&#39; yri_ceu_chb_clst.txt &gt; yri_chb_clst.txt
+
+# write a clst file for just CEU and CHB
+awk &#39;{if($3 == &quot;CEU&quot; || $3 == &quot;CHB&quot;) print $0}&#39; yri_ceu_chb_clst.txt &gt; ceu_chb_clst.txt
+
+
+# write a file of just IIDs from CHB 
+awk &#39;{if($3 == &quot;CHB&quot;) print $1}&#39; yri_ceu_chb_clst.txt &gt; chb_iids.txt
+
+# check if # individuals are correct
+wc -l ceu_iids.txt chb_iids.txt yri_iids.txt
 </code></pre>
 
 <h4>Preparing Genomic Data</h4>
 
-<pre><code class="bash"># filter out indels, multi-allelic sites, and individuals not from YRI, CEU, CHB 
+<pre><code class="bash"># filter out indels (-I), multi-allelic sites (-c 2 -C 2), and keep individuals (-S) from YRI, CEU, CHB 
 # this will be used for cross-population based selection analysis
-vcftools --gzvcf data/1000genomes_phase3_chr1_145000000_175000000.vcf.gz \
-         --remove-indels \
-         --keep data/yri_ceu_chb_iids.txt \
-         --recode \
-         --out data/yri_ceu_chb_chr1_145000000_175000000_filtered
+../bin/bcftools view -I -c 2 -C 2 -S yri_ceu_chb_iids.txt -O z 1000genomes_phase3_chr1_150000000_170000000.vcf.gz &gt; yri_ceu_chb_chr1_150000000_170000000_filtered.vcf.gz
 
-# filter out indivduals not from YRI
-# this will be used for haplotype based selection analysis 
-vcftools --gzvcf data/yri_ceu_chb_chr1_145000000_175000000_filtered.vcf.gz \
-         --keep data/yri_iids.txt  \
-         --recode \
-         --out data/yri_chr1_145000000_175000000_filtered
+# keep individuals only from YRI
+# this will be used for haplotype based selection analysis
+../bin/bcftools view -S yri_iids.txt -O z yri_ceu_chb_chr1_150000000_170000000_filtered.vcf.gz &gt; yri_chr1_150000000_170000000_filtered.vcf.gz
+
+# write bim file from vcf (-H supress header)
+../bin/bcftools view yri_ceu_chb_chr1_150000000_170000000_filtered.vcf.gz -H | awk &#39;{print $1, $3, &quot;0&quot;, $2, $4, $5}&#39; &gt; yri_ceu_chb_chr1_150000000_170000000_filtered.bim
+
+# get genetic position + interpolate variants not present in the genetic_map
+../bin/plink --bim yri_ceu_chb_chr1_150000000_170000000_filtered.bim \
+             --cm-map genetic_map_chr1_combined_b37.txt 1 \
+             --make-just-bim \
+             --out yri_ceu_chb_chr1_150000000_170000000_filtered_genetic_map
+
+awk &#39;{print $1, $2, $3, $4}&#39; yri_ceu_chb_chr1_150000000_170000000_filtered_genetic_map.bim &gt; yri_ceu_chb_chr1_150000000_170000000_filtered_genetic_map.map 
 </code></pre>
 
 <h3>Questions</h3>
 
 <h2>2. Computing Selection Statistics</h2>
 
-<h3>2.1 iHS</h3>
+<h3>2.1 Fst</h3>
 
-<h3>2.2 nSL</h3>
+<pre><code class="bash"># Fst between YRI and CEU
+../bin/plink --vcf yri_ceu_chb_chr1_150000000_170000000_filtered.vcf.gz \
+             --fst \
+             --within yri_ceu_clst.txt \
+             --double-id \
+             --id-delim . \
+             --out yri_ceu_chr1_150000000_170000000_filtered \
+             --set-missing-var-ids @:#
 
-<h3>2.3. Fst</h3>
+# Fst between YRI and CHB
+../bin/plink --vcf yri_ceu_chb_chr1_150000000_170000000_filtered.vcf.gz \
+             --fst \
+             --within yri_chb_clst.txt \
+             --double-id \
+             --id-delim . \
+             --out yri_chb_chr1_150000000_170000000_filtered \
+             --set-missing-var-ids @:#
 
-<h3>2.4 PBS</h3>
+# Fst between CEU and CHB
+../bin/plink --vcf yri_ceu_chb_chr1_150000000_170000000_filtered.vcf.gz \
+             --fst \
+             --within ceu_chb_clst.txt \
+             --double-id \
+             --id-delim . \
+             --out ceu_chb_chr1_150000000_170000000_filtered \
+             --set-missing-var-ids @:#
+</code></pre>
 
-<h3>2.5 Visualization</h3>
+<h3>2.2. PBS</h3>
+
+<p>Not sure if PBS that useful here unless were intersted in frequency change accumlated in YRI branch since out of Africa?</p>
+
+<p>\[  T = -log(1 - Fst)  \]
+\[  PBS = \frac{T_{YRI,CEU} + T_{YRI,CHB} - T_{CEU,CHB}}{2}  \]</p>
+
+<pre><code class="R">library(dplyr)
+
+fst_yri_ceu_df &lt;- read.table(&#39;yri_ceu_chr1_150000000_170000000_filtered.fst&#39;, header = TRUE)
+fst_yri_chb_df &lt;- read.table(&#39;yri_chb_chr1_150000000_170000000_filtered.fst&#39;, header = TRUE)
+fst_ceu_chb_df &lt;- read.table(&#39;ceu_chb_chr1_150000000_170000000_filtered.fst&#39;, header = TRUE)
+
+# bug - too many nans
+pbs_df &lt;- data.frame(CHR = fst_yri_ceu_df$CHR, SNP=fst_yri_ceu_df$SNP, POS=fst_yri_ceu_df$POS,
+                     NMISS = fst_yri_ceu_df$NMISS, YRI_CEU_FST = fst_yri_ceu_df$FST, 
+                     YRI_CHB_FST = fst_yri_chb_df$FST, CEU_CHB_FST = fst_ceu_chb_df$FST)
+</code></pre>
+
+<h3>2.3 iHS</h3>
+
+<pre><code class="bash">../bin/selscan --ihs \
+               --vcf yri_ceu_chb_chr1_150000000_170000000_filtered.vcf.gz \
+               --map yri_ceu_chb_chr1_150000000_170000000_filtered_genetic_map.map \
+               --maf 0.01 \
+               --out yri_ceu_chb_chr1_150000000_170000000_filtered   
+</code></pre>
+
+<h3>2.4 nSL (maybe)</h3>
+
+<h3>2.4 Visualization</h3>
 
 <h3>Questions</h3>
 
