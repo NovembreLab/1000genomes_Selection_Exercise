@@ -1,7 +1,7 @@
 # Understanding Natural Selection from Population Genomic Data
 
 * still in progress (not tested). 
-* using Duffy as an example http://www.snpedia.com/index.php/Rs2814778
+* using Duffy as an example (http://www.snpedia.com/index.php/Rs2814778)
 
 ## 1. Setting up your Enviroment 
 
@@ -38,14 +38,14 @@ mv tabix ../../bin/
 cd ../
 tar xvjf htslib-1.2.1.tar.bz2
 tar xvjf bcftools-1.2.tar.bz2
-cd bcftools/
+cd bcftools-1.2/
 make
 mv bcftools ../../bin/
 
 # plink
 cd ../
 mkdir plink
-unzip plink_linux_x86_64_dev.zip -d plink_linux_x86_64_dev.zip
+unzip plink_linux_x86_64_dev.zip -d plink
 mv plink/plink ../bin
 
 # selscan
@@ -54,11 +54,11 @@ cd selscan/
 # open Makefile make sure the correct OS is specified 
 cd src/ 
 make
-mv norm ../../bin/
-mv selscan ../../bin/
+mv norm ../../../bin/
+mv selscan ../../../bin/
 
 # lets go home
-cd ../../
+cd ../../../
 ls bin/
 
 # you should see binaries for tabix, bcftools, plink, selscan, and norm
