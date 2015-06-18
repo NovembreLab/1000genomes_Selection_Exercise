@@ -88,38 +88,38 @@ wget ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/integrated_call_s
 #### Preparing CLST / IID Files 
 
 ```bash
-# remove the first line and format file as IID | IID | CLST for CHB, YRI, CEU
-sed '1d' integrated_call_samples_v3.20130502.ALL.panel | awk '($2 == "CHB" || $2 == "YRI" || $2 == "CEU") {print $1, $1, $2}' > chb_yri_ceu_clst.txt
+# remove the first line and format file as IID | IID | CLST for CHB, YRI, FIN
+sed '1d' integrated_call_samples_v3.20130502.ALL.panel | awk '($2 == "CHB" || $2 == "YRI" || $2 == "FIN") {print $1, $1, $2}' > chb_yri_fin_clst.txt
 
 # write a file of just IIDs 
-awk '{print $1}' chb_yri_ceu_clst.txt > chb_yri_ceu_iids.txt
+awk '{print $1}' chb_yri_fin_clst.txt > chb_yri_fin_iids.txt
 
 # write a clst file for just CHB and YRI 
-awk '($3 == "CHB" || $3 == "YRI") {print $0}' chb_yri_ceu_clst.txt > chb_yri_clst.txt
+awk '($3 == "CHB" || $3 == "YRI") {print $0}' chb_yri_fin_clst.txt > chb_yri_clst.txt
 
-# write a clst file for just CHB and CEU
-awk '($3 == "CHB" || $3 == "CEU") {print $0}' chb_yri_ceu_clst.txt > chb_ceu_clst.txt
+# write a clst file for just CHB and FIN
+awk '($3 == "CHB" || $3 == "FIN") {print $0}' chb_yri_fin_clst.txt > chb_fin_clst.txt
 
-# write a clst file for just YRI and CEU
-awk  '($3 == "YRI" || $3 == "CEU") {print $0}' chb_yri_ceu_clst.txt > yri_ceu_clst.txt
+# write a clst file for just YRI and FIN
+awk  '($3 == "YRI" || $3 == "FIN") {print $0}' chb_yri_fin_clst.txt > yri_fin_clst.txt
 
 # write a file of just IIDs from CHB 
-awk '($3 == "CHB") {print $1}' chb_yri_ceu_clst.txt > chb_iids.txt
+awk '($3 == "CHB") {print $1}' chb_yri_fin_clst.txt > chb_iids.txt
 
 # check if # individuals are correct
-wc -l chb_yri_ceu_iids.txt chb_yri_clst.txt chb_ceu_clst.txt yri_ceu_clst.txt chb_iids.txt
+wc -l chb_yri_fin_iids.txt chb_yri_clst.txt chb_fin_clst.txt yri_fin_clst.txt chb_iids.txt
 ```
 
 #### Preparing Genomic Data
 
 ```bash
-# filter out indels (-V indels), multi-allelic sites (-m 2 -M 2), keep individuals (-S) from YRI, CEU, CHB, and filter out variants with maf below 10%
+# filter out indels (-V indels), multi-allelic sites (-m 2 -M 2), keep individuals (-S) from YRI, FIN, CHB, and filter out variants with maf below 10%
 # this will be used for cross-population based selection analysis
-bcftools view -v snps -m 2 -M 2 -S chb_yri_ceu_iids.txt -O z -q '.1 minor' 1000genomes_phase3_chr2_108013601_111013601.vcf.gz > chb_yri_ceu_chr2_108013601_111013601_filtered.vcf.gz
+bcftools view -v snps -m 2 -M 2 -S chb_yri_fin_iids.txt -O z -q '.1 minor' 1000genomes_phase3_chr2_108013601_111013601.vcf.gz > chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz
 
 # keep YRI individuals from the filtered vcf
 # this will be used for haplotype based selection analysis.
-bcftools view -S chb_iids.txt -O z chb_yri_ceu_chr2_108013601_111013601_filtered.vcf.gz > chb_chr2_108013601_111013601_filtered.vcf.gz
+bcftools view -S chb_iids.txt -O z chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz > chb_chr2_108013601_111013601_filtered.vcf.gz
 
 # write bim file from vcf (-H supress header)
 bcftools view chb_chr2_108013601_111013601_filtered.vcf.gz -H | awk '{print $1, $3, "0", $2, $4, $5}' > chr2_108013601_111013601_filtered.bim
@@ -142,31 +142,31 @@ awk '{print $1, $2, $3, $4}' chr2_108013601_111013601_filtered_gm.bim > chr2_108
 
 ```bash
 # Fst between CHB and YRI
-plink-1.9 --vcf chb_yri_ceu_chr2_108013601_111013601_filtered.vcf.gz \
-      --fst \
-      --within chb_yri_clst.txt \
-      --double-id \
-      --id-delim . \
-      --out chb_yri_chr2_108013601_111013601_filtered \
-      --set-missing-var-ids @:#
+plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
+          --fst \
+          --within chb_yri_clst.txt \
+          --double-id \
+          --id-delim . \
+          --out chb_yri_chr2_108013601_111013601_filtered \
+          --set-missing-var-ids @:#
      
-# Fst between CHB and CEU
-plink-1.9 --vcf chb_yri_ceu_chr2_108013601_111013601_filtered.vcf.gz \
-      --fst \
-      --within chb_ceu_clst.txt \
-      --double-id \
-      --id-delim . \
-      --out chb_ceu_chr2_108013601_111013601_filtered \
-      --set-missing-var-ids @:#
+# Fst between CHB and FIN
+plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
+          --fst \
+          --within chb_fin_clst.txt \
+          --double-id \
+          --id-delim . \
+          --out chb_fin_chr2_108013601_111013601_filtered \
+          --set-missing-var-ids @:#
              
-# Fst between YRI and CEU
-plink-1.9 --vcf chb_yri_ceu_chr2_108013601_111013601_filtered.vcf.gz \
-      --fst \
-      --within yri_ceu_clst.txt \
-      --double-id \
-      --id-delim . \
-      --out yri_ceu_chr2_108013601_111013601_filtered \
-      --set-missing-var-ids @:#
+# Fst between YRI and FIN
+plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
+          --fst \
+          --within yri_fin_clst.txt \
+          --double-id \
+          --id-delim . \
+          --out yri_fin_chr2_108013601_111013601_filtered \
+          --set-missing-var-ids @:#
 ```
 
 ```R
@@ -174,30 +174,30 @@ library(dplyr)
 
 # read data
 fst_chb_yri_df <- read.table('chb_yri_chr2_108013601_111013601_filtered.fst', header = TRUE)
-fst_chb_ceu_df <- read.table('chb_ceu_chr2_108013601_111013601_filtered.fst', header = TRUE)
-fst_yri_ceu_df <- read.table('yri_ceu_chr2_108013601_111013601_filtered.fst', header = TRUE)
+fst_chb_fin_df <- read.table('chb_fin_chr2_108013601_111013601_filtered.fst', header = TRUE)
+fst_yri_fin_df <- read.table('yri_fin_chr2_108013601_111013601_filtered.fst', header = TRUE)
 
 # join data.frames, filter out rows with missing variants from any population, rename cols and select rows of interest for plotting later
 fst_df <- fst_chb_yri_df %>% 
-          inner_join(fst_chb_ceu_df, by = c('CHR', 'SNP', 'POS')) %>% 
-          inner_join(fst_yri_ceu_df, by = c('CHR', 'SNP', 'POS')) %>%
+          inner_join(fst_chb_fin_df, by = c('CHR', 'SNP', 'POS')) %>% 
+          inner_join(fst_yri_fin_df, by = c('CHR', 'SNP', 'POS')) %>%
           filter(is.nan(FST) == FALSE, is.nan(FST.x) == FALSE, is.nan(FST.y) == FALSE) %>%
-          rename(FST_CHB_YRI = FST, FST_CHB_CEU = FST.x, FST_YRI_CEU = FST.y) %>%
-          select(SNP, POS, FST_CHB_YRI, FST_CHB_CEU, FST_YRI_CEU)
+          rename(FST_CHB_YRI = FST, FST_CHB_FIN = FST.x, FST_YRI_FIN = FST.y) %>%
+          select(SNP, POS, FST_CHB_YRI, FST_CHB_FIN, FST_YRI_FIN)
 ```
 
 ### 2.2. PBS
 
 $$ T = -log(1 - Fst) $$
-$$ PBS = \frac{T_{CHB,YRI} + T_{CHB,CEU} - T_{YRI,CEU}}{2} $$
+$$ PBS = \frac{T_{CHB,YRI} + T_{CHB,FIN} - T_{YRI,FIN}}{2} $$
 
 ```R
 # compute pbs and make a data.frame that holds all the information we have computed thus far
 cross_pop_df <- fst_df %>% 
-                mutate(T_CHB_YRI = -log(1 - FST_CHB_YRI), T_CHB_CEU = -log(1 - FST_CHB_CEU), 
-                       T_YRI_CEU = -log(1 - FST_YRI_CEU)) %>%
-                mutate(PBS = (T_CHB_YRI + T_CHB_CEU - T_YRI_CEU) / 2) %>%
-                select(SNP, POS, FST_CHB_YRI, FST_CHB_CEU, FST_YRI_CEU, PBS)
+                mutate(T_CHB_YRI = -log(1 - FST_CHB_YRI), T_CHB_FIN = -log(1 - FST_CHB_FIN), 
+                       T_YRI_FIN = -log(1 - FST_YRI_FIN)) %>%
+                mutate(PBS = (T_CHB_YRI + T_CHB_FIN - T_YRI_FIN) / 2) %>%
+                select(SNP, POS, FST_CHB_YRI, FST_CHB_FIN, FST_YRI_FIN, PBS)
 ```
 
 ### 2.3 iHS
@@ -231,7 +231,7 @@ to be filled
 
 ### 3.3 Visualization 
 
-needs editing still!
+needs editing still! Add some questions using the GGV
 
 ```R
 library(ggplot2)
@@ -241,8 +241,13 @@ ihs_df <- read.table("chb_chr2_108013601_111013601_filtered.ihs.out.100bins.norm
 colnames(ihs_df) <- c("SNP", "POS", "FREQ", "ihh1", "ihh0", "unstandardized_iHS",
                       "standardized_iHS", "top")
 
-selection_df <- ihs_df %>% inner_join(cross_pop_df, by = c("SNP", "POS")) %>% mutate(standardized_iHS = abs(standardized_iHS))
-melted_selection_df <- selection_df %>% select(POS, standardized_iHS, PBS, FST_CHB_YRI, FST_CHB_CEU, FST_YRI_CEU) %>% melt(id = c("POS"))
+selection_df <- ihs_df %>% 
+                inner_join(cross_pop_df, by = c("SNP", "POS")) %>% 
+                mutate(standardized_iHS = abs(standardized_iHS))
+                
+melted_selection_df <- selection_df %>% 
+                       select(POS, standardized_iHS, PBS, FST_CHB_YRI, FST_CHB_FIN, FST_YRI_FIN) %>% 
+                       melt(id = c("POS"))
 
 p <- ggplot(melted_selection_df, aes(x = POS, y = value)) + geom_point() + 
      xlab('Position on chr2') + theme_bw() + facet_grid(variable ~ ., scales = "free_y") 
@@ -253,11 +258,3 @@ p <- ggplot(melted_selection_df, aes(x = POS, y = value)) + geom_point() +
 ### Questions 
 
 ## 4. References
-
-
-
-
-
-
-
-
