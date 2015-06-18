@@ -123,6 +123,7 @@ mv selscan ../../../bin/
 cd ../../../
 ls bin/
 
+mv bin/plink bin/plink-1.9
 # you should see binaries for tabix, bcftools, plink, selscan, and norm
 
 # export path 
@@ -181,7 +182,7 @@ bcftools view -S chb_iids.txt -O z chb_yri_ceu_chr2_108013601_111013601_filtered
 bcftools view chb_chr2_108013601_111013601_filtered.vcf.gz -H | awk '{print $1, $3, &quot;0&quot;, $2, $4, $5}' &gt; chr2_108013601_111013601_filtered.bim
 
 # get genetic positions and interpolate genetic positions for variants not present in the genetic_map
-plink --bim chr2_108013601_111013601_filtered.bim \
+plink-1.9 --bim chr2_108013601_111013601_filtered.bim \
       --cm-map genetic_map_chr2_combined_b37.txt 2 \
       --make-just-bim \
       --out chr2_108013601_111013601_filtered_gm
@@ -199,7 +200,7 @@ awk '{print $1, $2, $3, $4}' chr2_108013601_111013601_filtered_gm.bim &gt; chr2_
 <div id="fst" class="section level3">
 <h3>2.1 Fst</h3>
 <pre class="bash"><code># Fst between CHB and YRI
-plink --vcf chb_yri_ceu_chr2_108013601_111013601_filtered.vcf.gz \
+plink-1.9 --vcf chb_yri_ceu_chr2_108013601_111013601_filtered.vcf.gz \
       --fst \
       --within chb_yri_clst.txt \
       --double-id \
@@ -208,7 +209,7 @@ plink --vcf chb_yri_ceu_chr2_108013601_111013601_filtered.vcf.gz \
       --set-missing-var-ids @:#
      
 # Fst between CHB and CEU
-plink --vcf chb_yri_ceu_chr2_108013601_111013601_filtered.vcf.gz \
+plink-1.9 --vcf chb_yri_ceu_chr2_108013601_111013601_filtered.vcf.gz \
       --fst \
       --within chb_ceu_clst.txt \
       --double-id \
@@ -217,7 +218,7 @@ plink --vcf chb_yri_ceu_chr2_108013601_111013601_filtered.vcf.gz \
       --set-missing-var-ids @:#
              
 # Fst between YRI and CEU
-plink --vcf chb_yri_ceu_chr2_108013601_111013601_filtered.vcf.gz \
+plink-1.9 --vcf chb_yri_ceu_chr2_108013601_111013601_filtered.vcf.gz \
       --fst \
       --within yri_ceu_clst.txt \
       --double-id \
