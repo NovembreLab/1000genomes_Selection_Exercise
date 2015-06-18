@@ -1,7 +1,7 @@
 # Understanding Natural Selection from Population Genomic Data
 
 * still in progress (not tested). 
-* using Duffy as an example (http://www.snpedia.com/index.php/Rs2814778)
+* using EDAR as an example (http://www.snpedia.com/index.php/Rs3827760)
 * description / writing needs to be filled in 
 
 ## 1. Setting up your Enviroment 
@@ -75,8 +75,8 @@ export PATH=path_to_SSW_2015_dir/bin:$PATH
 ```bash
 cd data/
 
-# download and filter a 2MB region (1:158000000-162000000) from the 1000genomes project. Sometimes the ftp goes down if you get an error try running the command again.
-tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr1.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz 1:158000000-162000000 | bgzip -c > 1000genomes_phase3_chr1_158000000_162000000.vcf.gz
+# download and filter a 3MB region (chr2:108013601-111013601) from the 1000genomes project. Sometimes the ftp goes down if you get an error try running the command again.
+tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr2.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz 2:108013601-111013601 | bgzip -c > 1000genomes_phase3_chr2_108013601_111013601.vcf.gz
 
 # download 1000genomes_phase3 individual information
 wget ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/integrated_call_samples_v3.20130502.ALL.panel
@@ -87,50 +87,50 @@ wget ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/integrated_call_s
 #### Preparing CLST / IID Files 
 
 ```bash
-# remove the first line and format file as IID | IID | CLST for YRI, CEU, and CHB
-sed '1d' integrated_call_samples_v3.20130502.ALL.panel | awk '{if($2 == "YRI" || $2 == "CEU" || $2 == "CHB") print $1, $1, $2}' > yri_ceu_chb_clst.txt
+# remove the first line and format file as IID | IID | CLST for CHB, YRI, CEU
+sed '1d' integrated_call_samples_v3.20130502.ALL.panel | awk '($2 == "CHB" || $2 == "YRI" || $2 == "CEU") {print $1, $1, $2}' > chb_yri_ceu_clst.txt
 
 # write a file of just IIDs 
-awk '{print $1}' yri_ceu_chb_clst.txt > yri_ceu_chb_iids.txt
+awk '{print $1}' chb_yri_ceu_clst.txt > chb_yri_ceu_iids.txt
+
+# write a clst file for just CHB and YRI 
+awk '($3 == "CHB" || $3 == "YRI") {print $0}' chb_yri_ceu_clst.txt > chb_yri_clst.txt
+
+# write a clst file for just CHB and CEU
+awk '($3 == "CHB" || $3 == "CEU") {print $0}' chb_yri_ceu_clst.txt > chb_ceu_clst.txt
 
 # write a clst file for just YRI and CEU
-awk  '($3 == "YRI" || $3 == "CEU") {print $0}' yri_ceu_chb_clst.txt > yri_ceu_clst.txt
+awk  '($3 == "YRI" || $3 == "CEU") {print $0}' chb_yri_ceu_clst.txt > yri_ceu_clst.txt
 
-# write a clst file for just YRI and CHB 
-awk '{($3 == "YRI" || $3 == "CHB") print $0}' yri_ceu_chb_clst.txt > yri_chb_clst.txt
-
-# write a clst file for just CEU and CHB
-awk '{if($3 == "CEU" || $3 == "CHB") print $0}' yri_ceu_chb_clst.txt > ceu_chb_clst.txt
-
-# write a file of just IIDs from YRI 
-awk '{if($3 == "YRI") print $1}' yri_ceu_chb_clst.txt > yri_iids.txt
+# write a file of just IIDs from CHB 
+awk '($3 == "CHB") {print $1}' chb_yri_ceu_clst.txt > chb_iids.txt
 
 # check if # individuals are correct
-wc -l yri_ceu_chb_iids.txt yri_ceu_clst.txt yri_chb_clst.txt ceu_chb_clst.txt yri_iids.txt
+wc -l chb_yri_ceu_iids.txt chb_yri_clst.txt chb_ceu_clst.txt yri_ceu_clst.txt chb_iids.txt
 ```
 
 #### Preparing Genomic Data
 
 ```bash
-# filter out indels (-V indels), multi-allelic sites (-m 2 -M 2), and keep individuals (-S) from YRI, CEU, CHB 
+# filter out indels (-V indels), multi-allelic sites (-m 2 -M 2), keep individuals (-S) from YRI, CEU, CHB, and filter out variants with maf below 10%
 # this will be used for cross-population based selection analysis
-bcftools view -V indels -m 2 -M 2 -S yri_ceu_chb_iids.txt -O z -q '.1 minor' 1000genomes_phase3_chr1_158000000_162000000.vcf.gz > yri_ceu_chb_chr1_158000000_162000000_filtered.vcf.gz
+bcftools view -v snps -m 2 -M 2 -S chb_yri_ceu_iids.txt -O z -q '.1 minor' 1000genomes_phase3_chr2_108013601_111013601.vcf.gz > chb_yri_ceu_chr2_108013601_111013601_filtered.vcf.gz
 
 # keep YRI individuals from the filtered vcf
 # this will be used for haplotype based selection analysis.
-bcftools view -S yri_iids.txt -O z yri_ceu_chb_chr1_158000000_162000000_filtered.vcf.gz > yri_chr1_158000000_162000000_filtered.vcf.gz
+bcftools view -S chb_iids.txt -O z chb_yri_ceu_chr2_108013601_111013601_filtered.vcf.gz > chb_chr2_108013601_111013601_filtered.vcf.gz
 
 # write bim file from vcf (-H supress header)
-bcftools view yri_chr1_158000000_162000000_filtered.vcf.gz -H | awk '{print $1, $3, "0", $2, $4, $5}' > chr1_158000000_162000000_filtered.bim
+bcftools view chb_chr2_108013601_111013601_filtered.vcf.gz -H | awk '{print $1, $3, "0", $2, $4, $5}' > chr2_108013601_111013601_filtered.bim
 
 # get genetic positions and interpolate genetic positions for variants not present in the genetic_map
-plink --bim chr1_158000000_162000000_filtered.bim \
-      --cm-map genetic_map_chr1_combined_b37.txt 1 \
+plink --bim chr2_108013601_111013601_filtered.bim \
+      --cm-map genetic_map_chr2_combined_b37.txt 2 \
       --make-just-bim \
-      --out chr1_158000000_162000000_filtered_gm
+      --out chr2_108013601_111013601_filtered_gm
 
 # format as map file
-awk '{print $1, $2, $3, $4}' chr1_158000000_162000000_filtered_gm.bim > chr1_158000000_162000000_filtered_gm.map 
+awk '{print $1, $2, $3, $4}' chr2_108013601_111013601_filtered_gm.bim > chr2_108013601_111013601_filtered_gm.map 
 ```
 
 ### Questions
@@ -140,52 +140,63 @@ awk '{print $1, $2, $3, $4}' chr1_158000000_162000000_filtered_gm.bim > chr1_158
 ### 2.1 Fst
 
 ```bash
+# Fst between CHB and YRI
+plink --vcf chb_yri_ceu_chr2_108013601_111013601_filtered.vcf.gz \
+      --fst \
+      --within chb_yri_clst.txt \
+      --double-id \
+      --id-delim . \
+      --out chb_yri_chr2_108013601_111013601_filtered \
+      --set-missing-var-ids @:#
+     
+# Fst between CHB and CEU
+plink --vcf chb_yri_ceu_chr2_108013601_111013601_filtered.vcf.gz \
+      --fst \
+      --within chb_ceu_clst.txt \
+      --double-id \
+      --id-delim . \
+      --out chb_ceu_chr2_108013601_111013601_filtered \
+      --set-missing-var-ids @:#
+             
 # Fst between YRI and CEU
-plink --vcf yri_ceu_chb_chr1_158000000_162000000_filtered.vcf.gz \
+plink --vcf chb_yri_ceu_chr2_108013601_111013601_filtered.vcf.gz \
       --fst \
       --within yri_ceu_clst.txt \
       --double-id \
       --id-delim . \
-      --out yri_ceu_chr1_158000000_162000000_filtered \
-      --set-missing-var-ids @:#
-     
-# Fst between YRI and CHB
-plink --vcf yri_ceu_chb_chr1_158000000_162000000_filtered.vcf.gz \
-      --fst \
-      --within yri_chb_clst.txt \
-      --double-id \
-      --id-delim . \
-      --out yri_chb_chr1_158000000_162000000_filtered \
-      --set-missing-var-ids @:#
-             
-# Fst between CEU and CHB
-plink --vcf yri_ceu_chb_chr1_158000000_162000000_filtered.vcf.gz \
-      --fst \
-      --within ceu_chb_clst.txt \
-      --double-id \
-      --id-delim . \
-      --out ceu_chb_chr1_158000000_162000000_filtered \
+      --out yri_ceu_chr2_108013601_111013601_filtered \
       --set-missing-var-ids @:#
 ```
-
-### 2.2. PBS
-
-Not sure if PBS that useful for this example unless were intersted in frequency change accumlated in YRI branch since out of Africa?
-
-$$ T = -log(1 - Fst) $$
-$$ PBS = \frac{T_{YRI,CEU} + T_{YRI,CHB} - T_{CEU,CHB}}{2} $$
 
 ```R
 library(dplyr)
 
-fst_yri_ceu_df <- read.table('yri_ceu_chr1_158000000_162000000_filtered.fst', header = TRUE)
-fst_yri_chb_df <- read.table('yri_chb_chr1_158000000_162000000_filtered.fst', header = TRUE)
-fst_ceu_chb_df <- read.table('ceu_chb_chr1_158000000_162000000_filtered.fst', header = TRUE)
+# read data
+fst_chb_yri_df <- read.table('chb_yri_chr2_108013601_111013601_filtered.fst', header = TRUE)
+fst_chb_ceu_df <- read.table('chb_ceu_chr2_108013601_111013601_filtered.fst', header = TRUE)
+fst_yri_ceu_df <- read.table('yri_ceu_chr2_108013601_111013601_filtered.fst', header = TRUE)
 
-# bug - too many nans
-pbs_df <- data.frame(CHR = fst_yri_ceu_df$CHR, SNP=fst_yri_ceu_df$SNP, POS=fst_yri_ceu_df$POS,
-                     NMISS = fst_yri_ceu_df$NMISS, YRI_CEU_FST = fst_yri_ceu_df$FST, 
-                     YRI_CHB_FST = fst_yri_chb_df$FST, CEU_CHB_FST = fst_ceu_chb_df$FST)
+# join data.frames, filter out rows with missing variants from any population, rename cols and select rows of interest for plotting later
+fst_df <- fst_chb_yri_df %>% 
+          inner_join(fst_chb_ceu_df, by = c('CHR', 'SNP', 'POS')) %>% 
+          inner_join(fst_yri_ceu_df, by = c('CHR', 'SNP', 'POS')) %>%
+          filter(is.nan(FST) == FALSE, is.nan(FST.x) == FALSE, is.nan(FST.y) == FALSE) %>%
+          rename(FST_CHB_YRI = FST, FST_CHB_CEU = FST.x, FST_YRI_CEU = FST.y) %>%
+          select(SNP, POS, FST_CHB_YRI, FST_CHB_CEU, FST_YRI_CEU)
+```
+
+### 2.2. PBS
+
+$$ T = -log(1 - Fst) $$
+$$ PBS = \frac{T_{CHB,YRI} + T_{CHB,CEU} - T_{YRI,CEU}}{2} $$
+
+```R
+# compute pbs and make a data.frame that holds all the information we have computed thus far
+cross_pop_df <- fst_df %>% 
+                mutate(T_CHB_YRI = -log(1 - FST_CHB_YRI), T_CHB_CEU = -log(1 - FST_CHB_CEU), 
+                       T_YRI_CEU = -log(1 - FST_YRI_CEU)) %>%
+                mutate(PBS = (T_CHB_YRI + T_CHB_CEU - T_YRI_CEU) / 2) %>%
+                select(SNP, POS, FST_CHB_YRI, FST_CHB_CEU, FST_YRI_CEU, PBS)
 ```
 
 ### 2.3 iHS
@@ -193,16 +204,12 @@ pbs_df <- data.frame(CHR = fst_yri_ceu_df$CHR, SNP=fst_yri_ceu_df$SNP, POS=fst_y
 this region might be too big (i.e. too slow for the workshop) perhaps a more stringent maf filter would be reasonable? 
 
 ```bash
-# compute iHS! This will take about 10 minutes
+# compute iHS! This will take about 10 minutes ...
 selscan --ihs \
-        --vcf yri_chr1_158000000_162000000_filtered.vcf.gz \
-        --map chr1_158000000_162000000_filtered_gm.map \
-        --out yri_ceu_chb_chr1_158000000_162000000_filtered   
+        --vcf chb_chr2_108013601_111013601_filtered.vcf.gz \
+        --map chr2_108013601_111013601_filtered_gm.map \
+        --out chb_chr2_108013601_111013601_filtered   
 ```
-
-### 2.4 nSL (maybe if there is time)
-
-### 2.4 Visualization 
 
 ### Questions
 
@@ -210,32 +217,34 @@ selscan --ihs \
 
 ### 3.1 Genome(Region)-Wide Null Distribution
 
+#### normalize iHS
 ```
-norm --ihs --files yri_ceu_chb_chr1_158000000_162000000filtered.ihs.out
+norm --ihs --files chb_chr2_108013601_111013601_filtered.ihs.out
 ```
 
-# normalize pbs R script 
+#### normalize PBS 
+
+to be filled
 
 ### 3.2 Simulating a Null Model
 
 ### 3.3 Visualization 
 
-```{r selection_scan, fig.width=8, fig.height=4}
+needs editing still!
+
+```R
 library(ggplot2)
-library(dplyr)
+library(reshape2)
 
-ihs_path <- "~/jhmarcus/Teaching/SSW_2015/dev/data/yri_ceu_chb_chr1_158000000_162000000filtered.ihs.out.100bins.norm"
-ihs_df <- read.table(ihs_path, header=FALSE)
-colnames(ihs_df) <- c("locusID", "physicalPos", "freq", "ihh1", "ihh0", "unstandardized_iHS",
-                       "standardized_iHS", "top")
+ihs_df <- read.table("chb_chr2_108013601_111013601_filtered.ihs.out.100bins.norm", header = FALSE)
+colnames(ihs_df) <- c("SNP", "POS", "FREQ", "ihh1", "ihh0", "unstandardized_iHS",
+                      "standardized_iHS", "top")
 
-ihs_top_01_percent <- quantile(abs(ihs_df$standardized_iHS), c(.99)) 
+selection_df <- ihs_df %>% inner_join(cross_pop_df, by = c("SNP", "POS")) %>% mutate(standardized_iHS = abs(standardized_iHS))
+melted_selection_df <- selection_df %>% select(POS, standardized_iHS, PBS, FST_CHB_YRI, FST_CHB_CEU, FST_YRI_CEU) %>% melt(id = c("POS"))
 
-p <- ggplot(ihs_df, aes(x = physicalPos, y = abs(standardized_iHS))) + geom_point() + 
-     geom_hline(yintercept = ihs_top_01_percent) + ylab("|standardized_iHS|") + xlab("Position") + 
-     theme_bw()
-
-print(p)
+p <- ggplot(melted_selection_df, aes(x = POS, y = value)) + geom_point() + 
+     xlab('Position on chr2') + theme_bw() + facet_grid(variable ~ ., scales = "free_y") 
 ```
 
 ### 3.4 Spandrels of San Marco (Caveats)

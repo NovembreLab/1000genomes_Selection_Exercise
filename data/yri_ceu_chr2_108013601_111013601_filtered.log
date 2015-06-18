@@ -1,0 +1,35 @@
+PLINK v1.90b3s 64-bit (17 Jun 2015)
+Options in effect:
+  --double-id
+  --fst
+  --id-delim .
+  --out yri_ceu_chr2_108013601_111013601_filtered
+  --set-missing-var-ids @:#
+  --vcf chb_yri_ceu_chr2_108013601_111013601_filtered.vcf.gz
+  --within yri_ceu_clst.txt
+
+Hostname: Josephs-MBP.irgb.cnr.group
+Working directory: /Users/josephmarcus/Desktop/SSW_2015/data
+Start time: Thu Jun 18 15:43:09 2015
+
+Random number seed: 1434634989
+4096 MB RAM detected; reserving 2048 MB for main workspace.
+--vcf: yri_ceu_chr2_108013601_111013601_filtered-temporary.bed +
+yri_ceu_chr2_108013601_111013601_filtered-temporary.bim +
+yri_ceu_chr2_108013601_111013601_filtered-temporary.fam written.
+4711 variants loaded from .bim file.
+310 people (0 males, 0 females, 310 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to yri_ceu_chr2_108013601_111013601_filtered.nosex .
+--within: 2 clusters loaded, covering a total of 207 people.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 310 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+4711 variants and 310 people pass filters and QC.
+Note: No phenotypes present.
+Writing --fst report (2 populations) to
+yri_ceu_chr2_108013601_111013601_filtered.fst ... done.
+4675 markers with valid Fst estimates (36 excluded).
+Mean Fst estimate: 0.157544
+Weighted Fst estimate: 0.18751
+
+End time: Thu Jun 18 15:43:09 2015
