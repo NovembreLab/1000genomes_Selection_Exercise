@@ -259,8 +259,8 @@ export PATH=path_to_SSW_2015_dir/bin:$PATH
 
 <pre><code class="bash">cd data/
 
-# download and filter a 2MB region (1:159000000-161000000) from the 1000genomes project. Sometimes the ftp goes down if you get an error try running the command again.
-tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr1.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz 1:159000000-161000000 | gzip -c &gt; 1000genomes_phase3_chr1_159000000_161000000.vcf.gz
+# download and filter a 2MB region (1:158000000-162000000) from the 1000genomes project. Sometimes the ftp goes down if you get an error try running the command again.
+tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr1.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz 1:158000000-162000000 | bgzip -c &gt; 1000genomes_phase3_chr1_158000000_162000000.vcf.gz
 
 # download 1000genomes_phase3 individual information
 wget ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/integrated_call_samples_v3.20130502.ALL.panel
@@ -296,23 +296,23 @@ wc -l yri_ceu_chb_iids.txt yri_ceu_clst.txt yri_chb_clst.txt ceu_chb_clst.txt yr
 
 <pre><code class="bash"># filter out indels (-V indels), multi-allelic sites (-m 2 -M 2), and keep individuals (-S) from YRI, CEU, CHB 
 # this will be used for cross-population based selection analysis
-bcftools view -V indels -m 2 -M 2 -S yri_ceu_chb_iids.txt -O z 1000genomes_phase3_chr1_159000000_161000000.vcf.gz &gt; yri_ceu_chb_chr1_159000000_161000000_filtered.vcf.gz
+bcftools view -V indels -m 2 -M 2 -S yri_ceu_chb_iids.txt -O z 1000genomes_phase3_chr1_158000000_162000000.vcf.gz &gt; yri_ceu_chb_chr1_158000000_162000000_filtered.vcf.gz
 
-# keep YRI individuals from the filtered vcf and remove variants below maf .1
+# keep YRI individuals from the filtered vcf
 # this will be used for haplotype based selection analysis.
-bcftools view -S yri_iids.txt -q &#39;.1 minor&#39; -O z yri_ceu_chb_chr1_159000000_161000000_filtered.vcf.gz &gt; yri_chr1_159000000_161000000_filtered.vcf.gz
+bcftools view -S yri_iids.txt -O z yri_ceu_chb_chr1_chr1_158000000_162000000_filtered.vcf.gz &gt; yri_chr1_chr1_158000000_162000000_filtered.vcf.gz
 
 # write bim file from vcf (-H supress header)
-bcftools view yri_chr1_159000000_161000000_filtered.vcf.gz -H | awk &#39;{print $1, $3, &quot;0&quot;, $2, $4, $5}&#39; &gt; chr1_159000000_161000000_filtered.bim
+bcftools view yri_chr1_158000000_162000000_filtered.vcf.gz -H | awk &#39;{print $1, $3, &quot;0&quot;, $2, $4, $5}&#39; &gt; chr1_158000000_162000000_filtered.bim
 
 # get genetic positions and interpolate genetic positions for variants not present in the genetic_map
-plink --bim chr1_159000000_161000000_filtered.bim \
+plink --bim chr1_158000000_162000000_filtered.bim \
       --cm-map genetic_map_chr1_combined_b37.txt 1 \
       --make-just-bim \
-      --out chr1_159000000_161000000_filtered_gm
+      --out chr1_158000000_162000000_filtered_gm
 
 # format as map file
-awk &#39;{print $1, $2, $3, $4}&#39; chr1_159000000_161000000_filtered_gm.bim &gt; chr1_159000000_161000000_filtered_gm.map 
+awk &#39;{print $1, $2, $3, $4}&#39; chr1_158000000_162000000_filtered_gm.bim &gt; chr1_158000000_162000000_filtered_gm.map 
 </code></pre>
 
 <h3>Questions</h3>
@@ -322,30 +322,30 @@ awk &#39;{print $1, $2, $3, $4}&#39; chr1_159000000_161000000_filtered_gm.bim &g
 <h3>2.1 Fst</h3>
 
 <pre><code class="bash"># Fst between YRI and CEU
-plink --vcf yri_ceu_chb_chr1_159000000_161000000_filtered.vcf.gz \
+plink --vcf yri_ceu_chb_chr1_158000000_162000000_filtered.vcf.gz \
       --fst \
       --within yri_ceu_clst.txt \
       --double-id \
       --id-delim . \
-      --out yri_ceu_chr1_159000000_161000000_filtered \
+      --out yri_ceu_chr1_158000000_162000000_filtered \
       --set-missing-var-ids @:#
 
 # Fst between YRI and CHB
-plink --vcf yri_ceu_chb_chr1_159000000_161000000_filtered.vcf.gz \
+plink --vcf yri_ceu_chb_chr1_158000000_162000000_filtered.vcf.gz \
       --fst \
       --within yri_chb_clst.txt \
       --double-id \
       --id-delim . \
-      --out yri_chb_chr1_159000000_161000000_filtered \
+      --out yri_chb_chr1_158000000_162000000_filtered \
       --set-missing-var-ids @:#
 
 # Fst between CEU and CHB
-plink --vcf yri_ceu_chb_chr1_159000000_161000000_filtered.vcf.gz \
+plink --vcf yri_ceu_chb_chr1_158000000_162000000_filtered.vcf.gz \
       --fst \
       --within ceu_chb_clst.txt \
       --double-id \
       --id-delim . \
-      --out ceu_chb_chr1_159000000_161000000_filtered \
+      --out ceu_chb_chr1_158000000_162000000_filtered \
       --set-missing-var-ids @:#
 </code></pre>
 
@@ -358,9 +358,9 @@ plink --vcf yri_ceu_chb_chr1_159000000_161000000_filtered.vcf.gz \
 
 <pre><code class="R">library(dplyr)
 
-fst_yri_ceu_df &lt;- read.table(&#39;yri_ceu_chr1_159000000_161000000_filtered.fst&#39;, header = TRUE)
-fst_yri_chb_df &lt;- read.table(&#39;yri_chb_chr1_159000000_161000000_filtered.fst&#39;, header = TRUE)
-fst_ceu_chb_df &lt;- read.table(&#39;ceu_chb_chr1_159000000_161000000_filtered.fst&#39;, header = TRUE)
+fst_yri_ceu_df &lt;- read.table(&#39;yri_ceu_chr1_158000000_162000000_filtered.fst&#39;, header = TRUE)
+fst_yri_chb_df &lt;- read.table(&#39;yri_chb_chr1_158000000_162000000_filtered.fst&#39;, header = TRUE)
+fst_ceu_chb_df &lt;- read.table(&#39;ceu_chb_chr1_158000000_162000000_filtered.fst&#39;, header = TRUE)
 
 # bug - too many nans
 pbs_df &lt;- data.frame(CHR = fst_yri_ceu_df$CHR, SNP=fst_yri_ceu_df$SNP, POS=fst_yri_ceu_df$POS,
@@ -374,9 +374,9 @@ pbs_df &lt;- data.frame(CHR = fst_yri_ceu_df$CHR, SNP=fst_yri_ceu_df$SNP, POS=fs
 
 <pre><code class="bash"># compute iHS! This will take about 10 minutes
 selscan --ihs \
-        --vcf yri_chr1_159000000_161000000_filtered.vcf.gz \
-        --map chr1_159000000_161000000_filtered_gm.map \
-        --out yri_ceu_chb_chr1_159000000_161000000_filtered   
+        --vcf yri_chr1_158000000_162000000_filtered.vcf.gz \
+        --map chr1_158000000_162000000_filtered_gm.map \
+        --out yri_ceu_chb_chr1_158000000_162000000_filtered   
 </code></pre>
 
 <h3>2.4 nSL (maybe if there is time)</h3>
@@ -389,7 +389,7 @@ selscan --ihs \
 
 <h3>3.1 Genome(Region)-Wide Null Distribution</h3>
 
-<pre><code>norm --ihs --files yri_ceu_chb_chr1_159000000_161000000_filtered.ihs.out
+<pre><code>norm --ihs --files yri_ceu_chb_chr1_158000000_162000000filtered.ihs.out
 </code></pre>
 
 <h3>3.2 Simulating a Null Model</h3>
@@ -412,21 +412,44 @@ library(dplyr)
 ##     intersect, setdiff, setequal, union
 </code></pre>
 
-<pre><code class="r">ihs_path &lt;- &quot;~/jhmarcus/Teaching/SSW_2015/dev/data/yri_ceu_chb_chr1_159000000_161000000_filtered.ihs.out.100bins.norm&quot;
+<pre><code class="r">ihs_path &lt;- &quot;~/jhmarcus/Teaching/SSW_2015/dev/data/yri_ceu_chb_chr1_158000000_162000000filtered.ihs.out.100bins.norm&quot;
 ihs_df &lt;- read.table(ihs_path, header=FALSE)
-colnames(ihs_df) &lt;- c(&quot;locusID&quot;, &quot;physicalPos&quot;, &quot;freq&quot;, &quot;ihh1&quot;, &quot;ihh0&quot;, &quot;unstandardized_iHS&quot;,
-                       &quot;standardized_iHS&quot;, &quot;top&quot;)
-
-ihs_top_01_percent &lt;- quantile(abs(ihs_df$standardized_iHS), c(.99)) 
-
-p &lt;- ggplot(ihs_df, aes(x = physicalPos, y = abs(standardized_iHS))) + geom_point() + 
-     geom_hline(yintercept = ihs_top_01_percent) + ylab(&quot;|standardized_iHS|&quot;) + xlab(&quot;Position&quot;) + 
-     theme_bw()
-
-print(p)
 </code></pre>
 
-<p><img src="data:image/png;base64,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" alt="plot of chunk selection_scan"/> </p>
+<pre><code>## Warning: cannot open file
+## &#39;/mnt/lustre/home/jhmarcus/jhmarcus/Teaching/SSW_2015/dev/data/yri_ceu_chb_chr1_158000000_162000000filtered.ihs.out.100bins.norm&#39;:
+## No such file or directory
+</code></pre>
+
+<pre><code>## Error: cannot open the connection
+</code></pre>
+
+<pre><code class="r">colnames(ihs_df) &lt;- c(&quot;locusID&quot;, &quot;physicalPos&quot;, &quot;freq&quot;, &quot;ihh1&quot;, &quot;ihh0&quot;, &quot;unstandardized_iHS&quot;,
+                       &quot;standardized_iHS&quot;, &quot;top&quot;)
+</code></pre>
+
+<pre><code>## Error: object &#39;ihs_df&#39; not found
+</code></pre>
+
+<pre><code class="r">ihs_top_01_percent &lt;- quantile(abs(ihs_df$standardized_iHS), c(.99)) 
+</code></pre>
+
+<pre><code>## Error: object &#39;ihs_df&#39; not found
+</code></pre>
+
+<pre><code class="r">p &lt;- ggplot(ihs_df, aes(x = physicalPos, y = abs(standardized_iHS))) + geom_point() + 
+     geom_hline(yintercept = ihs_top_01_percent) + ylab(&quot;|standardized_iHS|&quot;) + xlab(&quot;Position&quot;) + 
+     theme_bw()
+</code></pre>
+
+<pre><code>## Error: object &#39;ihs_df&#39; not found
+</code></pre>
+
+<pre><code class="r">print(p)
+</code></pre>
+
+<pre><code>## Error: object &#39;p&#39; not found
+</code></pre>
 
 <h3>3.4 Spandrels of San Marco (Caveats)</h3>
 
