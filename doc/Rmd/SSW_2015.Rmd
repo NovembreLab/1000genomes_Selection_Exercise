@@ -5,9 +5,11 @@
 * description / writing needs to be filled in 
 * try to find the clearest possible example at first and then give fuzzy ones
 
-## 1. Setting up your Enviroment 
+## Setting up your Enviroment 
 
-### 1.1 Downloading and Building Methods
+### Downloading and Building Methods
+
+This section can be skipped for now as the software tools are already built on the cluster. This can be used if you'd like to use these methods later. For now, scoll down to *Downloaing Data*.
 
 #### Download
 
@@ -67,7 +69,9 @@ mv bin/plink bin/plink-1.9
 # you should see binaries for tabix, bcftools, plink, selscan, and norm
 ```
 
-### 1.2 Downloading Data
+### Downloading Data
+
+Here we will download data from the 1000genomes project which is stored on a public ftp. 
 
 #### 1000genomes_phase3
 
@@ -81,9 +85,11 @@ tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr2.phas
 wget ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/integrated_call_samples_v3.20130502.ALL.panel
 ```
 
-### 1.3 Filtering Data and QC
+### Filtering Data and QC
 
-#### Preparing CLST / IID Files 
+In order to extract individuals and define groups for computing selection statistics within we need to prepare a set of `.clst.txt` and and `.iids` files.
+
+#### Preparing CLST / IID Files
 
 ```bash
 # remove the first line and format file as IID | IID | CLST for CHB, YRI, FIN
@@ -109,7 +115,9 @@ awk '($3 == "CHB") {print $1}' chb_yri_fin_clst.txt > chb_iids.txt
 wc -l chb_yri_fin_iids.txt chb_yri_clst.txt chb_fin_clst.txt yri_fin_clst.txt chb_iids.txt 
 ```
 
-#### Preparing Genomic Data
+### Preparing Genomic Data
+
+Here is where we actually extract individuals and apply filters to the 1000genomes data.
 
 ```bash
 # filter out indels (-V indels), multi-allelic sites (-m 2 -M 2), keep individuals (-S) from YRI, FIN, CHB.
@@ -143,15 +151,15 @@ plink-1.9 --bim chr2_108013601_111013601_filtered.bim \
 awk '{print $1, $2, $3, $4}' chr2_108013601_111013601_filtered_gm.bim > chr2_108013601_111013601_filtered_gm.map
 ```
 
-### Questions
+**Questions**
 
 *
 *
 *
 
-## 2. Computing Selection Statistics 
+## Computing Selection Statistics 
 
-### 2.1 Fst
+### Fst
 
 ```bash
 # Fst between CHB and YRI
@@ -182,6 +190,8 @@ plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
           --set-missing-var-ids @:#
 ```
 
+In another terminal window or screen open an R session that we will be using for the rest of the workshop. Now run these commands in the R session.
+
 ```R
 library(dplyr)
 
@@ -198,7 +208,7 @@ fst_df <- fst_chb_yri_df %>%
           select(SNP, POS, FST_CY, FST_CF, FST_YF)
 ```
 
-### 2.2. PBS
+### PBS
 
 $$ T = -log(1 - Fst) $$
 $$ PBS_{CYF} = \frac{T_{CY} + T_{CF} - T_{YF}}{2} $$
@@ -211,7 +221,7 @@ cross_pop_df <- fst_df %>%
                 select(SNP, POS, FST_CY, FST_CF, FST_YF, PBS)
 ```
 
-### 2.3 iHS
+### iHS
 
 ```bash
 # compute iHS! This will take about 5 minutes 
@@ -221,15 +231,15 @@ selscan --ihs \
         --out chb_chr2_108013601_111013601_filtered   
 ```
 
-### Questions
+**Questions**
 
 *
 *
 *
 
-## 3. Assesing Significance
+## Assesing Significance
 
-### 3.1 Genome(Region)-Wide Null Distribution
+### Genome(Region)-Wide Null Distribution
 
 #### normalize iHS
 
@@ -237,9 +247,7 @@ selscan --ihs \
 norm --ihs --files chb_chr2_108013601_111013601_filtered.ihs.out
 ```
 
-#### normalize PBS 
-
-#### Compute Frequencies for Normalizing PBS 
+#### normalize PBS
 
 ```bash
 plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
@@ -258,10 +266,7 @@ cross_pop_df$BINS <- cut(cross_pop_df$MAF, breaks = seq(0, 1, .025), include.low
 cross_pop_df$std_PBS <- with(cross_pop_df, ave(PBS, BINS, FUN=scale))
 ```
 
-
-### 3.2 Simulating a Null Model
-
-### 3.3 Visualization 
+#### Visualization 
 
 ```R
 library(ggplot2)
@@ -276,41 +281,48 @@ selection_df <- ihs_df %>%
                 inner_join(cross_pop_df, by = c("SNP", "POS")) %>% 
                 mutate(std_iHS = abs(std_iHS)) %>%
                 mutate(std_PBS = abs(std_PBS))
-      
+
 # melt data for plotting      
 melted_selection_df <- selection_df %>% 
                        select(POS, std_iHS, std_PBS, FST_CY, FST_CF, FST_YF) %>% 
                        melt(id = c("POS"))
 
+melted_fst_df <- melted_selection_df %>% filter(variable %in% c("FST_CY", "FST_CF", "FST_YF"))
+melted_cross_pop_df <- melted_selection_df %>% filter(variable %in% c("FST_CY", "FST_CF", "FST_YF", "std_PBS"))
+
 # plot Fst
-p <- ggplot(melted_selection_df, aes(x = POS, y = value)) + geom_point() + xlab('Position on chr2') + 
-      theme_bw() + ylab("") + facet_grid(variable ~ ., scales = "free_y") +
-      ggsave("selection_figure.pdf", width = 7, height = 5)
-     
-# add mutliple figures
+p <- ggplot(melted_fst_df, aes(x = POS, y = value)) + geom_point() + xlab('Position on chr2') + 
+      theme_bw() + ylab("") + facet_grid(variable ~ ., scales = "free_y")
+
+# plot Fst and PBS
+p1 <- ggplot(melted_cross_pop_df, aes(x = POS, y = value)) + geom_point() + xlab('Position on chr2') + 
+      theme_bw() + ylab("") + facet_grid(variable ~ ., scales = "free_y")
+
+# plot Fst, PBS, and iHS
+p2 <- ggplot(melted_selection_df, aes(x = POS, y = value)) + geom_point() + xlab('Position on chr2') + 
+      theme_bw() + ylab("") + facet_grid(variable ~ ., scales = "free_y")
+
+p1
+p2
+p3
 ```
 
-### Questions
+**Questions**
 
 *
 *
 *
 
-### 4. Another Region 
+## Another Region 
 
 Adapt the code you just ran using but now use this region (2:108013601-111013601) in the 1000genomes project. Instead of computing iHS for CHB compute it for FIN.
 
-### 5. DIY
-
-Break into groups and work together to come up with. Create a new directory in data and out of this table pick a region and try to run the same methods to understand selection in this region. Use the ucsc genome browser to understand whats going on in the region you picked after you ran the selection stats. As challenge you could try using XP-EHH. Write a paragr
-
-### Questions
+**Questions**
 
 *
 *
 *
 
-### 6. Spandrels of San Marco (Caveats)
+## Spandrels of San Marco (Caveats)
 
-
-## 7. References
+## References
