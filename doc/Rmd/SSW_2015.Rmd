@@ -3,6 +3,7 @@
 * still in progress (not tested). 
 * using EDAR as an example (http://www.snpedia.com/index.php/Rs3827760)
 * description / writing needs to be filled in 
+* try to find the clearest possible example at first and then give fuzzy ones
 
 ## 1. Setting up your Enviroment 
 
@@ -64,9 +65,6 @@ ls bin/
 
 mv bin/plink bin/plink-1.9
 # you should see binaries for tabix, bcftools, plink, selscan, and norm
-
-# export path 
-export PATH=path_to_SSW_2015_dir/bin:$PATH
 ```
 
 ### 1.2 Downloading Data
@@ -76,7 +74,7 @@ export PATH=path_to_SSW_2015_dir/bin:$PATH
 ```bash
 cd data/
 
-# download and filter a 3MB region (chr2:108013601-111013601) from the 1000genomes project. Sometimes the ftp goes down if you get an error try running the command again.
+# download and filter a 3MB region (chr2:108013601-111013601) from the 1000genomes project
 tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr2.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz 2:108013601-111013601 | bgzip -c > 1000genomes_phase3_chr2_108013601_111013601.vcf.gz
 
 # download 1000genomes_phase3 individual information
@@ -89,7 +87,8 @@ wget ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/integrated_call_s
 
 ```bash
 # remove the first line and format file as IID | IID | CLST for CHB, YRI, FIN
-sed '1d' integrated_call_samples_v3.20130502.ALL.panel | awk '($2 == "CHB" || $2 == "YRI" || $2 == "FIN") {print $1, $1, $2}' > chb_yri_fin_clst.txt
+sed '1d' integrated_call_samples_v3.20130502.ALL.panel | \
+awk '($2 == "CHB" || $2 == "YRI" || $2 == "FIN") {print $1, $1, $2}' > chb_yri_fin_clst.txt
 
 # write a file of just IIDs 
 awk '{print $1}' chb_yri_fin_clst.txt > chb_yri_fin_iids.txt
@@ -107,34 +106,48 @@ awk  '($3 == "YRI" || $3 == "FIN") {print $0}' chb_yri_fin_clst.txt > yri_fin_cl
 awk '($3 == "CHB") {print $1}' chb_yri_fin_clst.txt > chb_iids.txt
 
 # check if # individuals are correct
-wc -l chb_yri_fin_iids.txt chb_yri_clst.txt chb_fin_clst.txt yri_fin_clst.txt chb_iids.txt
+wc -l chb_yri_fin_iids.txt chb_yri_clst.txt chb_fin_clst.txt yri_fin_clst.txt chb_iids.txt 
 ```
 
 #### Preparing Genomic Data
 
 ```bash
-# filter out indels (-V indels), multi-allelic sites (-m 2 -M 2), keep individuals (-S) from YRI, FIN, CHB, and filter out variants with maf below 10%
+# filter out indels (-V indels), multi-allelic sites (-m 2 -M 2), keep individuals (-S) from YRI, FIN, CHB.
 # this will be used for cross-population based selection analysis
-bcftools view -v snps -m 2 -M 2 -S chb_yri_fin_iids.txt -O z -q '.1 minor' 1000genomes_phase3_chr2_108013601_111013601.vcf.gz > chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz
+bcftools view -v snps \
+         -m 2 -M 2 \
+         -S chb_yri_fin_iids.txt \
+         -O z \
+         1000genomes_phase3_chr2_108013601_111013601.vcf.gz > \ 
+         chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz
 
-# keep YRI individuals from the filtered vcf
+# keep YRI individuals from the filtered vcf and filter out rare variants (at maf < 5%)
 # this will be used for haplotype based selection analysis.
-bcftools view -S chb_iids.txt -O z chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz > chb_chr2_108013601_111013601_filtered.vcf.gz
+bcftools view -S chb_iids.txt \
+         -q '.05 minor' \
+         -O z \
+         chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz > \
+         chb_chr2_108013601_111013601_filtered.vcf.gz
 
 # write bim file from vcf (-H supress header)
-bcftools view chb_chr2_108013601_111013601_filtered.vcf.gz -H | awk '{print $1, $3, "0", $2, $4, $5}' > chr2_108013601_111013601_filtered.bim
+bcftools view chb_chr2_135108646_138108646_filtered.vcf.gz -H | \
+awk '{print $1, $3, "0", $2, $4, $5}' > chr2_108013601_111013601_filtered.bim
 
 # get genetic positions and interpolate genetic positions for variants not present in the genetic_map
 plink-1.9 --bim chr2_108013601_111013601_filtered.bim \
-      --cm-map genetic_map_chr2_combined_b37.txt 2 \
-      --make-just-bim \
-      --out chr2_108013601_111013601_filtered_gm
-
+          --cm-map genetic_map_chr2_combined_b37.txt 2 \
+          --make-just-bim \
+          --out chr2_108013601_111013601_filtered_gm
+          
 # format as map file
-awk '{print $1, $2, $3, $4}' chr2_108013601_111013601_filtered_gm.bim > chr2_108013601_111013601_filtered_gm.map 
+awk '{print $1, $2, $3, $4}' chr2_108013601_111013601_filtered_gm.bim > chr2_108013601_111013601_filtered_gm.map
 ```
 
 ### Questions
+
+*
+*
+*
 
 ## 2. Computing Selection Statistics 
 
@@ -173,39 +186,35 @@ plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
 library(dplyr)
 
 # read data
-fst_chb_yri_df <- read.table('chb_yri_chr2_108013601_111013601_filtered.fst', header = TRUE)
-fst_chb_fin_df <- read.table('chb_fin_chr2_108013601_111013601_filtered.fst', header = TRUE)
-fst_yri_fin_df <- read.table('yri_fin_chr2_108013601_111013601_filtered.fst', header = TRUE)
+fst_chb_yri_df <- read.table('chb_yri_chr2_108013601_111013601_filtered.fst', header = TRUE) %>% rename(FST_CY = FST)
+fst_chb_fin_df <- read.table('chb_fin_chr2_108013601_111013601_filtered.fst', header = TRUE) %>% rename(FST_CF = FST)
+fst_yri_fin_df <- read.table('yri_fin_chr2_108013601_111013601_filtered.fst', header = TRUE) %>% rename(FST_YF = FST)
 
 # join data.frames, filter out rows with missing variants from any population, rename cols and select rows of interest for plotting later
 fst_df <- fst_chb_yri_df %>% 
           inner_join(fst_chb_fin_df, by = c('CHR', 'SNP', 'POS')) %>% 
           inner_join(fst_yri_fin_df, by = c('CHR', 'SNP', 'POS')) %>%
-          filter(is.nan(FST) == FALSE, is.nan(FST.x) == FALSE, is.nan(FST.y) == FALSE) %>%
-          rename(FST_CHB_YRI = FST, FST_CHB_FIN = FST.x, FST_YRI_FIN = FST.y) %>%
-          select(SNP, POS, FST_CHB_YRI, FST_CHB_FIN, FST_YRI_FIN)
+          filter(is.nan(FST_CY) == FALSE, is.nan(FST_CF) == FALSE, is.nan(FST_YF) == FALSE) %>%
+          select(SNP, POS, FST_CY, FST_CF, FST_YF)
 ```
 
 ### 2.2. PBS
 
 $$ T = -log(1 - Fst) $$
-$$ PBS = \frac{T_{CHB,YRI} + T_{CHB,FIN} - T_{YRI,FIN}}{2} $$
+$$ PBS_{CYF} = \frac{T_{CY} + T_{CF} - T_{YF}}{2} $$
 
 ```R
-# compute pbs and make a data.frame that holds all the information we have computed thus far
+# compute pbs and make a data frame that holds all the information we have computed thus far
 cross_pop_df <- fst_df %>% 
-                mutate(T_CHB_YRI = -log(1 - FST_CHB_YRI), T_CHB_FIN = -log(1 - FST_CHB_FIN), 
-                       T_YRI_FIN = -log(1 - FST_YRI_FIN)) %>%
-                mutate(PBS = (T_CHB_YRI + T_CHB_FIN - T_YRI_FIN) / 2) %>%
-                select(SNP, POS, FST_CHB_YRI, FST_CHB_FIN, FST_YRI_FIN, PBS)
+                mutate(T_CY = -log(1 - FST_CY), T_CF = -log(1 - FST_CF), T_YF = -log(1 - FST_YF)) %>%
+                mutate(PBS = (T_CY + T_CF - T_YF) / 2) %>%
+                select(SNP, POS, FST_CY, FST_CF, FST_YF, PBS)
 ```
 
 ### 2.3 iHS
 
-this region might be too big (i.e. too slow for the workshop) perhaps a more stringent maf filter would be reasonable? 
-
 ```bash
-# compute iHS! This will take about 10 minutes ...
+# compute iHS! This will take about 5 minutes 
 selscan --ihs \
         --vcf chb_chr2_108013601_111013601_filtered.vcf.gz \
         --map chr2_108013601_111013601_filtered_gm.map \
@@ -214,47 +223,94 @@ selscan --ihs \
 
 ### Questions
 
-## 3. Assesing Significance 
+*
+*
+*
+
+## 3. Assesing Significance
 
 ### 3.1 Genome(Region)-Wide Null Distribution
 
 #### normalize iHS
-```
+
+```bash
 norm --ihs --files chb_chr2_108013601_111013601_filtered.ihs.out
 ```
 
 #### normalize PBS 
 
-to be filled
+#### Compute Frequencies for Normalizing PBS 
+
+```bash
+plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
+          --freq \
+          --double-id \
+          --id-delim . \
+          --out chb_yri_fin_chr2_108013601_111013601_filtered \
+          --set-missing-var-ids @:#
+```
+
+```R
+# normalize to mean 0 and 1 within each frequency bin
+freq_df <- read.table("chb_yri_fin_chr2_108013601_111013601_filtered.frq", header = TRUE)
+cross_pop_df <- cross_pop_df %>% inner_join(freq_df, by = c("SNP"))
+cross_pop_df$BINS <- cut(cross_pop_df$MAF, breaks = seq(0, 1, .025), include.lowest=TRUE)
+cross_pop_df$std_PBS <- with(cross_pop_df, ave(PBS, BINS, FUN=scale))
+```
+
 
 ### 3.2 Simulating a Null Model
 
 ### 3.3 Visualization 
 
-needs editing still! Add some questions using the GGV
-
 ```R
 library(ggplot2)
 library(reshape2)
 
+# read iHS data
 ihs_df <- read.table("chb_chr2_108013601_111013601_filtered.ihs.out.100bins.norm", header = FALSE)
-colnames(ihs_df) <- c("SNP", "POS", "FREQ", "ihh1", "ihh0", "unstandardized_iHS",
-                      "standardized_iHS", "top")
+colnames(ihs_df) <- c("SNP", "POS", "FREQ", "ihh1", "ihh0", "unstd_iHS", "std_iHS", "top")
 
+# intersect iHS with cross population data
 selection_df <- ihs_df %>% 
                 inner_join(cross_pop_df, by = c("SNP", "POS")) %>% 
-                mutate(standardized_iHS = abs(standardized_iHS))
-                
+                mutate(std_iHS = abs(std_iHS)) %>%
+                mutate(std_PBS = abs(std_PBS))
+      
+# melt data for plotting      
 melted_selection_df <- selection_df %>% 
-                       select(POS, standardized_iHS, PBS, FST_CHB_YRI, FST_CHB_FIN, FST_YRI_FIN) %>% 
+                       select(POS, std_iHS, std_PBS, FST_CY, FST_CF, FST_YF) %>% 
                        melt(id = c("POS"))
 
-p <- ggplot(melted_selection_df, aes(x = POS, y = value)) + geom_point() + 
-     xlab('Position on chr2') + theme_bw() + facet_grid(variable ~ ., scales = "free_y") 
+# plot Fst
+p <- ggplot(melted_selection_df, aes(x = POS, y = value)) + geom_point() + xlab('Position on chr2') + 
+      theme_bw() + ylab("") + facet_grid(variable ~ ., scales = "free_y") +
+      ggsave("selection_figure.pdf", width = 7, height = 5)
+     
+# add mutliple figures
 ```
 
-### 3.4 Spandrels of San Marco (Caveats)
+### Questions
 
-### Questions 
+*
+*
+*
 
-## 4. References
+### 4. Another Region 
+
+Adapt the code you just ran using but now use this region (2:108013601-111013601) in the 1000genomes project. Instead of computing iHS for CHB compute it for FIN.
+
+### 5. DIY
+
+Break into groups and work together to come up with. Create a new directory in data and out of this table pick a region and try to run the same methods to understand selection in this region. Use the ucsc genome browser to understand whats going on in the region you picked after you ran the selection stats. As challenge you could try using XP-EHH. Write a paragr
+
+### Questions
+
+*
+*
+*
+
+### 6. Spandrels of San Marco (Caveats)
+
+
+## 7. References

@@ -7,14 +7,14 @@ Options in effect:
 
 Hostname: Josephs-MBP.irgb.cnr.group
 Working directory: /Users/josephmarcus/Desktop/SSW_2015/data
-Start time: Thu Jun 18 17:01:29 2015
+Start time: Fri Jun 19 11:14:27 2015
 
-Random number seed: 1434639689
+Random number seed: 1434705267
 4096 MB RAM detected; reserving 2048 MB for main workspace.
-4686 variants loaded from .bim file.
+4167 variants loaded from .bim file.
 --cm-map: 1 chromosome updated.
 Using 1 thread (no multithreaded calculations invoked).
-4686 variants pass filters and QC.
+4167 variants pass filters and QC.
 --make-just-bim to chr2_108013601_111013601_filtered_gm.bim ... done.
 
-End time: Thu Jun 18 17:01:29 2015
+End time: Fri Jun 19 11:14:27 2015

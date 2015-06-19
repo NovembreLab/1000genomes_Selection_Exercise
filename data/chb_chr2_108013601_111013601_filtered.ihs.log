@@ -10,6 +10,7 @@ Max gap parameter: 200000
 EHH cutoff value: 0.05
 Alt flag set: no
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs12987451
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs78771107
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10195958
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1424773
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10202245
@@ -18,17 +19,18 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs972881
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs972882
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266237
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs17720430
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs89152
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266238
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266239
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs79280601
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266240
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1424774
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266241
-WARNING: Locus rs11898372 has MAF < 0.05. Skipping calculation at rs11898372
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62159042
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266243
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs11123664
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs166468
-WARNING: Locus rs17034255 has MAF < 0.05. Skipping calculation at rs17034255
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266244
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266245
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266246
@@ -41,27 +43,18 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266252
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266253
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1593930
-WARNING: Locus rs6727097 has MAF < 0.05. Skipping calculation at rs6727097
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs35280742
-WARNING: Locus rs148830347 has MAF < 0.05. Skipping calculation at rs148830347
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266167
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266168
-WARNING: Locus rs75641179 has MAF < 0.05. Skipping calculation at rs75641179
-WARNING: Locus rs59696082 has MAF < 0.05. Skipping calculation at rs59696082
-WARNING: Locus rs7599078 has MAF < 0.05. Skipping calculation at rs7599078
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266169
-WARNING: Locus rs4676015 has MAF < 0.05. Skipping calculation at rs4676015
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266170
-WARNING: Locus rs73951100 has MAF < 0.05. Skipping calculation at rs73951100
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266171
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266172
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266173
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266174
-WARNING: Locus rs72948258 has MAF < 0.05. Skipping calculation at rs72948258
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266175
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266176
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266177
-WARNING: Locus rs79803597 has MAF < 0.05. Skipping calculation at rs79803597
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266178
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266179
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266180
@@ -77,13 +70,12 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266190
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266191
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266192
-WARNING: Locus rs6753038 has MAF < 0.05. Skipping calculation at rs6753038
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs169099
-WARNING: Locus rs7578632 has MAF < 0.05. Skipping calculation at rs7578632
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs197591
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266193
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266194
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266195
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6736597
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266196
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266197
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs174743
@@ -91,11 +83,10 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266199
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266200
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266201
-WARNING: Locus rs80300760 has MAF < 0.05. Skipping calculation at rs80300760
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs80023586
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266202
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266203
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266204
-WARNING: Locus rs77952311 has MAF < 0.05. Skipping calculation at rs77952311
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266205
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266206
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266207
@@ -136,7 +127,6 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266234
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266235
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266236
-WARNING: Locus rs80236782 has MAF < 0.05. Skipping calculation at rs80236782
 WARNING: Locus rs183832 has MAF < 0.05. Skipping calculation at rs183832
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1651149
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2715913
@@ -145,7 +135,6 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1615928
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs890039
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs959014
-WARNING: Locus rs60131738 has MAF < 0.05. Skipping calculation at rs60131738
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1651150
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs57705957
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1647449
@@ -162,6 +151,7 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs12987081
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1651152
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1651153
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1647448
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1647447
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1647446
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1651154
@@ -171,7 +161,6 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs199746255
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1623268
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1622511
-WARNING: Locus rs10170634 has MAF < 0.05. Skipping calculation at rs10170634
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1651157
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1651158
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs35300775
@@ -186,14 +175,12 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1647433
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1647429
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1647427
-WARNING: Locus rs79268771 has MAF < 0.05. Skipping calculation at rs79268771
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs74265676
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1582656
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1651165
-WARNING: Locus rs76079344 has MAF < 0.05. Skipping calculation at rs76079344
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1647420
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1647419
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1651167
-WARNING: Locus rs111861088 has MAF < 0.05. Skipping calculation at rs111861088
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1651168
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1629978
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1424782
@@ -202,7 +189,6 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1647480
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266129
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266130
-WARNING: Locus rs6706533 has MAF < 0.05. Skipping calculation at rs6706533
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266131
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266132
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266133
@@ -213,7 +199,6 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266138
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266139
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266140
-WARNING: Locus rs77509908 has MAF < 0.05. Skipping calculation at rs77509908
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266141
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2115226
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs197590
@@ -221,25 +206,19 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266143
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266144
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266145
-WARNING: Locus rs78141216 has MAF < 0.05. Skipping calculation at rs78141216
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266146
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266147
-WARNING: Locus rs75347628 has MAF < 0.05. Skipping calculation at rs75347628
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266148
-WARNING: Locus rs113008696 has MAF < 0.05. Skipping calculation at rs113008696
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266149
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266150
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266151
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs185547
-WARNING: Locus rs6717564 has MAF < 0.05. Skipping calculation at rs6717564
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1159370
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1647458
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266152
-WARNING: Locus rs57759459 has MAF < 0.05. Skipping calculation at rs57759459
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266153
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266154
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266155
-WARNING: Locus rs6730967 has MAF < 0.05. Skipping calculation at rs6730967
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs171954
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266156
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1157627
@@ -251,7 +230,6 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Locus rs266158 has MAF < 0.05. Skipping calculation at rs266158
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266159
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266160
-WARNING: Locus rs72949967 has MAF < 0.05. Skipping calculation at rs72949967
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs183830
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266161
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266162
@@ -266,74 +244,44 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1647477
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1647418
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266255
-WARNING: Locus rs78241654 has MAF < 0.05. Skipping calculation at rs78241654
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266256
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266257
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266258
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266259
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266260
-WARNING: Locus rs6730414 has MAF < 0.05. Skipping calculation at rs6730414
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266261
-WARNING: Locus rs6730780 has MAF < 0.05. Skipping calculation at rs6730780
-WARNING: Locus rs142905199 has MAF < 0.05. Skipping calculation at rs142905199
-WARNING: Locus rs111914344 has MAF < 0.05. Skipping calculation at rs111914344
-WARNING: Locus rs111390857 has MAF < 0.05. Skipping calculation at rs111390857
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266262
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266263
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266264
-WARNING: Locus rs60135124 has MAF < 0.05. Skipping calculation at rs60135124
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs166469
-WARNING: Locus rs111626078 has MAF < 0.05. Skipping calculation at rs111626078
-WARNING: Locus rs74674271 has MAF < 0.05. Skipping calculation at rs74674271
-WARNING: Locus rs57583659 has MAF < 0.05. Skipping calculation at rs57583659
-WARNING: Locus rs58554485 has MAF < 0.05. Skipping calculation at rs58554485
-WARNING: Locus rs75462044 has MAF < 0.05. Skipping calculation at rs75462044
-WARNING: Locus rs112089180 has MAF < 0.05. Skipping calculation at rs112089180
-WARNING: Locus rs112747451 has MAF < 0.05. Skipping calculation at rs112747451
-WARNING: Locus rs111830514 has MAF < 0.05. Skipping calculation at rs111830514
-WARNING: Locus rs113759940 has MAF < 0.05. Skipping calculation at rs113759940
-WARNING: Locus rs111410825 has MAF < 0.05. Skipping calculation at rs111410825
-WARNING: Locus rs76665537 has MAF < 0.05. Skipping calculation at rs76665537
-WARNING: Locus rs75476248 has MAF < 0.05. Skipping calculation at rs75476248
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266265
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs193353
-WARNING: Locus rs79022796 has MAF < 0.05. Skipping calculation at rs79022796
-WARNING: Locus rs78726258 has MAF < 0.05. Skipping calculation at rs78726258
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266266
-WARNING: Locus rs77212712 has MAF < 0.05. Skipping calculation at rs77212712
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2113703
-WARNING: Locus rs74450298 has MAF < 0.05. Skipping calculation at rs74450298
-WARNING: Locus rs77850907 has MAF < 0.05. Skipping calculation at rs77850907
-WARNING: Locus rs74460564 has MAF < 0.05. Skipping calculation at rs74460564
-WARNING: Locus rs57810353 has MAF < 0.05. Skipping calculation at rs57810353
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266267
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266268
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266269
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs197594
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266270
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266271
-WARNING: Locus rs78248869 has MAF < 0.05. Skipping calculation at rs78248869
-WARNING: Locus rs59408803 has MAF < 0.05. Skipping calculation at rs59408803
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs266273
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1120756
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4375862
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1549367
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1364565
-WARNING: Locus rs74475639 has MAF < 0.05. Skipping calculation at rs74475639
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs11694437
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10591891
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13404214
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4676137
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs11123666
-WARNING: Locus rs59722780 has MAF < 0.05. Skipping calculation at rs59722780
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs876819
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6741405
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6542719
-WARNING: Locus rs112228225 has MAF < 0.05. Skipping calculation at rs112228225
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4390763
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1863102
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1863103
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1364566
-WARNING: Locus rs77163283 has MAF < 0.05. Skipping calculation at rs77163283
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs11674753
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4676021
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10187163
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6732535
@@ -348,10 +296,11 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4676022
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158768
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs72823018
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158769
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7604787
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs61476019
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs57500779
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4299335
-WARNING: Locus rs6739189 has MAF < 0.05. Skipping calculation at rs6739189
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10202543
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7560435
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6542722
@@ -359,11 +308,8 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4676139
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4676023
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs12468034
-WARNING: Locus rs12472925 has MAF < 0.05. Skipping calculation at rs12472925
 WARNING: Locus rs1991149 has MAF < 0.05. Skipping calculation at rs1991149
-WARNING: Locus rs10169272 has MAF < 0.05. Skipping calculation at rs10169272
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1345961
-WARNING: Locus rs62158772 has MAF < 0.05. Skipping calculation at rs62158772
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6750115
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6750344
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6722089
@@ -372,63 +318,62 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1364569
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1364570
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6730198
-WARNING: Locus rs11683562 has MAF < 0.05. Skipping calculation at rs11683562
-WARNING: Locus rs11683537 has MAF < 0.05. Skipping calculation at rs11683537
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs3815848
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs11676995
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2377910
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2377911
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10204341
-WARNING: Locus rs11689021 has MAF < 0.05. Skipping calculation at rs11689021
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6745317
-WARNING: Locus rs28643473 has MAF < 0.05. Skipping calculation at rs28643473
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs3899672
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs57299696
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs17034416
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2216899
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1424776
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10084169
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6542724
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10221669
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10221898
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158773
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7600619
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158774
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs57660765
-WARNING: Locus rs62158775 has MAF < 0.05. Skipping calculation at rs62158775
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158776
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs56183163
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7577083
-WARNING: Locus rs1108853 has MAF < 0.05. Skipping calculation at rs1108853
-WARNING: Locus rs1108854 has MAF < 0.05. Skipping calculation at rs1108854
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs890037
-WARNING: Locus rs115177687 has MAF < 0.05. Skipping calculation at rs115177687
-WARNING: Locus rs529774860 has MAF < 0.05. Skipping calculation at rs529774860
-WARNING: Locus rs561497140 has MAF < 0.05. Skipping calculation at rs561497140
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs890038
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2081371
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2081372
-WARNING: Locus rs3940405 has MAF < 0.05. Skipping calculation at rs3940405
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs112542067
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158793
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158794
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs12463982
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13384834
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6542725
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1424777
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158795
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6755089
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1863105
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1364572
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs12989577
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158796
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4131490
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6542726
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6742164
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6542727
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158797
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10188068
-WARNING: Locus rs10175770 has MAF < 0.05. Skipping calculation at rs10175770
-WARNING: Locus rs10199131 has MAF < 0.05. Skipping calculation at rs10199131
-WARNING: Locus rs62158799 has MAF < 0.05. Skipping calculation at rs62158799
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158798
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2377913
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6750848
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs9308800
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158800
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13426864
-WARNING: Locus rs34297198 has MAF < 0.05. Skipping calculation at rs34297198
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4356628
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2203580
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs11683729
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs11676666
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7567243
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4676141
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6721468
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs962954
@@ -436,11 +381,18 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs58069412
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7582488
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs78532216
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158804
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs908436
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs884883
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs884882
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10174350
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10200620
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158805
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158806
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs112474519
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs17034491
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs28680570
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs201317144
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1913987
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13391513
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13391759
@@ -450,12 +402,17 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1516223
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2203581
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6713604
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs57486539
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10186782
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs76427424
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1516208
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158808
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs973012
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13430109
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13408038
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158809
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1516210
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158810
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1516212
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs56721931
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158813
@@ -469,80 +426,76 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13404416
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs61578130
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs28792796
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158826
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13386052
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1516229
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13392942
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10187339
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158827
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs9989868
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1516218
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1516217
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs12712005
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs11903116
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs72823069
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13404261
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13388265
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158828
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs57623881
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1400119
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs78727218
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1516216
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4676143
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2377914
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs9308801
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158830
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158831
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7589112
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7589127
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7596455
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158832
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158833
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13421120
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13405373
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7584635
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7587729
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs12478314
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158834
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158835
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs12162388
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs28767846
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs56976787
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs58853727
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs55940013
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs117856669
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158837
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7560475
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs11886551
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1516207
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158838
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62158839
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs78400524
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs17838476
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10201757
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10208711
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs17021579
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs17021589
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs17021594
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs60994026
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1516219
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4676144
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs193146659
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs184985996
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs59357844
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs74927362
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs11890899
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs11897300
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs60010278
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10187132
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6720886
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs12053012
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10204774
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6725499
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1158610
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13403714
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1516228
 WARNING: Locus rs6743418 has MAF < 0.05. Skipping calculation at rs6743418
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs574495463
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs535394200
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs556995436
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4586601
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1516230
-WARNING: Locus rs113985300 has MAF < 0.05. Skipping calculation at rs113985300
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10196496
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10186381
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10209784
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13409811
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13423546
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13410432
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10166819
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10193441
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1516202
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1516209
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1516211
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2048850
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6715149
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6715272
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6759144
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4676145
@@ -553,55 +506,41 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs57147583
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs59692914
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13408969
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6735159
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6738108
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs11123669
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13416107
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10175087
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6746865
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6746783
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6747019
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7599034
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10205519
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1606987
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1606986
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs11123670
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10865014
-WARNING: Locus rs6716589 has MAF < 0.05. Skipping calculation at rs6716589
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6758980
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1606985
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1606984
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1606983
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10177715
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs78594903
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs80311903
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6721108
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1516215
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1568056
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6542728
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6542729
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6542730
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1400118
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1400117
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1400116
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1568055
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2176222
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1157315
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1157314
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1543139
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1543138
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1543137
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1568057
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1516205
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1516204
 WARNING: Locus rs1516203 has MAF < 0.05. Skipping calculation at rs1516203
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13433049
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1588950
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1829118
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13399129
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4676149
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10170704
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs12473557
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs67372209
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10171365
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1533430
@@ -611,8 +550,6 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1155111
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1155110
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7574793
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1516201
-WARNING: Locus rs10183969 has MAF < 0.05. Skipping calculation at rs10183969
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4283376
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs5018595
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4520997
@@ -651,7 +588,6 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7585470
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7585757
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7585878
-WARNING: Locus rs77993158 has MAF < 0.05. Skipping calculation at rs77993158
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs56662624
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2176223
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2138474
@@ -664,7 +600,6 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4972263
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7580596
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs78572501
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs28671077
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6734670
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4676156
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4676157
@@ -673,153 +608,16 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4676160
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs11346419
 WARNING: Locus rs1157372 has MAF < 0.05. Skipping calculation at rs1157372
-WARNING: Locus rs111445251 has MAF < 0.05. Skipping calculation at rs111445251
-WARNING: Locus rs60160103 has MAF < 0.05. Skipping calculation at rs60160103
-WARNING: Locus rs17021665 has MAF < 0.05. Skipping calculation at rs17021665
-WARNING: Locus rs144200758 has MAF < 0.05. Skipping calculation at rs144200758
-WARNING: Locus rs10204300 has MAF < 0.05. Skipping calculation at rs10204300
-WARNING: Locus rs13425322 has MAF < 0.05. Skipping calculation at rs13425322
-WARNING: Locus rs80157903 has MAF < 0.05. Skipping calculation at rs80157903
-WARNING: Locus rs76113841 has MAF < 0.05. Skipping calculation at rs76113841
-WARNING: Locus rs10496416 has MAF < 0.05. Skipping calculation at rs10496416
-WARNING: Locus rs10165568 has MAF < 0.05. Skipping calculation at rs10165568
-WARNING: Locus rs73951913 has MAF < 0.05. Skipping calculation at rs73951913
-WARNING: Locus rs17021700 has MAF < 0.05. Skipping calculation at rs17021700
-WARNING: Locus rs58686326 has MAF < 0.05. Skipping calculation at rs58686326
-WARNING: Locus rs17021703 has MAF < 0.05. Skipping calculation at rs17021703
-WARNING: Locus rs10439407 has MAF < 0.05. Skipping calculation at rs10439407
-WARNING: Locus rs60567724 has MAF < 0.05. Skipping calculation at rs60567724
-WARNING: Locus rs59678777 has MAF < 0.05. Skipping calculation at rs59678777
-WARNING: Locus rs73951918 has MAF < 0.05. Skipping calculation at rs73951918
-WARNING: Locus rs75169179 has MAF < 0.05. Skipping calculation at rs75169179
-WARNING: Locus rs13424681 has MAF < 0.05. Skipping calculation at rs13424681
-WARNING: Locus rs13399630 has MAF < 0.05. Skipping calculation at rs13399630
-WARNING: Locus rs9678081 has MAF < 0.05. Skipping calculation at rs9678081
-WARNING: Locus rs10169358 has MAF < 0.05. Skipping calculation at rs10169358
-WARNING: Locus rs10188375 has MAF < 0.05. Skipping calculation at rs10188375
-WARNING: Locus rs13408384 has MAF < 0.05. Skipping calculation at rs13408384
-WARNING: Locus rs13395088 has MAF < 0.05. Skipping calculation at rs13395088
-WARNING: Locus rs11893363 has MAF < 0.05. Skipping calculation at rs11893363
-WARNING: Locus rs6742466 has MAF < 0.05. Skipping calculation at rs6742466
-WARNING: Locus rs78155462 has MAF < 0.05. Skipping calculation at rs78155462
-WARNING: Locus rs73951925 has MAF < 0.05. Skipping calculation at rs73951925
-WARNING: Locus rs113490116 has MAF < 0.05. Skipping calculation at rs113490116
-WARNING: Locus rs6542733 has MAF < 0.05. Skipping calculation at rs6542733
-WARNING: Locus rs28697131 has MAF < 0.05. Skipping calculation at rs28697131
-WARNING: Locus rs115033017 has MAF < 0.05. Skipping calculation at rs115033017
-WARNING: Locus rs62161322 has MAF < 0.05. Skipping calculation at rs62161322
-WARNING: Locus rs62161323 has MAF < 0.05. Skipping calculation at rs62161323
-WARNING: Locus rs62161324 has MAF < 0.05. Skipping calculation at rs62161324
-WARNING: Locus rs62161325 has MAF < 0.05. Skipping calculation at rs62161325
 WARNING: Locus rs700859 has MAF < 0.05. Skipping calculation at rs700859
-WARNING: Locus rs75362517 has MAF < 0.05. Skipping calculation at rs75362517
-WARNING: Locus rs4676027 has MAF < 0.05. Skipping calculation at rs4676027
-WARNING: Locus rs41323944 has MAF < 0.05. Skipping calculation at rs41323944
-WARNING: Locus rs62162981 has MAF < 0.05. Skipping calculation at rs62162981
-WARNING: Locus rs41385048 has MAF < 0.05. Skipping calculation at rs41385048
-WARNING: Locus rs77961630 has MAF < 0.05. Skipping calculation at rs77961630
-WARNING: Locus rs41432150 has MAF < 0.05. Skipping calculation at rs41432150
-WARNING: Locus rs17021733 has MAF < 0.05. Skipping calculation at rs17021733
-WARNING: Locus rs12105591 has MAF < 0.05. Skipping calculation at rs12105591
 WARNING: Locus rs831979 has MAF < 0.05. Skipping calculation at rs831979
-WARNING: Locus rs6712602 has MAF < 0.05. Skipping calculation at rs6712602
-WARNING: Locus rs10174191 has MAF < 0.05. Skipping calculation at rs10174191
-WARNING: Locus rs10198253 has MAF < 0.05. Skipping calculation at rs10198253
-WARNING: Locus rs6754067 has MAF < 0.05. Skipping calculation at rs6754067
-WARNING: Locus rs6725400 has MAF < 0.05. Skipping calculation at rs6725400
-WARNING: Locus rs35181499 has MAF < 0.05. Skipping calculation at rs35181499
-WARNING: Locus rs61241506 has MAF < 0.05. Skipping calculation at rs61241506
-WARNING: Locus rs71419381 has MAF < 0.05. Skipping calculation at rs71419381
 WARNING: Locus rs831967 has MAF < 0.05. Skipping calculation at rs831967
-WARNING: Locus rs58106144 has MAF < 0.05. Skipping calculation at rs58106144
-WARNING: Locus rs11123676 has MAF < 0.05. Skipping calculation at rs11123676
-WARNING: Locus rs831972 has MAF < 0.05. Skipping calculation at rs831972
-WARNING: Locus rs13005256 has MAF < 0.05. Skipping calculation at rs13005256
-WARNING: Locus rs72826926 has MAF < 0.05. Skipping calculation at rs72826926
-WARNING: Locus rs6723242 has MAF < 0.05. Skipping calculation at rs6723242
-WARNING: Locus rs10178243 has MAF < 0.05. Skipping calculation at rs10178243
-WARNING: Locus rs6542737 has MAF < 0.05. Skipping calculation at rs6542737
-WARNING: Locus rs13030132 has MAF < 0.05. Skipping calculation at rs13030132
-WARNING: Locus rs1441855 has MAF < 0.05. Skipping calculation at rs1441855
-WARNING: Locus rs62159113 has MAF < 0.05. Skipping calculation at rs62159113
 WARNING: Locus rs1661383 has MAF < 0.05. Skipping calculation at rs1661383
-WARNING: Locus rs62159117 has MAF < 0.05. Skipping calculation at rs62159117
-WARNING: Locus rs551381986 has MAF < 0.05. Skipping calculation at rs551381986
-WARNING: Locus rs200602090 has MAF < 0.05. Skipping calculation at rs200602090
-WARNING: Locus rs62150201 has MAF < 0.05. Skipping calculation at rs62150201
-WARNING: Locus rs370944115 has MAF < 0.05. Skipping calculation at rs370944115
-WARNING: Locus rs147825872 has MAF < 0.05. Skipping calculation at rs147825872
 WARNING: Locus rs372949648 has MAF < 0.05. Skipping calculation at rs372949648
 WARNING: Locus rs377132943 has MAF < 0.05. Skipping calculation at rs377132943
 WARNING: Locus rs2439140 has MAF < 0.05. Skipping calculation at rs2439140
-WARNING: Locus rs200165927 has MAF < 0.05. Skipping calculation at rs200165927
-WARNING: Locus rs2439159 has MAF < 0.05. Skipping calculation at rs2439159
-WARNING: Locus rs370300069 has MAF < 0.05. Skipping calculation at rs370300069
-WARNING: Locus rs62150254 has MAF < 0.05. Skipping calculation at rs62150254
-WARNING: Locus rs62151460 has MAF < 0.05. Skipping calculation at rs62151460
-WARNING: Locus rs139260643 has MAF < 0.05. Skipping calculation at rs139260643
-WARNING: Locus rs2912710 has MAF < 0.05. Skipping calculation at rs2912710
-WARNING: Locus rs62151462 has MAF < 0.05. Skipping calculation at rs62151462
-WARNING: Locus rs79116389 has MAF < 0.05. Skipping calculation at rs79116389
-WARNING: Locus rs62151464 has MAF < 0.05. Skipping calculation at rs62151464
-WARNING: Locus rs1822004 has MAF < 0.05. Skipping calculation at rs1822004
-WARNING: Locus rs2912713 has MAF < 0.05. Skipping calculation at rs2912713
-WARNING: Locus rs62151468 has MAF < 0.05. Skipping calculation at rs62151468
-WARNING: Locus rs2581030 has MAF < 0.05. Skipping calculation at rs2581030
-WARNING: Locus rs10187326 has MAF < 0.05. Skipping calculation at rs10187326
-WARNING: Locus rs62151470 has MAF < 0.05. Skipping calculation at rs62151470
-WARNING: Locus rs578038522 has MAF < 0.05. Skipping calculation at rs578038522
-WARNING: Locus rs573360102 has MAF < 0.05. Skipping calculation at rs573360102
-WARNING: Locus rs150806290 has MAF < 0.05. Skipping calculation at rs150806290
-WARNING: Locus rs139134076 has MAF < 0.05. Skipping calculation at rs139134076
-WARNING: Locus rs75812993 has MAF < 0.05. Skipping calculation at rs75812993
-WARNING: Locus rs62151480 has MAF < 0.05. Skipping calculation at rs62151480
-WARNING: Locus rs76428252 has MAF < 0.05. Skipping calculation at rs76428252
-WARNING: Locus rs62151483 has MAF < 0.05. Skipping calculation at rs62151483
-WARNING: Locus rs141784867 has MAF < 0.05. Skipping calculation at rs141784867
-WARNING: Locus rs183530888 has MAF < 0.05. Skipping calculation at rs183530888
-WARNING: Locus rs79427669 has MAF < 0.05. Skipping calculation at rs79427669
-WARNING: Locus rs73951984 has MAF < 0.05. Skipping calculation at rs73951984
-WARNING: Locus rs138838548 has MAF < 0.05. Skipping calculation at rs138838548
-WARNING: Locus rs373050756 has MAF < 0.05. Skipping calculation at rs373050756
-WARNING: Locus rs182130458 has MAF < 0.05. Skipping calculation at rs182130458
-WARNING: Locus rs115612540 has MAF < 0.05. Skipping calculation at rs115612540
-WARNING: Locus rs150508115 has MAF < 0.05. Skipping calculation at rs150508115
-WARNING: Locus rs144908379 has MAF < 0.05. Skipping calculation at rs144908379
-WARNING: Locus rs113229105 has MAF < 0.05. Skipping calculation at rs113229105
-WARNING: Locus rs4081816 has MAF < 0.05. Skipping calculation at rs4081816
-WARNING: Locus rs146930704 has MAF < 0.05. Skipping calculation at rs146930704
-WARNING: Locus rs137951318 has MAF < 0.05. Skipping calculation at rs137951318
-WARNING: Locus rs62148667 has MAF < 0.05. Skipping calculation at rs62148667
-WARNING: Locus rs370225926 has MAF < 0.05. Skipping calculation at rs370225926
-WARNING: Locus rs59340040 has MAF < 0.05. Skipping calculation at rs59340040
-WARNING: Locus rs56975937 has MAF < 0.05. Skipping calculation at rs56975937
-WARNING: Locus rs139623146 has MAF < 0.05. Skipping calculation at rs139623146
-WARNING: Locus rs79528772 has MAF < 0.05. Skipping calculation at rs79528772
-WARNING: Locus rs7563872 has MAF < 0.05. Skipping calculation at rs7563872
-WARNING: Locus rs35430113 has MAF < 0.05. Skipping calculation at rs35430113
-WARNING: Locus rs6728506 has MAF < 0.05. Skipping calculation at rs6728506
-WARNING: Locus rs149264313 has MAF < 0.05. Skipping calculation at rs149264313
-WARNING: Locus rs139946393 has MAF < 0.05. Skipping calculation at rs139946393
-WARNING: Locus rs2052819 has MAF < 0.05. Skipping calculation at rs2052819
-WARNING: Locus rs13021837 has MAF < 0.05. Skipping calculation at rs13021837
-WARNING: Locus rs13022589 has MAF < 0.05. Skipping calculation at rs13022589
-WARNING: Locus rs6726584 has MAF < 0.05. Skipping calculation at rs6726584
-WARNING: Locus rs1427341 has MAF < 0.05. Skipping calculation at rs1427341
-WARNING: Locus rs7604041 has MAF < 0.05. Skipping calculation at rs7604041
-WARNING: Locus rs6744394 has MAF < 0.05. Skipping calculation at rs6744394
 WARNING: Locus rs7607482 has MAF < 0.05. Skipping calculation at rs7607482
-WARNING: Locus rs4090785 has MAF < 0.05. Skipping calculation at rs4090785
-WARNING: Locus rs6706100 has MAF < 0.05. Skipping calculation at rs6706100
-WARNING: Locus rs13028331 has MAF < 0.05. Skipping calculation at rs13028331
-WARNING: Locus rs13021147 has MAF < 0.05. Skipping calculation at rs13021147
 WARNING: Locus rs1427340 has MAF < 0.05. Skipping calculation at rs1427340
 WARNING: Locus rs2378060 has MAF < 0.05. Skipping calculation at rs2378060
-WARNING: Locus rs13020302 has MAF < 0.05. Skipping calculation at rs13020302
-WARNING: Locus rs766683 has MAF < 0.05. Skipping calculation at rs766683
-WARNING: Locus rs4676168 has MAF < 0.05. Skipping calculation at rs4676168
-WARNING: Locus rs13020429 has MAF < 0.05. Skipping calculation at rs13020429
-WARNING: Locus rs333216 has MAF < 0.05. Skipping calculation at rs333216
 WARNING: Locus rs2450282 has MAF < 0.05. Skipping calculation at rs2450282
 WARNING: Locus rs333220 has MAF < 0.05. Skipping calculation at rs333220
 WARNING: Locus rs333221 has MAF < 0.05. Skipping calculation at rs333221
@@ -860,7 +658,6 @@ WARNING: Locus rs6730646 has MAF < 0.05. Skipping calculation at rs6730646
 WARNING: Locus rs2129142 has MAF < 0.05. Skipping calculation at rs2129142
 WARNING: Locus rs1872593 has MAF < 0.05. Skipping calculation at rs1872593
 WARNING: Locus rs1385953 has MAF < 0.05. Skipping calculation at rs1385953
-WARNING: Locus rs832659 has MAF < 0.05. Skipping calculation at rs832659
 WARNING: Locus rs832657 has MAF < 0.05. Skipping calculation at rs832657
 WARNING: Locus rs2177103 has MAF < 0.05. Skipping calculation at rs2177103
 WARNING: Locus rs1104009 has MAF < 0.05. Skipping calculation at rs1104009
@@ -888,163 +685,36 @@ WARNING: Locus rs832664 has MAF < 0.05. Skipping calculation at rs832664
 WARNING: Locus rs832666 has MAF < 0.05. Skipping calculation at rs832666
 WARNING: Locus rs832653 has MAF < 0.05. Skipping calculation at rs832653
 WARNING: Locus rs832654 has MAF < 0.05. Skipping calculation at rs832654
-WARNING: Locus rs855037 has MAF < 0.05. Skipping calculation at rs855037
-WARNING: Locus rs855044 has MAF < 0.05. Skipping calculation at rs855044
 WARNING: Locus rs4676184 has MAF < 0.05. Skipping calculation at rs4676184
 WARNING: Locus rs6759209 has MAF < 0.05. Skipping calculation at rs6759209
-WARNING: Locus rs17035948 has MAF < 0.05. Skipping calculation at rs17035948
-WARNING: Locus rs17035953 has MAF < 0.05. Skipping calculation at rs17035953
-WARNING: Locus rs17821152 has MAF < 0.05. Skipping calculation at rs17821152
 WARNING: Locus rs6751951 has MAF < 0.05. Skipping calculation at rs6751951
-WARNING: Locus rs36055322 has MAF < 0.05. Skipping calculation at rs36055322
-WARNING: Locus rs12990757 has MAF < 0.05. Skipping calculation at rs12990757
 WARNING: Locus rs4149422 has MAF < 0.05. Skipping calculation at rs4149422
 WARNING: Locus rs7576937 has MAF < 0.05. Skipping calculation at rs7576937
-WARNING: Locus rs9646948 has MAF < 0.05. Skipping calculation at rs9646948
 WARNING: Locus rs7585182 has MAF < 0.05. Skipping calculation at rs7585182
 WARNING: Locus rs6746883 has MAF < 0.05. Skipping calculation at rs6746883
 WARNING: Locus rs10182799 has MAF < 0.05. Skipping calculation at rs10182799
 WARNING: Locus rs1047312 has MAF < 0.05. Skipping calculation at rs1047312
-WARNING: Locus rs752273 has MAF < 0.05. Skipping calculation at rs752273
-WARNING: Locus rs1989096 has MAF < 0.05. Skipping calculation at rs1989096
-WARNING: Locus rs34373199 has MAF < 0.05. Skipping calculation at rs34373199
 WARNING: Locus rs35718535 has MAF < 0.05. Skipping calculation at rs35718535
 WARNING: Locus rs1879495 has MAF < 0.05. Skipping calculation at rs1879495
-WARNING: Locus rs35879301 has MAF < 0.05. Skipping calculation at rs35879301
 WARNING: Locus rs6542764 has MAF < 0.05. Skipping calculation at rs6542764
-WARNING: Locus rs11123688 has MAF < 0.05. Skipping calculation at rs11123688
-WARNING: Locus rs7580171 has MAF < 0.05. Skipping calculation at rs7580171
-WARNING: Locus rs111882057 has MAF < 0.05. Skipping calculation at rs111882057
-WARNING: Locus rs13408491 has MAF < 0.05. Skipping calculation at rs13408491
 WARNING: Locus rs13382967 has MAF < 0.05. Skipping calculation at rs13382967
-WARNING: Locus rs13383219 has MAF < 0.05. Skipping calculation at rs13383219
-WARNING: Locus rs13408865 has MAF < 0.05. Skipping calculation at rs13408865
-WARNING: Locus rs17036144 has MAF < 0.05. Skipping calculation at rs17036144
-WARNING: Locus rs17036146 has MAF < 0.05. Skipping calculation at rs17036146
-WARNING: Locus rs72941177 has MAF < 0.05. Skipping calculation at rs72941177
 WARNING: Locus rs6753034 has MAF < 0.05. Skipping calculation at rs6753034
 WARNING: Locus rs6709159 has MAF < 0.05. Skipping calculation at rs6709159
 WARNING: Locus rs6709978 has MAF < 0.05. Skipping calculation at rs6709978
-WARNING: Locus rs72941181 has MAF < 0.05. Skipping calculation at rs72941181
-WARNING: Locus rs72941182 has MAF < 0.05. Skipping calculation at rs72941182
-WARNING: Locus rs973507 has MAF < 0.05. Skipping calculation at rs973507
-WARNING: Locus rs730631 has MAF < 0.05. Skipping calculation at rs730631
 WARNING: Locus rs896889 has MAF < 0.05. Skipping calculation at rs896889
-WARNING: Locus rs10204133 has MAF < 0.05. Skipping calculation at rs10204133
-WARNING: Locus rs4386286 has MAF < 0.05. Skipping calculation at rs4386286
-WARNING: Locus rs10193801 has MAF < 0.05. Skipping calculation at rs10193801
-WARNING: Locus rs13414622 has MAF < 0.05. Skipping calculation at rs13414622
-WARNING: Locus rs111410740 has MAF < 0.05. Skipping calculation at rs111410740
-WARNING: Locus rs10514623 has MAF < 0.05. Skipping calculation at rs10514623
-WARNING: Locus rs10173529 has MAF < 0.05. Skipping calculation at rs10173529
-WARNING: Locus rs10173535 has MAF < 0.05. Skipping calculation at rs10173535
-WARNING: Locus rs10179994 has MAF < 0.05. Skipping calculation at rs10179994
-WARNING: Locus rs7577165 has MAF < 0.05. Skipping calculation at rs7577165
 WARNING: Locus rs1402466 has MAF < 0.05. Skipping calculation at rs1402466
-WARNING: Locus rs6746280 has MAF < 0.05. Skipping calculation at rs6746280
-WARNING: Locus rs17822619 has MAF < 0.05. Skipping calculation at rs17822619
-WARNING: Locus rs114605100 has MAF < 0.05. Skipping calculation at rs114605100
-WARNING: Locus rs72941196 has MAF < 0.05. Skipping calculation at rs72941196
-WARNING: Locus rs13390694 has MAF < 0.05. Skipping calculation at rs13390694
-WARNING: Locus rs13382942 has MAF < 0.05. Skipping calculation at rs13382942
-WARNING: Locus rs72941200 has MAF < 0.05. Skipping calculation at rs72941200
 WARNING: Locus rs6753932 has MAF < 0.05. Skipping calculation at rs6753932
-WARNING: Locus rs2198467 has MAF < 0.05. Skipping calculation at rs2198467
-WARNING: Locus rs2198468 has MAF < 0.05. Skipping calculation at rs2198468
-WARNING: Locus rs2198469 has MAF < 0.05. Skipping calculation at rs2198469
-WARNING: Locus rs7572443 has MAF < 0.05. Skipping calculation at rs7572443
-WARNING: Locus rs17190797 has MAF < 0.05. Skipping calculation at rs17190797
 WARNING: Locus rs1851160 has MAF < 0.05. Skipping calculation at rs1851160
-WARNING: Locus rs13428540 has MAF < 0.05. Skipping calculation at rs13428540
-WARNING: Locus rs10167564 has MAF < 0.05. Skipping calculation at rs10167564
-WARNING: Locus rs10197193 has MAF < 0.05. Skipping calculation at rs10197193
-WARNING: Locus rs6716875 has MAF < 0.05. Skipping calculation at rs6716875
-WARNING: Locus rs10177287 has MAF < 0.05. Skipping calculation at rs10177287
-WARNING: Locus rs1402467 has MAF < 0.05. Skipping calculation at rs1402467
-WARNING: Locus rs4149431 has MAF < 0.05. Skipping calculation at rs4149431
-WARNING: Locus rs4149432 has MAF < 0.05. Skipping calculation at rs4149432
-WARNING: Locus rs4149436 has MAF < 0.05. Skipping calculation at rs4149436
-WARNING: Locus rs5008103 has MAF < 0.05. Skipping calculation at rs5008103
-WARNING: Locus rs58927872 has MAF < 0.05. Skipping calculation at rs58927872
-WARNING: Locus rs554672370 has MAF < 0.05. Skipping calculation at rs554672370
-WARNING: Locus rs5008101 has MAF < 0.05. Skipping calculation at rs5008101
-WARNING: Locus rs57441012 has MAF < 0.05. Skipping calculation at rs57441012
-WARNING: Locus rs59701000 has MAF < 0.05. Skipping calculation at rs59701000
-WARNING: Locus rs4149437 has MAF < 0.05. Skipping calculation at rs4149437
-WARNING: Locus rs6739402 has MAF < 0.05. Skipping calculation at rs6739402
-WARNING: Locus rs4149438 has MAF < 0.05. Skipping calculation at rs4149438
-WARNING: Locus rs41392145 has MAF < 0.05. Skipping calculation at rs41392145
-WARNING: Locus rs17036301 has MAF < 0.05. Skipping calculation at rs17036301
-WARNING: Locus rs1967572 has MAF < 0.05. Skipping calculation at rs1967572
 WARNING: Locus rs1967571 has MAF < 0.05. Skipping calculation at rs1967571
-WARNING: Locus rs41463946 has MAF < 0.05. Skipping calculation at rs41463946
-WARNING: Locus rs41442346 has MAF < 0.05. Skipping calculation at rs41442346
-WARNING: Locus rs17036305 has MAF < 0.05. Skipping calculation at rs17036305
-WARNING: Locus rs41489245 has MAF < 0.05. Skipping calculation at rs41489245
-WARNING: Locus rs1402462 has MAF < 0.05. Skipping calculation at rs1402462
 WARNING: Locus rs13021399 has MAF < 0.05. Skipping calculation at rs13021399
-WARNING: Locus rs58526584 has MAF < 0.05. Skipping calculation at rs58526584
-WARNING: Locus rs73954325 has MAF < 0.05. Skipping calculation at rs73954325
-WARNING: Locus rs2378110 has MAF < 0.05. Skipping calculation at rs2378110
-WARNING: Locus rs72944950 has MAF < 0.05. Skipping calculation at rs72944950
-WARNING: Locus rs72944951 has MAF < 0.05. Skipping calculation at rs72944951
-WARNING: Locus rs73954328 has MAF < 0.05. Skipping calculation at rs73954328
-WARNING: Locus rs4012173 has MAF < 0.05. Skipping calculation at rs4012173
-WARNING: Locus rs56908113 has MAF < 0.05. Skipping calculation at rs56908113
-WARNING: Locus rs59943070 has MAF < 0.05. Skipping calculation at rs59943070
-WARNING: Locus rs10205371 has MAF < 0.05. Skipping calculation at rs10205371
-WARNING: Locus rs113708114 has MAF < 0.05. Skipping calculation at rs113708114
-WARNING: Locus rs72944955 has MAF < 0.05. Skipping calculation at rs72944955
-WARNING: Locus rs2378111 has MAF < 0.05. Skipping calculation at rs2378111
-WARNING: Locus rs58765438 has MAF < 0.05. Skipping calculation at rs58765438
-WARNING: Locus rs60861960 has MAF < 0.05. Skipping calculation at rs60861960
-WARNING: Locus rs73954329 has MAF < 0.05. Skipping calculation at rs73954329
-WARNING: Locus rs6714548 has MAF < 0.05. Skipping calculation at rs6714548
-WARNING: Locus rs6728228 has MAF < 0.05. Skipping calculation at rs6728228
-WARNING: Locus rs6728337 has MAF < 0.05. Skipping calculation at rs6728337
-WARNING: Locus rs6715135 has MAF < 0.05. Skipping calculation at rs6715135
-WARNING: Locus rs11683034 has MAF < 0.05. Skipping calculation at rs11683034
-WARNING: Locus rs58469559 has MAF < 0.05. Skipping calculation at rs58469559
-WARNING: Locus rs11684287 has MAF < 0.05. Skipping calculation at rs11684287
-WARNING: Locus rs11695638 has MAF < 0.05. Skipping calculation at rs11695638
-WARNING: Locus rs11695733 has MAF < 0.05. Skipping calculation at rs11695733
-WARNING: Locus rs72944966 has MAF < 0.05. Skipping calculation at rs72944966
-WARNING: Locus rs72944968 has MAF < 0.05. Skipping calculation at rs72944968
-WARNING: Locus rs6736883 has MAF < 0.05. Skipping calculation at rs6736883
-WARNING: Locus rs6737023 has MAF < 0.05. Skipping calculation at rs6737023
-WARNING: Locus rs13405541 has MAF < 0.05. Skipping calculation at rs13405541
-WARNING: Locus rs67143178 has MAF < 0.05. Skipping calculation at rs67143178
-WARNING: Locus rs10197421 has MAF < 0.05. Skipping calculation at rs10197421
-WARNING: Locus rs13418136 has MAF < 0.05. Skipping calculation at rs13418136
-WARNING: Locus rs7567726 has MAF < 0.05. Skipping calculation at rs7567726
-WARNING: Locus rs28718494 has MAF < 0.05. Skipping calculation at rs28718494
-WARNING: Locus rs13424670 has MAF < 0.05. Skipping calculation at rs13424670
-WARNING: Locus rs10193149 has MAF < 0.05. Skipping calculation at rs10193149
-WARNING: Locus rs1464404 has MAF < 0.05. Skipping calculation at rs1464404
-WARNING: Locus rs13390901 has MAF < 0.05. Skipping calculation at rs13390901
-WARNING: Locus rs112244719 has MAF < 0.05. Skipping calculation at rs112244719
-WARNING: Locus rs11890515 has MAF < 0.05. Skipping calculation at rs11890515
-WARNING: Locus rs6755756 has MAF < 0.05. Skipping calculation at rs6755756
-WARNING: Locus rs57608745 has MAF < 0.05. Skipping calculation at rs57608745
-WARNING: Locus rs6759067 has MAF < 0.05. Skipping calculation at rs6759067
-WARNING: Locus rs57269410 has MAF < 0.05. Skipping calculation at rs57269410
-WARNING: Locus rs11884130 has MAF < 0.05. Skipping calculation at rs11884130
-WARNING: Locus rs28413002 has MAF < 0.05. Skipping calculation at rs28413002
-WARNING: Locus rs6714460 has MAF < 0.05. Skipping calculation at rs6714460
-WARNING: Locus rs1983396 has MAF < 0.05. Skipping calculation at rs1983396
-WARNING: Locus rs4395219 has MAF < 0.05. Skipping calculation at rs4395219
 WARNING: Locus rs1983395 has MAF < 0.05. Skipping calculation at rs1983395
 WARNING: Locus rs62150773 has MAF < 0.05. Skipping calculation at rs62150773
 WARNING: Locus rs12614270 has MAF < 0.05. Skipping calculation at rs12614270
-WARNING: Locus rs68122544 has MAF < 0.05. Skipping calculation at rs68122544
 WARNING: Locus rs13022595 has MAF < 0.05. Skipping calculation at rs13022595
-WARNING: Locus rs67128932 has MAF < 0.05. Skipping calculation at rs67128932
-WARNING: Locus rs57272169 has MAF < 0.05. Skipping calculation at rs57272169
 WARNING: Locus rs75763666 has MAF < 0.05. Skipping calculation at rs75763666
 WARNING: Locus rs77380691 has MAF < 0.05. Skipping calculation at rs77380691
 WARNING: Locus rs78494881 has MAF < 0.05. Skipping calculation at rs78494881
 WARNING: Locus rs59274398 has MAF < 0.05. Skipping calculation at rs59274398
-WARNING: Locus rs68094720 has MAF < 0.05. Skipping calculation at rs68094720
 WARNING: Locus rs1829601 has MAF < 0.05. Skipping calculation at rs1829601
 WARNING: Locus rs1829599 has MAF < 0.05. Skipping calculation at rs1829599
 WARNING: Locus rs1829598 has MAF < 0.05. Skipping calculation at rs1829598
@@ -1052,17 +722,11 @@ WARNING: Locus rs4271731 has MAF < 0.05. Skipping calculation at rs4271731
 WARNING: Locus rs1915487 has MAF < 0.05. Skipping calculation at rs1915487
 WARNING: Locus rs7596199 has MAF < 0.05. Skipping calculation at rs7596199
 WARNING: Locus rs2139809 has MAF < 0.05. Skipping calculation at rs2139809
-WARNING: Locus rs11123690 has MAF < 0.05. Skipping calculation at rs11123690
 WARNING: Locus rs9789602 has MAF < 0.05. Skipping calculation at rs9789602
 WARNING: Locus rs10170784 has MAF < 0.05. Skipping calculation at rs10170784
 WARNING: Locus rs112118182 has MAF < 0.05. Skipping calculation at rs112118182
 WARNING: Locus rs10200997 has MAF < 0.05. Skipping calculation at rs10200997
 WARNING: Locus rs9789720 has MAF < 0.05. Skipping calculation at rs9789720
-WARNING: Locus rs6756886 has MAF < 0.05. Skipping calculation at rs6756886
-WARNING: Locus rs113503997 has MAF < 0.05. Skipping calculation at rs113503997
-WARNING: Locus rs6708372 has MAF < 0.05. Skipping calculation at rs6708372
-WARNING: Locus rs6723720 has MAF < 0.05. Skipping calculation at rs6723720
-WARNING: Locus rs2718760 has MAF < 0.05. Skipping calculation at rs2718760
 WARNING: Locus rs2683808 has MAF < 0.05. Skipping calculation at rs2683808
 WARNING: Locus rs2718759 has MAF < 0.05. Skipping calculation at rs2718759
 WARNING: Locus rs2718758 has MAF < 0.05. Skipping calculation at rs2718758
@@ -1072,113 +736,44 @@ WARNING: Locus rs2683806 has MAF < 0.05. Skipping calculation at rs2683806
 WARNING: Locus rs1464406 has MAF < 0.05. Skipping calculation at rs1464406
 WARNING: Locus rs2718755 has MAF < 0.05. Skipping calculation at rs2718755
 WARNING: Locus rs2718754 has MAF < 0.05. Skipping calculation at rs2718754
-WARNING: Locus rs2683805 has MAF < 0.05. Skipping calculation at rs2683805
-WARNING: Locus rs2683804 has MAF < 0.05. Skipping calculation at rs2683804
-WARNING: Locus rs532036795 has MAF < 0.05. Skipping calculation at rs532036795
 WARNING: Locus rs11123694 has MAF < 0.05. Skipping calculation at rs11123694
-WARNING: Locus rs28491803 has MAF < 0.05. Skipping calculation at rs28491803
-WARNING: Locus rs2465956 has MAF < 0.05. Skipping calculation at rs2465956
-WARNING: Locus rs3806530 has MAF < 0.05. Skipping calculation at rs3806530
 WARNING: Locus rs2460945 has MAF < 0.05. Skipping calculation at rs2460945
 WARNING: Locus rs2460944 has MAF < 0.05. Skipping calculation at rs2460944
 WARNING: Locus rs1474220 has MAF < 0.05. Skipping calculation at rs1474220
-WARNING: Locus rs2718752 has MAF < 0.05. Skipping calculation at rs2718752
 WARNING: Locus rs2683798 has MAF < 0.05. Skipping calculation at rs2683798
-WARNING: Locus rs2718751 has MAF < 0.05. Skipping calculation at rs2718751
 WARNING: Locus rs2683797 has MAF < 0.05. Skipping calculation at rs2683797
-WARNING: Locus rs2465955 has MAF < 0.05. Skipping calculation at rs2465955
 WARNING: Locus rs2718749 has MAF < 0.05. Skipping calculation at rs2718749
-WARNING: Locus rs2683800 has MAF < 0.05. Skipping calculation at rs2683800
-WARNING: Locus rs2683801 has MAF < 0.05. Skipping calculation at rs2683801
-WARNING: Locus rs2683803 has MAF < 0.05. Skipping calculation at rs2683803
-WARNING: Locus rs2245229 has MAF < 0.05. Skipping calculation at rs2245229
-WARNING: Locus rs2378114 has MAF < 0.05. Skipping calculation at rs2378114
-WARNING: Locus rs2460949 has MAF < 0.05. Skipping calculation at rs2460949
-WARNING: Locus rs7600214 has MAF < 0.05. Skipping calculation at rs7600214
 WARNING: Locus rs2049151 has MAF < 0.05. Skipping calculation at rs2049151
 WARNING: Locus rs2049150 has MAF < 0.05. Skipping calculation at rs2049150
 WARNING: Locus rs2139808 has MAF < 0.05. Skipping calculation at rs2139808
 WARNING: Locus rs2139807 has MAF < 0.05. Skipping calculation at rs2139807
-WARNING: Locus rs2577623 has MAF < 0.05. Skipping calculation at rs2577623
-WARNING: Locus rs7593788 has MAF < 0.05. Skipping calculation at rs7593788
-WARNING: Locus rs564281570 has MAF < 0.05. Skipping calculation at rs564281570
-WARNING: Locus rs58712547 has MAF < 0.05. Skipping calculation at rs58712547
 WARNING: Locus rs9789664 has MAF < 0.05. Skipping calculation at rs9789664
-WARNING: Locus rs67564328 has MAF < 0.05. Skipping calculation at rs67564328
-WARNING: Locus rs66477626 has MAF < 0.05. Skipping calculation at rs66477626
 WARNING: Locus rs2718728 has MAF < 0.05. Skipping calculation at rs2718728
 WARNING: Locus rs2577612 has MAF < 0.05. Skipping calculation at rs2577612
-WARNING: Locus rs2718727 has MAF < 0.05. Skipping calculation at rs2718727
-WARNING: Locus rs2718726 has MAF < 0.05. Skipping calculation at rs2718726
-WARNING: Locus rs7601939 has MAF < 0.05. Skipping calculation at rs7601939
-WARNING: Locus rs2577611 has MAF < 0.05. Skipping calculation at rs2577611
-WARNING: Locus rs2577610 has MAF < 0.05. Skipping calculation at rs2577610
-WARNING: Locus rs2718714 has MAF < 0.05. Skipping calculation at rs2718714
-WARNING: Locus rs6757135 has MAF < 0.05. Skipping calculation at rs6757135
-WARNING: Locus rs2577609 has MAF < 0.05. Skipping calculation at rs2577609
-WARNING: Locus rs2577608 has MAF < 0.05. Skipping calculation at rs2577608
-WARNING: Locus rs2718712 has MAF < 0.05. Skipping calculation at rs2718712
-WARNING: Locus rs2577607 has MAF < 0.05. Skipping calculation at rs2577607
-WARNING: Locus rs2577606 has MAF < 0.05. Skipping calculation at rs2577606
-WARNING: Locus rs2718711 has MAF < 0.05. Skipping calculation at rs2718711
-WARNING: Locus rs2718710 has MAF < 0.05. Skipping calculation at rs2718710
-WARNING: Locus rs2718709 has MAF < 0.05. Skipping calculation at rs2718709
-WARNING: Locus rs2718708 has MAF < 0.05. Skipping calculation at rs2718708
-WARNING: Locus rs2718707 has MAF < 0.05. Skipping calculation at rs2718707
-WARNING: Locus rs2718706 has MAF < 0.05. Skipping calculation at rs2718706
 WARNING: Locus rs1898557 has MAF < 0.05. Skipping calculation at rs1898557
 WARNING: Locus rs2577622 has MAF < 0.05. Skipping calculation at rs2577622
 WARNING: Locus rs2243888 has MAF < 0.05. Skipping calculation at rs2243888
-WARNING: Locus rs2718705 has MAF < 0.05. Skipping calculation at rs2718705
-WARNING: Locus rs2577621 has MAF < 0.05. Skipping calculation at rs2577621
-WARNING: Locus rs2577620 has MAF < 0.05. Skipping calculation at rs2577620
 WARNING: Locus rs2718704 has MAF < 0.05. Skipping calculation at rs2718704
-WARNING: Locus rs2577619 has MAF < 0.05. Skipping calculation at rs2577619
-WARNING: Locus rs2718703 has MAF < 0.05. Skipping calculation at rs2718703
-WARNING: Locus rs2577618 has MAF < 0.05. Skipping calculation at rs2577618
-WARNING: Locus rs2718702 has MAF < 0.05. Skipping calculation at rs2718702
-WARNING: Locus rs2718701 has MAF < 0.05. Skipping calculation at rs2718701
-WARNING: Locus rs2577617 has MAF < 0.05. Skipping calculation at rs2577617
-WARNING: Locus rs1992172 has MAF < 0.05. Skipping calculation at rs1992172
-WARNING: Locus rs2254258 has MAF < 0.05. Skipping calculation at rs2254258
 WARNING: Locus rs2577616 has MAF < 0.05. Skipping calculation at rs2577616
-WARNING: Locus rs59149151 has MAF < 0.05. Skipping calculation at rs59149151
-WARNING: Locus rs2718700 has MAF < 0.05. Skipping calculation at rs2718700
-WARNING: Locus rs2577615 has MAF < 0.05. Skipping calculation at rs2577615
-WARNING: Locus rs2718699 has MAF < 0.05. Skipping calculation at rs2718699
-WARNING: Locus rs2577614 has MAF < 0.05. Skipping calculation at rs2577614
 WARNING: Locus rs2577613 has MAF < 0.05. Skipping calculation at rs2577613
 WARNING: Locus rs2718698 has MAF < 0.05. Skipping calculation at rs2718698
-WARNING: Locus rs1542025 has MAF < 0.05. Skipping calculation at rs1542025
 WARNING: Locus rs2577586 has MAF < 0.05. Skipping calculation at rs2577586
-WARNING: Locus rs2577587 has MAF < 0.05. Skipping calculation at rs2577587
 WARNING: Locus rs10184417 has MAF < 0.05. Skipping calculation at rs10184417
 WARNING: Locus rs2577594 has MAF < 0.05. Skipping calculation at rs2577594
-WARNING: Locus rs185036410 has MAF < 0.05. Skipping calculation at rs185036410
 WARNING: Locus rs2577599 has MAF < 0.05. Skipping calculation at rs2577599
 WARNING: Locus rs2917988 has MAF < 0.05. Skipping calculation at rs2917988
 WARNING: Locus rs2378149 has MAF < 0.05. Skipping calculation at rs2378149
 WARNING: Locus rs2953736 has MAF < 0.05. Skipping calculation at rs2953736
-WARNING: Locus rs142708494 has MAF < 0.05. Skipping calculation at rs142708494
-WARNING: Locus rs2438255 has MAF < 0.05. Skipping calculation at rs2438255
 WARNING: Locus rs2003996 has MAF < 0.05. Skipping calculation at rs2003996
 WARNING: Locus rs2917985 has MAF < 0.05. Skipping calculation at rs2917985
 WARNING: Locus rs2917983 has MAF < 0.05. Skipping calculation at rs2917983
 WARNING: Locus rs2718761 has MAF < 0.05. Skipping calculation at rs2718761
-WARNING: Locus rs2577597 has MAF < 0.05. Skipping calculation at rs2577597
-WARNING: Locus rs2953737 has MAF < 0.05. Skipping calculation at rs2953737
-WARNING: Locus rs2438254 has MAF < 0.05. Skipping calculation at rs2438254
 WARNING: Locus rs2438253 has MAF < 0.05. Skipping calculation at rs2438253
 WARNING: Locus rs2438252 has MAF < 0.05. Skipping calculation at rs2438252
 WARNING: Locus rs2438251 has MAF < 0.05. Skipping calculation at rs2438251
 WARNING: Locus rs3098319 has MAF < 0.05. Skipping calculation at rs3098319
-WARNING: Locus rs2577596 has MAF < 0.05. Skipping calculation at rs2577596
-WARNING: Locus rs62148109 has MAF < 0.05. Skipping calculation at rs62148109
-WARNING: Locus rs12779 has MAF < 0.05. Skipping calculation at rs12779
-WARNING: Locus rs2718763 has MAF < 0.05. Skipping calculation at rs2718763
 WARNING: Locus rs2953738 has MAF < 0.05. Skipping calculation at rs2953738
 WARNING: Locus rs62148145 has MAF < 0.05. Skipping calculation at rs62148145
-WARNING: Locus rs201989051 has MAF < 0.05. Skipping calculation at rs201989051
 WARNING: Locus rs200858383 has MAF < 0.05. Skipping calculation at rs200858383
 WARNING: Locus rs73954370 has MAF < 0.05. Skipping calculation at rs73954370
 WARNING: Locus rs73954372 has MAF < 0.05. Skipping calculation at rs73954372
@@ -1186,7 +781,6 @@ WARNING: Locus rs73954373 has MAF < 0.05. Skipping calculation at rs73954373
 WARNING: Locus rs111963733 has MAF < 0.05. Skipping calculation at rs111963733
 WARNING: Locus rs112503499 has MAF < 0.05. Skipping calculation at rs112503499
 WARNING: Locus rs2718764 has MAF < 0.05. Skipping calculation at rs2718764
-WARNING: Locus rs147418683 has MAF < 0.05. Skipping calculation at rs147418683
 WARNING: Locus rs2718765 has MAF < 0.05. Skipping calculation at rs2718765
 WARNING: Locus rs147054593 has MAF < 0.05. Skipping calculation at rs147054593
 WARNING: Locus rs12470566 has MAF < 0.05. Skipping calculation at rs12470566
@@ -1194,33 +788,18 @@ WARNING: Locus rs58035895 has MAF < 0.05. Skipping calculation at rs58035895
 WARNING: Locus rs2577595 has MAF < 0.05. Skipping calculation at rs2577595
 WARNING: Locus rs2953739 has MAF < 0.05. Skipping calculation at rs2953739
 WARNING: Locus rs2917971 has MAF < 0.05. Skipping calculation at rs2917971
-WARNING: Locus rs370748072 has MAF < 0.05. Skipping calculation at rs370748072
-WARNING: Locus rs73954374 has MAF < 0.05. Skipping calculation at rs73954374
 WARNING: Locus rs2465951 has MAF < 0.05. Skipping calculation at rs2465951
 WARNING: Locus rs2718690 has MAF < 0.05. Skipping calculation at rs2718690
-WARNING: Locus rs2718691 has MAF < 0.05. Skipping calculation at rs2718691
-WARNING: Locus rs2718692 has MAF < 0.05. Skipping calculation at rs2718692
 WARNING: Locus rs2258404 has MAF < 0.05. Skipping calculation at rs2258404
-WARNING: Locus rs2718693 has MAF < 0.05. Skipping calculation at rs2718693
 WARNING: Locus rs2718694 has MAF < 0.05. Skipping calculation at rs2718694
 WARNING: Locus rs2438238 has MAF < 0.05. Skipping calculation at rs2438238
 WARNING: Locus rs2718695 has MAF < 0.05. Skipping calculation at rs2718695
-WARNING: Locus rs2718696 has MAF < 0.05. Skipping calculation at rs2718696
 WARNING: Locus rs2118446 has MAF < 0.05. Skipping calculation at rs2118446
-WARNING: Locus rs2718742 has MAF < 0.05. Skipping calculation at rs2718742
-WARNING: Locus rs2718744 has MAF < 0.05. Skipping calculation at rs2718744
-WARNING: Locus rs2718745 has MAF < 0.05. Skipping calculation at rs2718745
-WARNING: Locus rs2577629 has MAF < 0.05. Skipping calculation at rs2577629
-WARNING: Locus rs2718746 has MAF < 0.05. Skipping calculation at rs2718746
 WARNING: Locus rs2118448 has MAF < 0.05. Skipping calculation at rs2118448
 WARNING: Locus rs2118450 has MAF < 0.05. Skipping calculation at rs2118450
-WARNING: Locus rs2718753 has MAF < 0.05. Skipping calculation at rs2718753
 WARNING: Locus rs2718756 has MAF < 0.05. Skipping calculation at rs2718756
 WARNING: Locus rs5017297 has MAF < 0.05. Skipping calculation at rs5017297
-WARNING: Locus rs2718731 has MAF < 0.05. Skipping calculation at rs2718731
 WARNING: Locus rs2577627 has MAF < 0.05. Skipping calculation at rs2577627
-WARNING: Locus rs66716604 has MAF < 0.05. Skipping calculation at rs66716604
-WARNING: Locus rs56360832 has MAF < 0.05. Skipping calculation at rs56360832
 WARNING: Locus rs10084199 has MAF < 0.05. Skipping calculation at rs10084199
 WARNING: Locus rs12104672 has MAF < 0.05. Skipping calculation at rs12104672
 WARNING: Locus rs1347707 has MAF < 0.05. Skipping calculation at rs1347707
@@ -1228,34 +807,23 @@ WARNING: Locus rs13419773 has MAF < 0.05. Skipping calculation at rs13419773
 WARNING: Locus rs2010551 has MAF < 0.05. Skipping calculation at rs2010551
 WARNING: Locus rs2718740 has MAF < 0.05. Skipping calculation at rs2718740
 WARNING: Locus rs1978839 has MAF < 0.05. Skipping calculation at rs1978839
-WARNING: Locus rs2718737 has MAF < 0.05. Skipping calculation at rs2718737
-WARNING: Locus rs2718736 has MAF < 0.05. Skipping calculation at rs2718736
-WARNING: Locus rs2577593 has MAF < 0.05. Skipping calculation at rs2577593
 WARNING: Locus rs10194708 has MAF < 0.05. Skipping calculation at rs10194708
-WARNING: Locus rs2577592 has MAF < 0.05. Skipping calculation at rs2577592
-WARNING: Locus rs2718735 has MAF < 0.05. Skipping calculation at rs2718735
-WARNING: Locus rs2577591 has MAF < 0.05. Skipping calculation at rs2577591
 WARNING: Locus rs10084394 has MAF < 0.05. Skipping calculation at rs10084394
 WARNING: Locus rs2378137 has MAF < 0.05. Skipping calculation at rs2378137
 WARNING: Locus rs12468000 has MAF < 0.05. Skipping calculation at rs12468000
 WARNING: Locus rs7601412 has MAF < 0.05. Skipping calculation at rs7601412
-WARNING: Locus rs143278056 has MAF < 0.05. Skipping calculation at rs143278056
 WARNING: Locus rs6747243 has MAF < 0.05. Skipping calculation at rs6747243
 WARNING: Locus rs1469966 has MAF < 0.05. Skipping calculation at rs1469966
 WARNING: Locus rs1469964 has MAF < 0.05. Skipping calculation at rs1469964
 WARNING: Locus rs920264 has MAF < 0.05. Skipping calculation at rs920264
-WARNING: Locus rs2718747 has MAF < 0.05. Skipping calculation at rs2718747
 WARNING: Locus rs6737333 has MAF < 0.05. Skipping calculation at rs6737333
 WARNING: Locus rs9308807 has MAF < 0.05. Skipping calculation at rs9308807
 WARNING: Locus rs2577588 has MAF < 0.05. Skipping calculation at rs2577588
 WARNING: Locus rs7591764 has MAF < 0.05. Skipping calculation at rs7591764
 WARNING: Locus rs6542772 has MAF < 0.05. Skipping calculation at rs6542772
 WARNING: Locus rs7581929 has MAF < 0.05. Skipping calculation at rs7581929
-WARNING: Locus rs2718743 has MAF < 0.05. Skipping calculation at rs2718743
 WARNING: Locus rs10209071 has MAF < 0.05. Skipping calculation at rs10209071
-WARNING: Locus rs2718734 has MAF < 0.05. Skipping calculation at rs2718734
 WARNING: Locus rs2718733 has MAF < 0.05. Skipping calculation at rs2718733
-WARNING: Locus rs13023059 has MAF < 0.05. Skipping calculation at rs13023059
 WARNING: Locus rs10188434 has MAF < 0.05. Skipping calculation at rs10188434
 WARNING: Locus rs2718725 has MAF < 0.05. Skipping calculation at rs2718725
 WARNING: Locus rs2718724 has MAF < 0.05. Skipping calculation at rs2718724
@@ -1269,18 +837,13 @@ WARNING: Locus rs57336888 has MAF < 0.05. Skipping calculation at rs57336888
 WARNING: Locus rs2718719 has MAF < 0.05. Skipping calculation at rs2718719
 WARNING: Locus rs2577624 has MAF < 0.05. Skipping calculation at rs2577624
 WARNING: Locus rs2577625 has MAF < 0.05. Skipping calculation at rs2577625
-WARNING: Locus rs72833160 has MAF < 0.05. Skipping calculation at rs72833160
-WARNING: Locus rs2718718 has MAF < 0.05. Skipping calculation at rs2718718
 WARNING: Locus rs2577605 has MAF < 0.05. Skipping calculation at rs2577605
 WARNING: Locus rs6760160 has MAF < 0.05. Skipping calculation at rs6760160
-WARNING: Locus rs2718717 has MAF < 0.05. Skipping calculation at rs2718717
 WARNING: Locus rs2577604 has MAF < 0.05. Skipping calculation at rs2577604
 WARNING: Locus rs2718716 has MAF < 0.05. Skipping calculation at rs2718716
 WARNING: Locus rs2378138 has MAF < 0.05. Skipping calculation at rs2378138
 WARNING: Locus rs2465952 has MAF < 0.05. Skipping calculation at rs2465952
-WARNING: Locus rs2438280 has MAF < 0.05. Skipping calculation at rs2438280
 WARNING: Locus rs2164829 has MAF < 0.05. Skipping calculation at rs2164829
-WARNING: Locus rs2718715 has MAF < 0.05. Skipping calculation at rs2718715
 WARNING: Locus rs1370592 has MAF < 0.05. Skipping calculation at rs1370592
 WARNING: Locus rs2577598 has MAF < 0.05. Skipping calculation at rs2577598
 WARNING: Locus rs10199284 has MAF < 0.05. Skipping calculation at rs10199284
@@ -1289,93 +852,53 @@ WARNING: Locus rs2718730 has MAF < 0.05. Skipping calculation at rs2718730
 WARNING: Locus rs12476399 has MAF < 0.05. Skipping calculation at rs12476399
 WARNING: Locus rs11123709 has MAF < 0.05. Skipping calculation at rs11123709
 WARNING: Locus rs1898556 has MAF < 0.05. Skipping calculation at rs1898556
-WARNING: Locus rs2718697 has MAF < 0.05. Skipping calculation at rs2718697
 WARNING: Locus rs13411824 has MAF < 0.05. Skipping calculation at rs13411824
 WARNING: Locus rs893403 has MAF < 0.05. Skipping calculation at rs893403
-WARNING: Locus rs2577603 has MAF < 0.05. Skipping calculation at rs2577603
 WARNING: Locus rs4676202 has MAF < 0.05. Skipping calculation at rs4676202
 WARNING: Locus rs2718738 has MAF < 0.05. Skipping calculation at rs2718738
 WARNING: Locus rs2577602 has MAF < 0.05. Skipping calculation at rs2577602
 WARNING: Locus rs2577601 has MAF < 0.05. Skipping calculation at rs2577601
 WARNING: Locus rs2577600 has MAF < 0.05. Skipping calculation at rs2577600
-WARNING: Locus rs10496423 has MAF < 0.05. Skipping calculation at rs10496423
-WARNING: Locus rs826681 has MAF < 0.05. Skipping calculation at rs826681
-WARNING: Locus rs826682 has MAF < 0.05. Skipping calculation at rs826682
-WARNING: Locus rs826683 has MAF < 0.05. Skipping calculation at rs826683
 WARNING: Locus rs11897612 has MAF < 0.05. Skipping calculation at rs11897612
 WARNING: Locus rs826686 has MAF < 0.05. Skipping calculation at rs826686
-WARNING: Locus rs826687 has MAF < 0.05. Skipping calculation at rs826687
-WARNING: Locus rs114636875 has MAF < 0.05. Skipping calculation at rs114636875
-WARNING: Locus rs826688 has MAF < 0.05. Skipping calculation at rs826688
 WARNING: Locus rs8179686 has MAF < 0.05. Skipping calculation at rs8179686
 WARNING: Locus rs826689 has MAF < 0.05. Skipping calculation at rs826689
 WARNING: Locus rs10209570 has MAF < 0.05. Skipping calculation at rs10209570
-WARNING: Locus rs826690 has MAF < 0.05. Skipping calculation at rs826690
 WARNING: Locus rs6738629 has MAF < 0.05. Skipping calculation at rs6738629
-WARNING: Locus rs826691 has MAF < 0.05. Skipping calculation at rs826691
 WARNING: Locus rs10164699 has MAF < 0.05. Skipping calculation at rs10164699
 WARNING: Locus rs826692 has MAF < 0.05. Skipping calculation at rs826692
 WARNING: Locus rs2053261 has MAF < 0.05. Skipping calculation at rs2053261
-WARNING: Locus rs826693 has MAF < 0.05. Skipping calculation at rs826693
 WARNING: Locus rs4676204 has MAF < 0.05. Skipping calculation at rs4676204
-WARNING: Locus rs826694 has MAF < 0.05. Skipping calculation at rs826694
 WARNING: Locus rs826695 has MAF < 0.05. Skipping calculation at rs826695
 WARNING: Locus rs12712022 has MAF < 0.05. Skipping calculation at rs12712022
-WARNING: Locus rs826698 has MAF < 0.05. Skipping calculation at rs826698
-WARNING: Locus rs1095556 has MAF < 0.05. Skipping calculation at rs1095556
 WARNING: Locus rs12467880 has MAF < 0.05. Skipping calculation at rs12467880
 WARNING: Locus rs1095557 has MAF < 0.05. Skipping calculation at rs1095557
-WARNING: Locus rs826699 has MAF < 0.05. Skipping calculation at rs826699
 WARNING: Locus rs201180187 has MAF < 0.05. Skipping calculation at rs201180187
 WARNING: Locus rs826676 has MAF < 0.05. Skipping calculation at rs826676
-WARNING: Locus rs826677 has MAF < 0.05. Skipping calculation at rs826677
-WARNING: Locus rs826678 has MAF < 0.05. Skipping calculation at rs826678
 WARNING: Locus rs6750452 has MAF < 0.05. Skipping calculation at rs6750452
-WARNING: Locus rs826679 has MAF < 0.05. Skipping calculation at rs826679
-WARNING: Locus rs826680 has MAF < 0.05. Skipping calculation at rs826680
 WARNING: Locus rs7597586 has MAF < 0.05. Skipping calculation at rs7597586
 WARNING: Locus rs826684 has MAF < 0.05. Skipping calculation at rs826684
-WARNING: Locus rs11687820 has MAF < 0.05. Skipping calculation at rs11687820
 WARNING: Locus rs4676205 has MAF < 0.05. Skipping calculation at rs4676205
 WARNING: Locus rs7584953 has MAF < 0.05. Skipping calculation at rs7584953
-WARNING: Locus rs11691112 has MAF < 0.05. Skipping calculation at rs11691112
-WARNING: Locus rs12998958 has MAF < 0.05. Skipping calculation at rs12998958
 WARNING: Locus rs58889267 has MAF < 0.05. Skipping calculation at rs58889267
 WARNING: Locus rs6734945 has MAF < 0.05. Skipping calculation at rs6734945
 WARNING: Locus rs1365922 has MAF < 0.05. Skipping calculation at rs1365922
-WARNING: Locus rs826588 has MAF < 0.05. Skipping calculation at rs826588
 WARNING: Locus rs826589 has MAF < 0.05. Skipping calculation at rs826589
-WARNING: Locus rs826590 has MAF < 0.05. Skipping calculation at rs826590
 WARNING: Locus rs826591 has MAF < 0.05. Skipping calculation at rs826591
-WARNING: Locus rs700879 has MAF < 0.05. Skipping calculation at rs700879
 WARNING: Locus rs930038 has MAF < 0.05. Skipping calculation at rs930038
-WARNING: Locus rs700878 has MAF < 0.05. Skipping calculation at rs700878
-WARNING: Locus rs826592 has MAF < 0.05. Skipping calculation at rs826592
 WARNING: Locus rs2438921 has MAF < 0.05. Skipping calculation at rs2438921
-WARNING: Locus rs376136163 has MAF < 0.05. Skipping calculation at rs376136163
 WARNING: Locus rs11123712 has MAF < 0.05. Skipping calculation at rs11123712
-WARNING: Locus rs865444 has MAF < 0.05. Skipping calculation at rs865444
-WARNING: Locus rs57393651 has MAF < 0.05. Skipping calculation at rs57393651
 WARNING: Locus rs826584 has MAF < 0.05. Skipping calculation at rs826584
-WARNING: Locus rs826585 has MAF < 0.05. Skipping calculation at rs826585
 WARNING: Locus rs826586 has MAF < 0.05. Skipping calculation at rs826586
-WARNING: Locus rs826587 has MAF < 0.05. Skipping calculation at rs826587
 WARNING: Locus rs12613513 has MAF < 0.05. Skipping calculation at rs12613513
-WARNING: Locus rs10202224 has MAF < 0.05. Skipping calculation at rs10202224
-WARNING: Locus rs377701299 has MAF < 0.05. Skipping calculation at rs377701299
 WARNING: Locus rs59038554 has MAF < 0.05. Skipping calculation at rs59038554
 WARNING: Locus rs6712637 has MAF < 0.05. Skipping calculation at rs6712637
-WARNING: Locus rs7606621 has MAF < 0.05. Skipping calculation at rs7606621
 WARNING: Locus rs7606722 has MAF < 0.05. Skipping calculation at rs7606722
-WARNING: Locus rs112589352 has MAF < 0.05. Skipping calculation at rs112589352
 WARNING: Locus rs11887708 has MAF < 0.05. Skipping calculation at rs11887708
-WARNING: Locus rs11904161 has MAF < 0.05. Skipping calculation at rs11904161
 WARNING: Locus rs6745534 has MAF < 0.05. Skipping calculation at rs6745534
 WARNING: Locus rs28815552 has MAF < 0.05. Skipping calculation at rs28815552
 WARNING: Locus rs4676040 has MAF < 0.05. Skipping calculation at rs4676040
 WARNING: Locus rs7575335 has MAF < 0.05. Skipping calculation at rs7575335
-WARNING: Locus rs7569634 has MAF < 0.05. Skipping calculation at rs7569634
-WARNING: Locus rs11675104 has MAF < 0.05. Skipping calculation at rs11675104
 WARNING: Locus rs4442955 has MAF < 0.05. Skipping calculation at rs4442955
 WARNING: Locus rs4584989 has MAF < 0.05. Skipping calculation at rs4584989
 WARNING: Locus rs10183403 has MAF < 0.05. Skipping calculation at rs10183403
@@ -1383,106 +906,13 @@ WARNING: Locus rs10197130 has MAF < 0.05. Skipping calculation at rs10197130
 WARNING: Locus rs10177652 has MAF < 0.05. Skipping calculation at rs10177652
 WARNING: Locus rs61062426 has MAF < 0.05. Skipping calculation at rs61062426
 WARNING: Locus rs12997976 has MAF < 0.05. Skipping calculation at rs12997976
-WARNING: Locus rs13025158 has MAF < 0.05. Skipping calculation at rs13025158
-WARNING: Locus rs1724189 has MAF < 0.05. Skipping calculation at rs1724189
-WARNING: Locus rs55890101 has MAF < 0.05. Skipping calculation at rs55890101
-WARNING: Locus rs1095551 has MAF < 0.05. Skipping calculation at rs1095551
 WARNING: Locus rs826544 has MAF < 0.05. Skipping calculation at rs826544
 WARNING: Locus rs844113 has MAF < 0.05. Skipping calculation at rs844113
-WARNING: Locus rs826543 has MAF < 0.05. Skipping calculation at rs826543
-WARNING: Locus rs826542 has MAF < 0.05. Skipping calculation at rs826542
-WARNING: Locus rs826541 has MAF < 0.05. Skipping calculation at rs826541
-WARNING: Locus rs2462788 has MAF < 0.05. Skipping calculation at rs2462788
-WARNING: Locus rs115128188 has MAF < 0.05. Skipping calculation at rs115128188
-WARNING: Locus rs2912856 has MAF < 0.05. Skipping calculation at rs2912856
-WARNING: Locus rs826540 has MAF < 0.05. Skipping calculation at rs826540
-WARNING: Locus rs826539 has MAF < 0.05. Skipping calculation at rs826539
-WARNING: Locus rs826538 has MAF < 0.05. Skipping calculation at rs826538
-WARNING: Locus rs826537 has MAF < 0.05. Skipping calculation at rs826537
-WARNING: Locus rs826536 has MAF < 0.05. Skipping calculation at rs826536
-WARNING: Locus rs1816214 has MAF < 0.05. Skipping calculation at rs1816214
-WARNING: Locus rs826535 has MAF < 0.05. Skipping calculation at rs826535
-WARNING: Locus rs826534 has MAF < 0.05. Skipping calculation at rs826534
-WARNING: Locus rs1649341 has MAF < 0.05. Skipping calculation at rs1649341
-WARNING: Locus rs1618433 has MAF < 0.05. Skipping calculation at rs1618433
-WARNING: Locus rs1724188 has MAF < 0.05. Skipping calculation at rs1724188
-WARNING: Locus rs9917289 has MAF < 0.05. Skipping calculation at rs9917289
-WARNING: Locus rs826533 has MAF < 0.05. Skipping calculation at rs826533
-WARNING: Locus rs826532 has MAF < 0.05. Skipping calculation at rs826532
-WARNING: Locus rs826531 has MAF < 0.05. Skipping calculation at rs826531
-WARNING: Locus rs60702530 has MAF < 0.05. Skipping calculation at rs60702530
-WARNING: Locus rs34180619 has MAF < 0.05. Skipping calculation at rs34180619
-WARNING: Locus rs71421339 has MAF < 0.05. Skipping calculation at rs71421339
-WARNING: Locus rs201321728 has MAF < 0.05. Skipping calculation at rs201321728
-WARNING: Locus rs826527 has MAF < 0.05. Skipping calculation at rs826527
-WARNING: Locus rs826526 has MAF < 0.05. Skipping calculation at rs826526
-WARNING: Locus rs826525 has MAF < 0.05. Skipping calculation at rs826525
-WARNING: Locus rs826524 has MAF < 0.05. Skipping calculation at rs826524
-WARNING: Locus rs7574679 has MAF < 0.05. Skipping calculation at rs7574679
-WARNING: Locus rs7601270 has MAF < 0.05. Skipping calculation at rs7601270
-WARNING: Locus rs826579 has MAF < 0.05. Skipping calculation at rs826579
-WARNING: Locus rs826578 has MAF < 0.05. Skipping calculation at rs826578
-WARNING: Locus rs826577 has MAF < 0.05. Skipping calculation at rs826577
-WARNING: Locus rs826576 has MAF < 0.05. Skipping calculation at rs826576
-WARNING: Locus rs826575 has MAF < 0.05. Skipping calculation at rs826575
-WARNING: Locus rs826572 has MAF < 0.05. Skipping calculation at rs826572
-WARNING: Locus rs826571 has MAF < 0.05. Skipping calculation at rs826571
-WARNING: Locus rs826570 has MAF < 0.05. Skipping calculation at rs826570
-WARNING: Locus rs826569 has MAF < 0.05. Skipping calculation at rs826569
-WARNING: Locus rs826568 has MAF < 0.05. Skipping calculation at rs826568
-WARNING: Locus rs826567 has MAF < 0.05. Skipping calculation at rs826567
-WARNING: Locus rs4012071 has MAF < 0.05. Skipping calculation at rs4012071
-WARNING: Locus rs826565 has MAF < 0.05. Skipping calculation at rs826565
-WARNING: Locus rs826564 has MAF < 0.05. Skipping calculation at rs826564
 WARNING: Locus rs2059725 has MAF < 0.05. Skipping calculation at rs2059725
-WARNING: Locus rs13384443 has MAF < 0.05. Skipping calculation at rs13384443
-WARNING: Locus rs826561 has MAF < 0.05. Skipping calculation at rs826561
-WARNING: Locus rs826559 has MAF < 0.05. Skipping calculation at rs826559
-WARNING: Locus rs826558 has MAF < 0.05. Skipping calculation at rs826558
-WARNING: Locus rs826557 has MAF < 0.05. Skipping calculation at rs826557
-WARNING: Locus rs866115 has MAF < 0.05. Skipping calculation at rs866115
 WARNING: Locus rs4012061 has MAF < 0.05. Skipping calculation at rs4012061
-WARNING: Locus rs1724197 has MAF < 0.05. Skipping calculation at rs1724197
-WARNING: Locus rs1724198 has MAF < 0.05. Skipping calculation at rs1724198
-WARNING: Locus rs144029181 has MAF < 0.05. Skipping calculation at rs144029181
-WARNING: Locus rs866114 has MAF < 0.05. Skipping calculation at rs866114
-WARNING: Locus rs826522 has MAF < 0.05. Skipping calculation at rs826522
-WARNING: Locus rs826521 has MAF < 0.05. Skipping calculation at rs826521
-WARNING: Locus rs144684946 has MAF < 0.05. Skipping calculation at rs144684946
-WARNING: Locus rs3108313 has MAF < 0.05. Skipping calculation at rs3108313
 WARNING: Locus rs1649334 has MAF < 0.05. Skipping calculation at rs1649334
-WARNING: Locus rs376288742 has MAF < 0.05. Skipping calculation at rs376288742
-WARNING: Locus rs826546 has MAF < 0.05. Skipping calculation at rs826546
-WARNING: Locus rs826583 has MAF < 0.05. Skipping calculation at rs826583
-WARNING: Locus rs700875 has MAF < 0.05. Skipping calculation at rs700875
 WARNING: Locus rs826580 has MAF < 0.05. Skipping calculation at rs826580
-WARNING: Locus rs749946 has MAF < 0.05. Skipping calculation at rs749946
-WARNING: Locus rs1724203 has MAF < 0.05. Skipping calculation at rs1724203
-WARNING: Locus rs13391536 has MAF < 0.05. Skipping calculation at rs13391536
-WARNING: Locus rs1649330 has MAF < 0.05. Skipping calculation at rs1649330
-WARNING: Locus rs1649329 has MAF < 0.05. Skipping calculation at rs1649329
-WARNING: Locus rs1649328 has MAF < 0.05. Skipping calculation at rs1649328
-WARNING: Locus rs56132830 has MAF < 0.05. Skipping calculation at rs56132830
-WARNING: Locus rs371189636 has MAF < 0.05. Skipping calculation at rs371189636
-WARNING: Locus rs375449172 has MAF < 0.05. Skipping calculation at rs375449172
-WARNING: Locus rs367803624 has MAF < 0.05. Skipping calculation at rs367803624
-WARNING: Locus rs371705935 has MAF < 0.05. Skipping calculation at rs371705935
-WARNING: Locus rs1614285 has MAF < 0.05. Skipping calculation at rs1614285
-WARNING: Locus rs1724204 has MAF < 0.05. Skipping calculation at rs1724204
-WARNING: Locus rs1724205 has MAF < 0.05. Skipping calculation at rs1724205
-WARNING: Locus rs35096475 has MAF < 0.05. Skipping calculation at rs35096475
-WARNING: Locus rs34533357 has MAF < 0.05. Skipping calculation at rs34533357
-WARNING: Locus rs13401614 has MAF < 0.05. Skipping calculation at rs13401614
-WARNING: Locus rs10164715 has MAF < 0.05. Skipping calculation at rs10164715
-WARNING: Locus rs826556 has MAF < 0.05. Skipping calculation at rs826556
-WARNING: Locus rs826555 has MAF < 0.05. Skipping calculation at rs826555
-WARNING: Locus rs826554 has MAF < 0.05. Skipping calculation at rs826554
-WARNING: Locus rs826553 has MAF < 0.05. Skipping calculation at rs826553
-WARNING: Locus rs826552 has MAF < 0.05. Skipping calculation at rs826552
 WARNING: Locus rs826550 has MAF < 0.05. Skipping calculation at rs826550
-WARNING: Locus rs6740879 has MAF < 0.05. Skipping calculation at rs6740879
-WARNING: Locus rs1724184 has MAF < 0.05. Skipping calculation at rs1724184
-WARNING: Locus rs1724195 has MAF < 0.05. Skipping calculation at rs1724195
 WARNING: Locus rs4387742 has MAF < 0.05. Skipping calculation at rs4387742
 WARNING: Locus rs6743705 has MAF < 0.05. Skipping calculation at rs6743705
 WARNING: Locus rs12988959 has MAF < 0.05. Skipping calculation at rs12988959
@@ -1512,8 +942,6 @@ WARNING: Locus rs7585888 has MAF < 0.05. Skipping calculation at rs7585888
 WARNING: Locus rs12712024 has MAF < 0.05. Skipping calculation at rs12712024
 WARNING: Locus rs11688965 has MAF < 0.05. Skipping calculation at rs11688965
 WARNING: Locus rs3954225 has MAF < 0.05. Skipping calculation at rs3954225
-WARNING: Locus rs1117425 has MAF < 0.05. Skipping calculation at rs1117425
-WARNING: Locus rs1585710 has MAF < 0.05. Skipping calculation at rs1585710
 WARNING: Locus rs1117424 has MAF < 0.05. Skipping calculation at rs1117424
 WARNING: Locus rs971297 has MAF < 0.05. Skipping calculation at rs971297
 WARNING: Locus rs2169813 has MAF < 0.05. Skipping calculation at rs2169813
@@ -1541,13 +969,11 @@ WARNING: Locus rs2378216 has MAF < 0.05. Skipping calculation at rs2378216
 WARNING: Locus rs4676215 has MAF < 0.05. Skipping calculation at rs4676215
 WARNING: Locus rs1073893 has MAF < 0.05. Skipping calculation at rs1073893
 WARNING: Locus rs1073894 has MAF < 0.05. Skipping calculation at rs1073894
-WARNING: Locus rs1073895 has MAF < 0.05. Skipping calculation at rs1073895
 WARNING: Locus rs6737810 has MAF < 0.05. Skipping calculation at rs6737810
 WARNING: Locus rs7591305 has MAF < 0.05. Skipping calculation at rs7591305
 WARNING: Locus rs14402 has MAF < 0.05. Skipping calculation at rs14402
 WARNING: Locus rs11904769 has MAF < 0.05. Skipping calculation at rs11904769
 WARNING: Locus rs7609412 has MAF < 0.05. Skipping calculation at rs7609412
-WARNING: Locus rs1478521 has MAF < 0.05. Skipping calculation at rs1478521
 WARNING: Locus rs1478522 has MAF < 0.05. Skipping calculation at rs1478522
 WARNING: Locus rs6542782 has MAF < 0.05. Skipping calculation at rs6542782
 WARNING: Locus rs9636370 has MAF < 0.05. Skipping calculation at rs9636370
@@ -1562,11 +988,9 @@ WARNING: Locus rs6747767 has MAF < 0.05. Skipping calculation at rs6747767
 WARNING: Locus rs6748168 has MAF < 0.05. Skipping calculation at rs6748168
 WARNING: Locus rs2086155 has MAF < 0.05. Skipping calculation at rs2086155
 WARNING: Locus rs12993535 has MAF < 0.05. Skipping calculation at rs12993535
-WARNING: Locus rs10194201 has MAF < 0.05. Skipping calculation at rs10194201
 WARNING: Locus rs10170471 has MAF < 0.05. Skipping calculation at rs10170471
 WARNING: Locus rs10170875 has MAF < 0.05. Skipping calculation at rs10170875
 WARNING: Locus rs10171047 has MAF < 0.05. Skipping calculation at rs10171047
-WARNING: Locus rs10179849 has MAF < 0.05. Skipping calculation at rs10179849
 WARNING: Locus rs1600196 has MAF < 0.05. Skipping calculation at rs1600196
 WARNING: Locus rs1585707 has MAF < 0.05. Skipping calculation at rs1585707
 WARNING: Locus rs12712027 has MAF < 0.05. Skipping calculation at rs12712027
@@ -1575,26 +999,19 @@ WARNING: Locus rs10209491 has MAF < 0.05. Skipping calculation at rs10209491
 WARNING: Locus rs10865024 has MAF < 0.05. Skipping calculation at rs10865024
 WARNING: Locus rs6747261 has MAF < 0.05. Skipping calculation at rs6747261
 WARNING: Locus rs13001699 has MAF < 0.05. Skipping calculation at rs13001699
-WARNING: Locus rs3749096 has MAF < 0.05. Skipping calculation at rs3749096
 WARNING: Locus rs7607563 has MAF < 0.05. Skipping calculation at rs7607563
 WARNING: Locus rs12623957 has MAF < 0.05. Skipping calculation at rs12623957
 WARNING: Locus rs2169812 has MAF < 0.05. Skipping calculation at rs2169812
-WARNING: Locus rs6542783 has MAF < 0.05. Skipping calculation at rs6542783
 WARNING: Locus rs2378217 has MAF < 0.05. Skipping calculation at rs2378217
 WARNING: Locus rs940928 has MAF < 0.05. Skipping calculation at rs940928
 WARNING: Locus rs4676218 has MAF < 0.05. Skipping calculation at rs4676218
 WARNING: Locus rs4676219 has MAF < 0.05. Skipping calculation at rs4676219
-WARNING: Locus rs10164649 has MAF < 0.05. Skipping calculation at rs10164649
-WARNING: Locus rs10178421 has MAF < 0.05. Skipping calculation at rs10178421
 WARNING: Locus rs2617887 has MAF < 0.05. Skipping calculation at rs2617887
 WARNING: Locus rs2617886 has MAF < 0.05. Skipping calculation at rs2617886
 WARNING: Locus rs262085 has MAF < 0.05. Skipping calculation at rs262085
 WARNING: Locus rs260640 has MAF < 0.05. Skipping calculation at rs260640
-WARNING: Locus rs56742081 has MAF < 0.05. Skipping calculation at rs56742081
-WARNING: Locus rs111870108 has MAF < 0.05. Skipping calculation at rs111870108
 WARNING: Locus rs154997 has MAF < 0.05. Skipping calculation at rs154997
 WARNING: Locus rs260638 has MAF < 0.05. Skipping calculation at rs260638
-WARNING: Locus rs13397131 has MAF < 0.05. Skipping calculation at rs13397131
 WARNING: Locus rs260637 has MAF < 0.05. Skipping calculation at rs260637
 WARNING: Locus rs260636 has MAF < 0.05. Skipping calculation at rs260636
 WARNING: Locus rs260635 has MAF < 0.05. Skipping calculation at rs260635
@@ -1607,38 +1024,12 @@ WARNING: Locus rs260628 has MAF < 0.05. Skipping calculation at rs260628
 WARNING: Locus rs2606148 has MAF < 0.05. Skipping calculation at rs2606148
 WARNING: Locus rs103855 has MAF < 0.05. Skipping calculation at rs103855
 WARNING: Locus rs260594 has MAF < 0.05. Skipping calculation at rs260594
-WARNING: Locus rs1807170 has MAF < 0.05. Skipping calculation at rs1807170
-WARNING: Locus rs260641 has MAF < 0.05. Skipping calculation at rs260641
-WARNING: Locus rs113403948 has MAF < 0.05. Skipping calculation at rs113403948
 WARNING: Locus rs260642 has MAF < 0.05. Skipping calculation at rs260642
-WARNING: Locus rs874594 has MAF < 0.05. Skipping calculation at rs874594
 WARNING: Locus rs171857 has MAF < 0.05. Skipping calculation at rs171857
 WARNING: Locus rs70664 has MAF < 0.05. Skipping calculation at rs70664
-WARNING: Locus rs10203613 has MAF < 0.05. Skipping calculation at rs10203613
-WARNING: Locus rs749810 has MAF < 0.05. Skipping calculation at rs749810
-WARNING: Locus rs260643 has MAF < 0.05. Skipping calculation at rs260643
-WARNING: Locus rs2077536 has MAF < 0.05. Skipping calculation at rs2077536
-WARNING: Locus rs748224 has MAF < 0.05. Skipping calculation at rs748224
-WARNING: Locus rs6732336 has MAF < 0.05. Skipping calculation at rs6732336
-WARNING: Locus rs35139932 has MAF < 0.05. Skipping calculation at rs35139932
-WARNING: Locus rs6750964 has MAF < 0.05. Skipping calculation at rs6750964
 WARNING: Locus rs922452 has MAF < 0.05. Skipping calculation at rs922452
-WARNING: Locus rs13397666 has MAF < 0.05. Skipping calculation at rs13397666
-WARNING: Locus rs12476308 has MAF < 0.05. Skipping calculation at rs12476308
-WARNING: Locus rs10865026 has MAF < 0.05. Skipping calculation at rs10865026
-WARNING: Locus rs899259 has MAF < 0.05. Skipping calculation at rs899259
-WARNING: Locus rs6761501 has MAF < 0.05. Skipping calculation at rs6761501
-WARNING: Locus rs13427222 has MAF < 0.05. Skipping calculation at rs13427222
-WARNING: Locus rs12474900 has MAF < 0.05. Skipping calculation at rs12474900
-WARNING: Locus rs12474934 has MAF < 0.05. Skipping calculation at rs12474934
-WARNING: Locus rs12475005 has MAF < 0.05. Skipping calculation at rs12475005
-WARNING: Locus rs6542785 has MAF < 0.05. Skipping calculation at rs6542785
-WARNING: Locus rs6542786 has MAF < 0.05. Skipping calculation at rs6542786
-WARNING: Locus rs6542787 has MAF < 0.05. Skipping calculation at rs6542787
-WARNING: Locus rs7598206 has MAF < 0.05. Skipping calculation at rs7598206
 WARNING: Locus rs260709 has MAF < 0.05. Skipping calculation at rs260709
 WARNING: Locus rs260710 has MAF < 0.05. Skipping calculation at rs260710
-WARNING: Locus rs11123718 has MAF < 0.05. Skipping calculation at rs11123718
 WARNING: Locus rs260711 has MAF < 0.05. Skipping calculation at rs260711
 WARNING: Locus rs260712 has MAF < 0.05. Skipping calculation at rs260712
 WARNING: Locus rs155219 has MAF < 0.05. Skipping calculation at rs155219
@@ -1647,7 +1038,6 @@ WARNING: Locus rs260714 has MAF < 0.05. Skipping calculation at rs260714
 WARNING: Locus rs260715 has MAF < 0.05. Skipping calculation at rs260715
 WARNING: Locus rs72836570 has MAF < 0.05. Skipping calculation at rs72836570
 WARNING: Locus rs260716 has MAF < 0.05. Skipping calculation at rs260716
-WARNING: Locus rs56014907 has MAF < 0.05. Skipping calculation at rs56014907
 WARNING: Locus rs260698 has MAF < 0.05. Skipping calculation at rs260698
 WARNING: Locus rs260699 has MAF < 0.05. Skipping calculation at rs260699
 WARNING: Locus rs260700 has MAF < 0.05. Skipping calculation at rs260700
@@ -1655,7 +1045,6 @@ WARNING: Locus rs260702 has MAF < 0.05. Skipping calculation at rs260702
 WARNING: Locus rs260703 has MAF < 0.05. Skipping calculation at rs260703
 WARNING: Locus rs260704 has MAF < 0.05. Skipping calculation at rs260704
 WARNING: Locus rs374059 has MAF < 0.05. Skipping calculation at rs374059
-WARNING: Locus rs6731403 has MAF < 0.05. Skipping calculation at rs6731403
 WARNING: Locus rs260705 has MAF < 0.05. Skipping calculation at rs260705
 WARNING: Locus rs17034666 has MAF < 0.05. Skipping calculation at rs17034666
 WARNING: Locus rs260707 has MAF < 0.05. Skipping calculation at rs260707
@@ -1665,82 +1054,32 @@ WARNING: Locus rs365060 has MAF < 0.05. Skipping calculation at rs365060
 WARNING: Locus rs260685 has MAF < 0.05. Skipping calculation at rs260685
 WARNING: Locus rs154998 has MAF < 0.05. Skipping calculation at rs154998
 WARNING: Locus rs260686 has MAF < 0.05. Skipping calculation at rs260686
-WARNING: Locus rs260687 has MAF < 0.05. Skipping calculation at rs260687
-WARNING: Locus rs260688 has MAF < 0.05. Skipping calculation at rs260688
-WARNING: Locus rs260689 has MAF < 0.05. Skipping calculation at rs260689
-WARNING: Locus rs365690 has MAF < 0.05. Skipping calculation at rs365690
-WARNING: Locus rs260690 has MAF < 0.05. Skipping calculation at rs260690
-WARNING: Locus rs260691 has MAF < 0.05. Skipping calculation at rs260691
-WARNING: Locus rs260692 has MAF < 0.05. Skipping calculation at rs260692
-WARNING: Locus rs10179216 has MAF < 0.05. Skipping calculation at rs10179216
-WARNING: Locus rs5021634 has MAF < 0.05. Skipping calculation at rs5021634
-WARNING: Locus rs4676223 has MAF < 0.05. Skipping calculation at rs4676223
-WARNING: Locus rs10174266 has MAF < 0.05. Skipping calculation at rs10174266
 WARNING: Locus rs10779899 has MAF < 0.05. Skipping calculation at rs10779899
 WARNING: Locus rs260694 has MAF < 0.05. Skipping calculation at rs260694
-WARNING: Locus rs13029834 has MAF < 0.05. Skipping calculation at rs13029834
-WARNING: Locus rs260696 has MAF < 0.05. Skipping calculation at rs260696
 WARNING: Locus rs7609321 has MAF < 0.05. Skipping calculation at rs7609321
-WARNING: Locus rs7560650 has MAF < 0.05. Skipping calculation at rs7560650
-WARNING: Locus rs1984850 has MAF < 0.05. Skipping calculation at rs1984850
-WARNING: Locus rs1965882 has MAF < 0.05. Skipping calculation at rs1965882
-WARNING: Locus rs1983063 has MAF < 0.05. Skipping calculation at rs1983063
-WARNING: Locus rs11676729 has MAF < 0.05. Skipping calculation at rs11676729
-WARNING: Locus rs260597 has MAF < 0.05. Skipping calculation at rs260597
-WARNING: Locus rs7585138 has MAF < 0.05. Skipping calculation at rs7585138
-WARNING: Locus rs260598 has MAF < 0.05. Skipping calculation at rs260598
 WARNING: Locus rs260599 has MAF < 0.05. Skipping calculation at rs260599
-WARNING: Locus rs2378227 has MAF < 0.05. Skipping calculation at rs2378227
-WARNING: Locus rs183780 has MAF < 0.05. Skipping calculation at rs183780
 WARNING: Locus rs56338771 has MAF < 0.05. Skipping calculation at rs56338771
 WARNING: Locus rs80223377 has MAF < 0.05. Skipping calculation at rs80223377
 WARNING: Locus rs429520 has MAF < 0.05. Skipping calculation at rs429520
-WARNING: Locus rs11123720 has MAF < 0.05. Skipping calculation at rs11123720
-WARNING: Locus rs12466509 has MAF < 0.05. Skipping calculation at rs12466509
-WARNING: Locus rs12467455 has MAF < 0.05. Skipping calculation at rs12467455
-WARNING: Locus rs720107 has MAF < 0.05. Skipping calculation at rs720107
-WARNING: Locus rs17269487 has MAF < 0.05. Skipping calculation at rs17269487
 WARNING: Locus rs260675 has MAF < 0.05. Skipping calculation at rs260675
 WARNING: Locus rs260676 has MAF < 0.05. Skipping calculation at rs260676
 WARNING: Locus rs260677 has MAF < 0.05. Skipping calculation at rs260677
-WARNING: Locus rs260678 has MAF < 0.05. Skipping calculation at rs260678
 WARNING: Locus rs45479 has MAF < 0.05. Skipping calculation at rs45479
 WARNING: Locus rs45478 has MAF < 0.05. Skipping calculation at rs45478
-WARNING: Locus rs260679 has MAF < 0.05. Skipping calculation at rs260679
-WARNING: Locus rs13022998 has MAF < 0.05. Skipping calculation at rs13022998
-WARNING: Locus rs380080 has MAF < 0.05. Skipping calculation at rs380080
-WARNING: Locus rs62151141 has MAF < 0.05. Skipping calculation at rs62151141
-WARNING: Locus rs452059 has MAF < 0.05. Skipping calculation at rs452059
 WARNING: Locus rs260680 has MAF < 0.05. Skipping calculation at rs260680
-WARNING: Locus rs393987 has MAF < 0.05. Skipping calculation at rs393987
 WARNING: Locus rs183781 has MAF < 0.05. Skipping calculation at rs183781
 WARNING: Locus rs260681 has MAF < 0.05. Skipping calculation at rs260681
-WARNING: Locus rs4676048 has MAF < 0.05. Skipping calculation at rs4676048
-WARNING: Locus rs260682 has MAF < 0.05. Skipping calculation at rs260682
-WARNING: Locus rs6746808 has MAF < 0.05. Skipping calculation at rs6746808
-WARNING: Locus rs4676226 has MAF < 0.05. Skipping calculation at rs4676226
 WARNING: Locus rs260683 has MAF < 0.05. Skipping calculation at rs260683
 WARNING: Locus rs6717140 has MAF < 0.05. Skipping calculation at rs6717140
-WARNING: Locus rs34279514 has MAF < 0.05. Skipping calculation at rs34279514
 WARNING: Locus rs260672 has MAF < 0.05. Skipping calculation at rs260672
 WARNING: Locus rs260615 has MAF < 0.05. Skipping calculation at rs260615
 WARNING: Locus rs260616 has MAF < 0.05. Skipping calculation at rs260616
-WARNING: Locus rs17034796 has MAF < 0.05. Skipping calculation at rs17034796
-WARNING: Locus rs17034798 has MAF < 0.05. Skipping calculation at rs17034798
 WARNING: Locus rs260619 has MAF < 0.05. Skipping calculation at rs260619
 WARNING: Locus rs171856 has MAF < 0.05. Skipping calculation at rs171856
 WARNING: Locus rs1013701 has MAF < 0.05. Skipping calculation at rs1013701
-WARNING: Locus rs57660963 has MAF < 0.05. Skipping calculation at rs57660963
-WARNING: Locus rs260620 has MAF < 0.05. Skipping calculation at rs260620
-WARNING: Locus rs260621 has MAF < 0.05. Skipping calculation at rs260621
 WARNING: Locus rs6723054 has MAF < 0.05. Skipping calculation at rs6723054
-WARNING: Locus rs6723355 has MAF < 0.05. Skipping calculation at rs6723355
-WARNING: Locus rs6731944 has MAF < 0.05. Skipping calculation at rs6731944
 WARNING: Locus rs260596 has MAF < 0.05. Skipping calculation at rs260596
 WARNING: Locus rs7568610 has MAF < 0.05. Skipping calculation at rs7568610
-WARNING: Locus rs13422589 has MAF < 0.05. Skipping calculation at rs13422589
-WARNING: Locus rs11684725 has MAF < 0.05. Skipping calculation at rs11684725
-WARNING: Locus rs10191323 has MAF < 0.05. Skipping calculation at rs10191323
 WARNING: Locus rs260612 has MAF < 0.05. Skipping calculation at rs260612
 WARNING: Locus rs260624 has MAF < 0.05. Skipping calculation at rs260624
 WARNING: Locus rs6542791 has MAF < 0.05. Skipping calculation at rs6542791
@@ -1778,99 +1117,15 @@ WARNING: Locus rs6713436 has MAF < 0.05. Skipping calculation at rs6713436
 WARNING: Locus rs10194018 has MAF < 0.05. Skipping calculation at rs10194018
 WARNING: Locus rs12712029 has MAF < 0.05. Skipping calculation at rs12712029
 WARNING: Locus rs11681142 has MAF < 0.05. Skipping calculation at rs11681142
-WARNING: Locus rs13403619 has MAF < 0.05. Skipping calculation at rs13403619
-WARNING: Locus rs570421934 has MAF < 0.05. Skipping calculation at rs570421934
-WARNING: Locus rs3889200 has MAF < 0.05. Skipping calculation at rs3889200
 WARNING: Locus rs7355684 has MAF < 0.05. Skipping calculation at rs7355684
 WARNING: Locus rs4676267 has MAF < 0.05. Skipping calculation at rs4676267
 WARNING: Locus rs6732728 has MAF < 0.05. Skipping calculation at rs6732728
 WARNING: Locus rs6749266 has MAF < 0.05. Skipping calculation at rs6749266
-WARNING: Locus rs9941618 has MAF < 0.05. Skipping calculation at rs9941618
-WARNING: Locus rs7601259 has MAF < 0.05. Skipping calculation at rs7601259
-WARNING: Locus rs10170537 has MAF < 0.05. Skipping calculation at rs10170537
-WARNING: Locus rs10181589 has MAF < 0.05. Skipping calculation at rs10181589
-WARNING: Locus rs10173158 has MAF < 0.05. Skipping calculation at rs10173158
-WARNING: Locus rs10208078 has MAF < 0.05. Skipping calculation at rs10208078
-WARNING: Locus rs10208403 has MAF < 0.05. Skipping calculation at rs10208403
-WARNING: Locus rs10208413 has MAF < 0.05. Skipping calculation at rs10208413
-WARNING: Locus rs190552362 has MAF < 0.05. Skipping calculation at rs190552362
-WARNING: Locus rs534572128 has MAF < 0.05. Skipping calculation at rs534572128
-WARNING: Locus rs11123739 has MAF < 0.05. Skipping calculation at rs11123739
-WARNING: Locus rs7575574 has MAF < 0.05. Skipping calculation at rs7575574
-WARNING: Locus rs987841 has MAF < 0.05. Skipping calculation at rs987841
-WARNING: Locus rs7597214 has MAF < 0.05. Skipping calculation at rs7597214
-WARNING: Locus rs720979 has MAF < 0.05. Skipping calculation at rs720979
-WARNING: Locus rs10177690 has MAF < 0.05. Skipping calculation at rs10177690
-WARNING: Locus rs10177863 has MAF < 0.05. Skipping calculation at rs10177863
-WARNING: Locus rs13402256 has MAF < 0.05. Skipping calculation at rs13402256
-WARNING: Locus rs13430554 has MAF < 0.05. Skipping calculation at rs13430554
-WARNING: Locus rs12470696 has MAF < 0.05. Skipping calculation at rs12470696
-WARNING: Locus rs12470895 has MAF < 0.05. Skipping calculation at rs12470895
-WARNING: Locus rs6731363 has MAF < 0.05. Skipping calculation at rs6731363
-WARNING: Locus rs12472948 has MAF < 0.05. Skipping calculation at rs12472948
-WARNING: Locus rs6738796 has MAF < 0.05. Skipping calculation at rs6738796
-WARNING: Locus rs6710178 has MAF < 0.05. Skipping calculation at rs6710178
-WARNING: Locus rs62152238 has MAF < 0.05. Skipping calculation at rs62152238
-WARNING: Locus rs58309862 has MAF < 0.05. Skipping calculation at rs58309862
-WARNING: Locus rs57699027 has MAF < 0.05. Skipping calculation at rs57699027
-WARNING: Locus rs7580010 has MAF < 0.05. Skipping calculation at rs7580010
-WARNING: Locus rs35790050 has MAF < 0.05. Skipping calculation at rs35790050
-WARNING: Locus rs34304043 has MAF < 0.05. Skipping calculation at rs34304043
-WARNING: Locus rs6753492 has MAF < 0.05. Skipping calculation at rs6753492
-WARNING: Locus rs11903017 has MAF < 0.05. Skipping calculation at rs11903017
-WARNING: Locus rs7591726 has MAF < 0.05. Skipping calculation at rs7591726
-WARNING: Locus rs7595313 has MAF < 0.05. Skipping calculation at rs7595313
-WARNING: Locus rs7605935 has MAF < 0.05. Skipping calculation at rs7605935
-WARNING: Locus rs11894512 has MAF < 0.05. Skipping calculation at rs11894512
-WARNING: Locus rs11898400 has MAF < 0.05. Skipping calculation at rs11898400
-WARNING: Locus rs6744875 has MAF < 0.05. Skipping calculation at rs6744875
-WARNING: Locus rs6749211 has MAF < 0.05. Skipping calculation at rs6749211
-WARNING: Locus rs75337100 has MAF < 0.05. Skipping calculation at rs75337100
-WARNING: Locus rs373411265 has MAF < 0.05. Skipping calculation at rs373411265
-WARNING: Locus rs76797737 has MAF < 0.05. Skipping calculation at rs76797737
-WARNING: Locus rs13399064 has MAF < 0.05. Skipping calculation at rs13399064
-WARNING: Locus rs77356971 has MAF < 0.05. Skipping calculation at rs77356971
-WARNING: Locus rs111719323 has MAF < 0.05. Skipping calculation at rs111719323
-WARNING: Locus rs7584905 has MAF < 0.05. Skipping calculation at rs7584905
-WARNING: Locus rs80153099 has MAF < 0.05. Skipping calculation at rs80153099
-WARNING: Locus rs112172195 has MAF < 0.05. Skipping calculation at rs112172195
-WARNING: Locus rs13416273 has MAF < 0.05. Skipping calculation at rs13416273
-WARNING: Locus rs78772733 has MAF < 0.05. Skipping calculation at rs78772733
-WARNING: Locus rs77925721 has MAF < 0.05. Skipping calculation at rs77925721
-WARNING: Locus rs79898155 has MAF < 0.05. Skipping calculation at rs79898155
-WARNING: Locus rs76530856 has MAF < 0.05. Skipping calculation at rs76530856
-WARNING: Locus rs113567624 has MAF < 0.05. Skipping calculation at rs113567624
-WARNING: Locus rs75231362 has MAF < 0.05. Skipping calculation at rs75231362
-WARNING: Locus rs79621920 has MAF < 0.05. Skipping calculation at rs79621920
-WARNING: Locus rs113042689 has MAF < 0.05. Skipping calculation at rs113042689
-WARNING: Locus rs4074385 has MAF < 0.05. Skipping calculation at rs4074385
-WARNING: Locus rs56914908 has MAF < 0.05. Skipping calculation at rs56914908
-WARNING: Locus rs28369434 has MAF < 0.05. Skipping calculation at rs28369434
-WARNING: Locus rs13400655 has MAF < 0.05. Skipping calculation at rs13400655
 WARNING: Locus rs4405797 has MAF < 0.05. Skipping calculation at rs4405797
-WARNING: Locus rs11679264 has MAF < 0.05. Skipping calculation at rs11679264
-WARNING: Locus rs60433005 has MAF < 0.05. Skipping calculation at rs60433005
-WARNING: Locus rs10165947 has MAF < 0.05. Skipping calculation at rs10165947
-WARNING: Locus rs13387368 has MAF < 0.05. Skipping calculation at rs13387368
-WARNING: Locus rs72947113 has MAF < 0.05. Skipping calculation at rs72947113
-WARNING: Locus rs58807707 has MAF < 0.05. Skipping calculation at rs58807707
-WARNING: Locus rs7587339 has MAF < 0.05. Skipping calculation at rs7587339
-WARNING: Locus rs13426372 has MAF < 0.05. Skipping calculation at rs13426372
-WARNING: Locus rs10185657 has MAF < 0.05. Skipping calculation at rs10185657
-WARNING: Locus rs13408371 has MAF < 0.05. Skipping calculation at rs13408371
-WARNING: Locus rs13412224 has MAF < 0.05. Skipping calculation at rs13412224
-WARNING: Locus rs13415971 has MAF < 0.05. Skipping calculation at rs13415971
-WARNING: Locus rs13391558 has MAF < 0.05. Skipping calculation at rs13391558
-WARNING: Locus rs10164762 has MAF < 0.05. Skipping calculation at rs10164762
 WARNING: Locus rs6721096 has MAF < 0.05. Skipping calculation at rs6721096
-WARNING: Locus rs13399562 has MAF < 0.05. Skipping calculation at rs13399562
 WARNING: Locus rs7370645 has MAF < 0.05. Skipping calculation at rs7370645
 WARNING: Locus rs138380113 has MAF < 0.05. Skipping calculation at rs138380113
 WARNING: Locus rs56080211 has MAF < 0.05. Skipping calculation at rs56080211
-WARNING: Locus rs34248247 has MAF < 0.05. Skipping calculation at rs34248247
-WARNING: Locus rs34919866 has MAF < 0.05. Skipping calculation at rs34919866
-WARNING: Locus rs34337102 has MAF < 0.05. Skipping calculation at rs34337102
-WARNING: Locus rs35067919 has MAF < 0.05. Skipping calculation at rs35067919
 WARNING: Locus rs9751648 has MAF < 0.05. Skipping calculation at rs9751648
 WARNING: Locus rs35531839 has MAF < 0.05. Skipping calculation at rs35531839
 WARNING: Locus rs72824772 has MAF < 0.05. Skipping calculation at rs72824772
@@ -1879,84 +1134,15 @@ WARNING: Locus rs9330317 has MAF < 0.05. Skipping calculation at rs9330317
 WARNING: Locus rs35955221 has MAF < 0.05. Skipping calculation at rs35955221
 WARNING: Locus rs35120088 has MAF < 0.05. Skipping calculation at rs35120088
 WARNING: Locus rs35392016 has MAF < 0.05. Skipping calculation at rs35392016
-WARNING: Locus rs9330321 has MAF < 0.05. Skipping calculation at rs9330321
-WARNING: Locus rs9798179 has MAF < 0.05. Skipping calculation at rs9798179
-WARNING: Locus rs13412327 has MAF < 0.05. Skipping calculation at rs13412327
-WARNING: Locus rs9750931 has MAF < 0.05. Skipping calculation at rs9750931
-WARNING: Locus rs9752531 has MAF < 0.05. Skipping calculation at rs9752531
-WARNING: Locus rs35223862 has MAF < 0.05. Skipping calculation at rs35223862
 WARNING: Locus rs9752153 has MAF < 0.05. Skipping calculation at rs9752153
-WARNING: Locus rs10195867 has MAF < 0.05. Skipping calculation at rs10195867
-WARNING: Locus rs55794045 has MAF < 0.05. Skipping calculation at rs55794045
-WARNING: Locus rs4953721 has MAF < 0.05. Skipping calculation at rs4953721
-WARNING: Locus rs72824788 has MAF < 0.05. Skipping calculation at rs72824788
-WARNING: Locus rs58031484 has MAF < 0.05. Skipping calculation at rs58031484
-WARNING: Locus rs72938251 has MAF < 0.05. Skipping calculation at rs72938251
-WARNING: Locus rs10496432 has MAF < 0.05. Skipping calculation at rs10496432
-WARNING: Locus rs4953782 has MAF < 0.05. Skipping calculation at rs4953782
-WARNING: Locus rs66789315 has MAF < 0.05. Skipping calculation at rs66789315
-WARNING: Locus rs4953729 has MAF < 0.05. Skipping calculation at rs4953729
-WARNING: Locus rs28372574 has MAF < 0.05. Skipping calculation at rs28372574
-WARNING: Locus rs28570680 has MAF < 0.05. Skipping calculation at rs28570680
-WARNING: Locus rs7565483 has MAF < 0.05. Skipping calculation at rs7565483
-WARNING: Locus rs7577865 has MAF < 0.05. Skipping calculation at rs7577865
-WARNING: Locus rs4953788 has MAF < 0.05. Skipping calculation at rs4953788
-WARNING: Locus rs6725792 has MAF < 0.05. Skipping calculation at rs6725792
-WARNING: Locus rs6709945 has MAF < 0.05. Skipping calculation at rs6709945
-WARNING: Locus rs6719215 has MAF < 0.05. Skipping calculation at rs6719215
-WARNING: Locus rs141301681 has MAF < 0.05. Skipping calculation at rs141301681
-WARNING: Locus rs34311530 has MAF < 0.05. Skipping calculation at rs34311530
-WARNING: Locus rs72824796 has MAF < 0.05. Skipping calculation at rs72824796
-WARNING: Locus rs34821058 has MAF < 0.05. Skipping calculation at rs34821058
-WARNING: Locus rs3213866 has MAF < 0.05. Skipping calculation at rs3213866
-WARNING: Locus rs56794190 has MAF < 0.05. Skipping calculation at rs56794190
-WARNING: Locus rs34517320 has MAF < 0.05. Skipping calculation at rs34517320
-WARNING: Locus rs72824802 has MAF < 0.05. Skipping calculation at rs72824802
-WARNING: Locus rs753492 has MAF < 0.05. Skipping calculation at rs753492
-WARNING: Locus rs4482487 has MAF < 0.05. Skipping calculation at rs4482487
-WARNING: Locus rs28699105 has MAF < 0.05. Skipping calculation at rs28699105
-WARNING: Locus rs1811388 has MAF < 0.05. Skipping calculation at rs1811388
-WARNING: Locus rs4953839 has MAF < 0.05. Skipping calculation at rs4953839
-WARNING: Locus rs34441132 has MAF < 0.05. Skipping calculation at rs34441132
-WARNING: Locus rs1036318 has MAF < 0.05. Skipping calculation at rs1036318
-WARNING: Locus rs1036317 has MAF < 0.05. Skipping calculation at rs1036317
-WARNING: Locus rs35550721 has MAF < 0.05. Skipping calculation at rs35550721
-WARNING: Locus rs6751785 has MAF < 0.05. Skipping calculation at rs6751785
-WARNING: Locus rs6594046 has MAF < 0.05. Skipping calculation at rs6594046
 WARNING: Locus rs6594047 has MAF < 0.05. Skipping calculation at rs6594047
 WARNING: Locus rs6594048 has MAF < 0.05. Skipping calculation at rs6594048
-WARNING: Locus rs4953847 has MAF < 0.05. Skipping calculation at rs4953847
-WARNING: Locus rs4953848 has MAF < 0.05. Skipping calculation at rs4953848
-WARNING: Locus rs4953849 has MAF < 0.05. Skipping calculation at rs4953849
-WARNING: Locus rs6594050 has MAF < 0.05. Skipping calculation at rs6594050
 WARNING: Locus rs4953851 has MAF < 0.05. Skipping calculation at rs4953851
-WARNING: Locus rs34111852 has MAF < 0.05. Skipping calculation at rs34111852
-WARNING: Locus rs6737736 has MAF < 0.05. Skipping calculation at rs6737736
-WARNING: Locus rs28478647 has MAF < 0.05. Skipping calculation at rs28478647
-WARNING: Locus rs28696274 has MAF < 0.05. Skipping calculation at rs28696274
-WARNING: Locus rs4953853 has MAF < 0.05. Skipping calculation at rs4953853
-WARNING: Locus rs6760577 has MAF < 0.05. Skipping calculation at rs6760577
-WARNING: Locus rs78171224 has MAF < 0.05. Skipping calculation at rs78171224
 WARNING: Locus rs28584335 has MAF < 0.05. Skipping calculation at rs28584335
-WARNING: Locus rs28441405 has MAF < 0.05. Skipping calculation at rs28441405
-WARNING: Locus rs28445980 has MAF < 0.05. Skipping calculation at rs28445980
-WARNING: Locus rs28612440 has MAF < 0.05. Skipping calculation at rs28612440
-WARNING: Locus rs28893257 has MAF < 0.05. Skipping calculation at rs28893257
-WARNING: Locus rs28832910 has MAF < 0.05. Skipping calculation at rs28832910
-WARNING: Locus rs6594053 has MAF < 0.05. Skipping calculation at rs6594053
-WARNING: Locus rs6594054 has MAF < 0.05. Skipping calculation at rs6594054
-WARNING: Locus rs72826816 has MAF < 0.05. Skipping calculation at rs72826816
-WARNING: Locus rs72826817 has MAF < 0.05. Skipping calculation at rs72826817
-WARNING: Locus rs75797699 has MAF < 0.05. Skipping calculation at rs75797699
-WARNING: Locus rs28719680 has MAF < 0.05. Skipping calculation at rs28719680
-WARNING: Locus rs56265736 has MAF < 0.05. Skipping calculation at rs56265736
 WARNING: Locus rs28464899 has MAF < 0.05. Skipping calculation at rs28464899
 WARNING: Locus rs6756791 has MAF < 0.05. Skipping calculation at rs6756791
 WARNING: Locus rs28571763 has MAF < 0.05. Skipping calculation at rs28571763
-WARNING: Locus rs28502749 has MAF < 0.05. Skipping calculation at rs28502749
 WARNING: Locus rs7562434 has MAF < 0.05. Skipping calculation at rs7562434
-WARNING: Locus rs6710561 has MAF < 0.05. Skipping calculation at rs6710561
-WARNING: Locus rs6711056 has MAF < 0.05. Skipping calculation at rs6711056
 WARNING: Locus rs28406930 has MAF < 0.05. Skipping calculation at rs28406930
 WARNING: Locus rs2867913 has MAF < 0.05. Skipping calculation at rs2867913
 WARNING: Locus rs3973566 has MAF < 0.05. Skipping calculation at rs3973566
@@ -1969,11 +1155,6 @@ WARNING: Locus rs881940 has MAF < 0.05. Skipping calculation at rs881940
 WARNING: Locus rs4599115 has MAF < 0.05. Skipping calculation at rs4599115
 WARNING: Locus rs13404730 has MAF < 0.05. Skipping calculation at rs13404730
 WARNING: Locus rs2867915 has MAF < 0.05. Skipping calculation at rs2867915
-WARNING: Locus rs10178717 has MAF < 0.05. Skipping calculation at rs10178717
-WARNING: Locus rs13401439 has MAF < 0.05. Skipping calculation at rs13401439
-WARNING: Locus rs13386685 has MAF < 0.05. Skipping calculation at rs13386685
-WARNING: Locus rs13389531 has MAF < 0.05. Skipping calculation at rs13389531
-WARNING: Locus rs10185743 has MAF < 0.05. Skipping calculation at rs10185743
 WARNING: Locus rs4953767 has MAF < 0.05. Skipping calculation at rs4953767
 WARNING: Locus rs11240785 has MAF < 0.05. Skipping calculation at rs11240785
 WARNING: Locus rs951954 has MAF < 0.05. Skipping calculation at rs951954
@@ -1993,14 +1174,9 @@ WARNING: Locus rs34349766 has MAF < 0.05. Skipping calculation at rs34349766
 WARNING: Locus rs1540443 has MAF < 0.05. Skipping calculation at rs1540443
 WARNING: Locus rs2056814 has MAF < 0.05. Skipping calculation at rs2056814
 WARNING: Locus rs2037889 has MAF < 0.05. Skipping calculation at rs2037889
-WARNING: Locus rs148242379 has MAF < 0.05. Skipping calculation at rs148242379
 WARNING: Locus rs35207835 has MAF < 0.05. Skipping calculation at rs35207835
-WARNING: Locus rs4953771 has MAF < 0.05. Skipping calculation at rs4953771
 WARNING: Locus rs35656289 has MAF < 0.05. Skipping calculation at rs35656289
-WARNING: Locus rs34682899 has MAF < 0.05. Skipping calculation at rs34682899
 WARNING: Locus rs150492575 has MAF < 0.05. Skipping calculation at rs150492575
-WARNING: Locus rs537476919 has MAF < 0.05. Skipping calculation at rs537476919
-WARNING: Locus rs112767343 has MAF < 0.05. Skipping calculation at rs112767343
 WARNING: Locus rs202137010 has MAF < 0.05. Skipping calculation at rs202137010
 WARNING: Locus rs2124961 has MAF < 0.05. Skipping calculation at rs2124961
 WARNING: Locus rs170878 has MAF < 0.05. Skipping calculation at rs170878
@@ -2012,25 +1188,28 @@ WARNING: Locus rs336767 has MAF < 0.05. Skipping calculation at rs336767
 WARNING: Locus rs4953819 has MAF < 0.05. Skipping calculation at rs4953819
 WARNING: Locus rs4953820 has MAF < 0.05. Skipping calculation at rs4953820
 WARNING: Locus rs142062425 has MAF < 0.05. Skipping calculation at rs142062425
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs113763233
-WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62160486
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs11678794
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs11676523
 WARNING: Locus rs115582415 has MAF < 0.05. Skipping calculation at rs115582415
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs140877099
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs116179691
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10207734
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13396284
 WARNING: Locus rs1033017 has MAF < 0.05. Skipping calculation at rs1033017
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13388539
 WARNING: Locus rs10167155 has MAF < 0.05. Skipping calculation at rs10167155
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs147135021
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2004273
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10190967
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6716800
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10183905
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4953838
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6737486
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs3749040
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1509414
 WARNING: Locus rs4953754 has MAF < 0.05. Skipping calculation at rs4953754
-WARNING: Locus rs56357128 has MAF < 0.05. Skipping calculation at rs56357128
 WARNING: Locus rs2165055 has MAF < 0.05. Skipping calculation at rs2165055
 WARNING: Locus rs12477042 has MAF < 0.05. Skipping calculation at rs12477042
-WARNING: Locus rs13420625 has MAF < 0.05. Skipping calculation at rs13420625
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs3976244
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs906816
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs737182
@@ -2038,7 +1217,6 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs12998618
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs12477779
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs145531932
-WARNING: Locus rs11902091 has MAF < 0.05. Skipping calculation at rs11902091
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs17842650
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs3806525
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs3806524
@@ -2051,7 +1229,6 @@ WARNING: Locus rs1828277 has MAF < 0.05. Skipping calculation at rs1828277
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2048243
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1567366
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs72826888
-WARNING: Locus rs13403558 has MAF < 0.05. Skipping calculation at rs13403558
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs3789736
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs3789735
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1509422
@@ -2074,9 +1251,9 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4368380
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4353695
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2864665
-WARNING: Locus rs1509419 has MAF < 0.05. Skipping calculation at rs1509419
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs3752863
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs3789732
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs17842683
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1509417
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1509416
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1848682
@@ -2084,6 +1261,7 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7599788
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13423556
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs3789727
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs145646364
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs62160547
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs11903833
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10168630
@@ -2096,7 +1274,6 @@ WARNING: Locus rs2175119 has MAF < 0.05. Skipping calculation at rs2175119
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs17842678
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs3817140
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2271244
-WARNING: Locus rs78206992 has MAF < 0.05. Skipping calculation at rs78206992
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs11675767
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs17842675
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7421614
@@ -2108,15 +1285,12 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs72828803
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1154652
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2271245
-WARNING: Locus rs11898910 has MAF < 0.05. Skipping calculation at rs11898910
 WARNING: Locus rs1912095 has MAF < 0.05. Skipping calculation at rs1912095
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs12620593
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs11240791
-WARNING: Locus rs76413811 has MAF < 0.05. Skipping calculation at rs76413811
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2202875
-WARNING: Locus rs10202266 has MAF < 0.05. Skipping calculation at rs10202266
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs150516452
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs881302
-WARNING: Locus rs10205807 has MAF < 0.05. Skipping calculation at rs10205807
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs906815
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2018711
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1810097
@@ -2126,9 +1300,7 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10167781
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10168108
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs4953845
-WARNING: Locus rs146943169 has MAF < 0.05. Skipping calculation at rs146943169
 WARNING: Locus rs6720546 has MAF < 0.05. Skipping calculation at rs6720546
-WARNING: Locus rs6711385 has MAF < 0.05. Skipping calculation at rs6711385
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6717760
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs112058453
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6707554
@@ -2141,34 +1313,23 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs199834024
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs11695276
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs12469947
-WARNING: Locus rs6714985 has MAF < 0.05. Skipping calculation at rs6714985
 WARNING: Locus rs7585308 has MAF < 0.05. Skipping calculation at rs7585308
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs12614572
-WARNING: Locus rs9326627 has MAF < 0.05. Skipping calculation at rs9326627
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs13413818
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs17162343
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs36086413
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs11240794
-WARNING: Locus rs11894410 has MAF < 0.05. Skipping calculation at rs11894410
-WARNING: Locus rs61462750 has MAF < 0.05. Skipping calculation at rs61462750
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs56329304
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs77028522
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs2089640
-WARNING: Locus rs201478246 has MAF < 0.05. Skipping calculation at rs201478246
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1509415
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs72828812
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs72828814
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs6708797
-WARNING: Locus rs73954639 has MAF < 0.05. Skipping calculation at rs73954639
-WARNING: Locus rs73954641 has MAF < 0.05. Skipping calculation at rs73954641
-WARNING: Locus rs61730258 has MAF < 0.05. Skipping calculation at rs61730258
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs11240795
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs12618780
-WARNING: Locus rs73954642 has MAF < 0.05. Skipping calculation at rs73954642
-WARNING: Locus rs13429750 has MAF < 0.05. Skipping calculation at rs13429750
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs10793770
-WARNING: Locus rs11904760 has MAF < 0.05. Skipping calculation at rs11904760
-WARNING: Locus rs10171646 has MAF < 0.05. Skipping calculation at rs10171646
-WARNING: Locus rs10170120 has MAF < 0.05. Skipping calculation at rs10170120
-WARNING: Locus rs10211181 has MAF < 0.05. Skipping calculation at rs10211181
-WARNING: Locus rs9326629 has MAF < 0.05. Skipping calculation at rs9326629
+WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs79628882
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7575835
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs1509421
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7603735
@@ -2176,12 +1337,5 @@ WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calcula
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs12613552
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7608039
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7565589
-WARNING: Locus rs137856165 has MAF < 0.05. Skipping calculation at rs137856165
 WARNING: Reached chromosome edge before EHH decayed below 0.05. Skipping calculation at rs7608263
-WARNING: Locus rs11965102 has MAF < 0.05. Skipping calculation at rs11965102
-WARNING: Locus rs182392917 has MAF < 0.05. Skipping calculation at rs182392917
-WARNING: Locus rs371162751 has MAF < 0.05. Skipping calculation at rs371162751
 WARNING: Locus rs146511008 has MAF < 0.05. Skipping calculation at rs146511008
-WARNING: Locus rs574285917 has MAF < 0.05. Skipping calculation at rs574285917
-WARNING: Locus rs532652481 has MAF < 0.05. Skipping calculation at rs532652481
-WARNING: Locus rs531079097 has MAF < 0.05. Skipping calculation at rs531079097
