@@ -7,6 +7,7 @@
 * Add PBS and iHS references
 * For line about check # of individuals is correct - give directives as to what is right answer
 * Use environmental variables like $REGION = xx.  so that it easier to recycle code when they switch regions? 
+* What does it mean when PBS goes negative
 
 To get some exposure to different approaches for detecting recent positive selection from population genetic data, we will be using the 1000 Genomes data.  We will present two approaches for detecting recent positive selection.  The first is an approach based on differentiation between populations, that uses the PBS (population-branch statistic) to detect selection that occurred in the history of a particular population.  The second is an approach based on haplotype patterns - using the iHS statistic. 
 
@@ -215,8 +216,9 @@ p
 
 ## iHS
 
+Now's let turn towards looking at haplotype-based signatures of selection.  We'll focus on the CHB for this analysis, so we'll begin by preparing a new data file with just the CHB individuals.  
 
-Now's let turn towards looking at haplotype-based signatures of selection.  We'll focus on the CHB for this analysis. 
+We will filter the file to only include variants with minor allele frequency >5%.  In principle the rare variants increase our power, but for efficiency's sake we'll exclude them here, as most of the information for these statistics comes from common variants. 
 
 ```bash
 
@@ -228,13 +230,14 @@ awk '($3 == "CHB") {print $1}' chb_yri_fin_clst.txt > chb_iids.txt
 bcftools view -S chb_iids.txt \
          -q '.05 minor' \
          -O z \
-         chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz > \
-         chb_chr2_108013601_111013601_filtered.vcf.gz
+         chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz > chb_chr2_108013601_111013601_filtered.vcf.gz
+```
 
+Haplotype-based methods use recombination rates between markers to calibrate the extent of haplotype homozygosity observed.  To that end, we need to set up a list of all the markers in the format of a plink `.bim` file, and interpolate a genetic map at each of those positions.  Here are the steps:  
+```bash
 # write bim file from vcf (-H supress header)
-bcftools view chb_chr2_135108646_138108646_filtered.vcf.gz -H | \
-awk '{print $1, $3, "0", $2, $4, $5}' > chr2_108013601_111013601_filtered.bim
-
+bcftools view chb_chr2_108013601_111013601_filtered.vcf.gz \
+          -H | awk '{print $1, $3, "0", $2, $4, $5}' > chr2_108013601_111013601_filtered.bim
 
 # get genetic positions and interpolate genetic positions for variants not present in the genetic_map
 plink-1.9 --bim chr2_108013601_111013601_filtered.bim \
@@ -244,8 +247,14 @@ plink-1.9 --bim chr2_108013601_111013601_filtered.bim \
           
 # format as map file
 awk '{print $1, $2, $3, $4}' chr2_108013601_111013601_filtered_gm.bim > chr2_108013601_111013601_filtered_gm.map
+
+# Inspect the map file - the columns are <CHR> <POS> <Position in centiMorgans> <Position in physical space> 
+head chr2_108013601_111013601_filtered_gm.map
 ```
 
+Now we can finally play!  This selscan command will compute iHS values for us, and the norm command normalizes them to have mean 0 and standard deviation 1 (which is useful for assessing outlier values).
+
+This command will take about 5 minutes.  If you're short on time, the results have been copied to the `1000genomes_Selection_Exercise/results/` directory (`chb_chr2_108013601_111013601_filtered.ihs.out` and `chb_chr2_108013601_111013601_filtered.ihs.out.100bins.norm`). 
 
 ```bash
 # compute iHS! This will take about 5 minutes 
@@ -253,20 +262,11 @@ selscan --ihs \
         --vcf chb_chr2_108013601_111013601_filtered.vcf.gz \
         --map chr2_108013601_111013601_filtered_gm.map \
         --out chb_chr2_108013601_111013601_filtered   
-```
 
-Normalize values 
-```bash
 norm --ihs --files chb_chr2_108013601_111013601_filtered.ihs.out
 ```
 
 #### Make plots
-
-#### Questions
-
-
-
-#### Visualization 
 
 ```R
 library(ggplot2)
@@ -276,35 +276,13 @@ library(reshape2)
 ihs_df <- read.table("chb_chr2_108013601_111013601_filtered.ihs.out.100bins.norm", header = FALSE)
 colnames(ihs_df) <- c("SNP", "POS", "FREQ", "ihh1", "ihh0", "unstd_iHS", "std_iHS", "top")
 
-# intersect iHS with cross population data
-selection_df <- ihs_df %>% 
-                inner_join(cross_pop_df, by = c("SNP", "POS")) %>% 
-                mutate(std_iHS = abs(std_iHS)) %>%
-                mutate(std_PBS = abs(std_PBS))
-
-# melt data for plotting      
-melted_selection_df <- selection_df %>% 
-                       select(POS, std_iHS, std_PBS, FST_CY, FST_CF, FST_YF) %>% 
-                       melt(id = c("POS"))
-
-melted_fst_df <- melted_selection_df %>% filter(variable %in% c("FST_CY", "FST_CF", "FST_YF"))
-melted_cross_pop_df <- melted_selection_df %>% filter(variable %in% c("FST_CY", "FST_CF", "FST_YF", "std_PBS"))
-
-# plot Fst
-p <- ggplot(melted_fst_df, aes(x = POS, y = value)) + geom_point() + xlab('Position on chr2') + 
-      theme_bw() + ylab("") + facet_grid(variable ~ ., scales = "free_y")
-
-# plot Fst and PBS
-p1 <- ggplot(melted_cross_pop_df, aes(x = POS, y = value)) + geom_point() + xlab('Position on chr2') + 
-      theme_bw() + ylab("") + facet_grid(variable ~ ., scales = "free_y")
+# Take the absolute value of iHS
+selection_df <- ihs_df %>% mutate(std_iHS = abs(std_iHS))
 
 # plot Fst, PBS, and iHS
-p2 <- ggplot(melted_selection_df, aes(x = POS, y = value)) + geom_point() + xlab('Position on chr2') + 
-      theme_bw() + ylab("") + facet_grid(variable ~ ., scales = "free_y")
+iHSplot <- ggplot(selection_df, aes(x = POS, y = std_iHS)) + geom_point() + xlab('Position on chr2') + theme_bw() + ylab("|normalized iHS|") 
 
-p1
-p2
-p3
+iHSplot
 ```
 
 **Questions**
