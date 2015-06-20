@@ -1,0 +1,35 @@
+PLINK v1.90b3s 64-bit (17 Jun 2015)
+Options in effect:
+  --double-id
+  --fst
+  --id-delim .
+  --out yri_fin_chr2_108013601_111013601_filtered
+  --set-missing-var-ids @:#
+  --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz
+  --within yri_fin_clst.txt
+
+Hostname: Josephs-MBP
+Working directory: /Users/josephmarcus/Desktop/1000genomes_Selection_Exercise/data
+Start time: Sat Jun 20 17:15:58 2015
+
+Random number seed: 1434813358
+4096 MB RAM detected; reserving 2048 MB for main workspace.
+--vcf: yri_fin_chr2_108013601_111013601_filtered-temporary.bed +
+yri_fin_chr2_108013601_111013601_filtered-temporary.bim +
+yri_fin_chr2_108013601_111013601_filtered-temporary.fam written.
+70772 variants loaded from .bim file.
+2498 people (0 males, 0 females, 2498 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to yri_fin_chr2_108013601_111013601_filtered.nosex .
+--within: 2 clusters loaded, covering a total of 202 people.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 2498 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+70772 variants and 2498 people pass filters and QC.
+Note: No phenotypes present.
+Writing --fst report (2 populations) to
+yri_fin_chr2_108013601_111013601_filtered.fst ... done.
+21533 markers with valid Fst estimates (49239 excluded).
+Mean Fst estimate: 0.0542269
+Weighted Fst estimate: 0.155118
+
+End time: Sat Jun 20 17:16:02 2015
