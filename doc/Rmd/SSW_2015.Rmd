@@ -97,13 +97,12 @@ bcftools view -v snps \
          -m 2 -M 2 \
          -S chb_yri_fin_iids.txt \
          -O z \
-         1000genomes_phase3_chr2_108013601_111013601.vcf.gz > \ 
-         chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz
+         1000genomes_phase3_chr2_108013601_111013601.vcf.gz > chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz
 ```
 
 **Questions**
 
-*
+* 
 *
 *
 
@@ -128,29 +127,29 @@ plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
 
 #### Visualizing pairwise $F_{ST}$ values
 
-In another terminal window or screen open an R session that we will be using for the rest of the workshop. Now run these commands in the R session.
+In another terminal window or screen open an R session that we will be using for the rest of the workshop. Now run these commands in the R session.  Make sure your working directory in R is set to the data subdirectory.  (Use the "Session" tab or setwd() command to change your working directory, e.g. setwd("~/git/1000genomes_Selection_Exercise/data")).
 
 ```R
 library(dplyr)
+library(ggplot2)
 
 # read data
-fst_chb_yri_df <- read.table('chb_yri_chr2_108013601_111013601_filtered.fst', header = TRUE) %>% rename(FST_CY = FST)
-fst_chb_fin_df <- read.table('chb_fin_chr2_108013601_111013601_filtered.fst', header = TRUE) %>% rename(FST_CF = FST)
-fst_yri_fin_df <- read.table('yri_fin_chr2_108013601_111013601_filtered.fst', header = TRUE) %>% rename(FST_YF = FST)
+fst_chb_fin_df <- read.table('chb_fin_chr2_108013601_111013601_filtered.fst', header = TRUE) %>% 
+  rename(FST_CF = FST) %>% 
+  filter(is.nan(FST_CF) == FALSE) %>% 
+  select(SNP, POS, FST_CF)
 
-# join data.frames, filter out rows with missing variants from any population, rename cols and select rows of interest for plotting later
-fst_df <- fst_chb_yri_df %>% 
-          inner_join(fst_chb_fin_df, by = c('CHR', 'SNP', 'POS')) %>% 
-          inner_join(fst_yri_fin_df, by = c('CHR', 'SNP', 'POS')) %>%
-          filter(is.nan(FST_CY) == FALSE, is.nan(FST_CF) == FALSE, is.nan(FST_YF) == FALSE) %>%
-          select(SNP, POS, FST_CY, FST_CF, FST_YF)
+# Prepare the plot
+p <- ggplot(fst_chb_fin_df, aes(x = POS, y = FST_CF)) + geom_point() + xlab('Position on chr2') + 
+      theme_bw() + ylab("") 
+# View the plot
+p
+
 ```
-
-#### Add code to make plots of pairwise Fst for FIN vs CHB and narrative to say how we see pairwise fst values high but which population is it occuring in?  Motivate computation of PBS
 
 #### Questions
 
-1.  Suppose the 99.9th percentile of $F_{ST}$ between CHB and FIN genome-widew as 0.1.  Do you see any variants in this 3Mb region that are among the most differentiated in the genome?  
+1.  Suppose the 99.9th percentile of $F_{ST}$ between CHB and FIN genome-wide is 0.5.  Do you see any variants in this 3Mb region that are among the most differentiated in the genome?  
 2.  Can you assess from this data whether selection took place just in CHB, FIN, or both? 
 
 
