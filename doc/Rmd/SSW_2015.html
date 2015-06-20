@@ -108,11 +108,8 @@ awk '($3 == &quot;CHB&quot; || $3 == &quot;FIN&quot;) {print $0}' chb_yri_fin_cl
 # write a clst file for just YRI and FIN
 awk  '($3 == &quot;YRI&quot; || $3 == &quot;FIN&quot;) {print $0}' chb_yri_fin_clst.txt &gt; yri_fin_clst.txt
 
-# write a file of just IIDs from CHB 
-awk '($3 == &quot;CHB&quot;) {print $1}' chb_yri_fin_clst.txt &gt; chb_iids.txt
-
 # check if # individuals are correct
-wc -l chb_yri_fin_iids.txt chb_yri_clst.txt chb_fin_clst.txt yri_fin_clst.txt chb_iids.txt 
+wc -l chb_yri_fin_iids.txt chb_yri_clst.txt chb_fin_clst.txt yri_fin_clst.txt
 
 # Visually inspect the top and botom of the files. 
 head chb_yri_fin_iids.txt
@@ -136,8 +133,7 @@ bcftools view -v snps \
          -m 2 -M 2 \
          -S chb_yri_fin_iids.txt \
          -O z \
-         1000genomes_phase3_chr2_108013601_111013601.vcf.gz &gt; \ 
-         chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz</code></pre>
+         1000genomes_phase3_chr2_108013601_111013601.vcf.gz &gt; chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz</code></pre>
 <p><strong>Questions</strong></p>
 <ul>
 <li></li>
@@ -147,9 +143,47 @@ bcftools view -v snps \
 </div>
 <div id="population-differentation-based-selection-scan" class="section level2">
 <h2>Population-differentation-based selection scan</h2>
-<p>One approach to detecting recent positive selection is to see if a local genomic region shows extensive differentiation between <em>two</em> populations (using a population differentiation statistic such as <span class="math">\(F_{ST}\)</span> or a more formal inferential methods like <code>BayesScan</code> not shown here). A drawback of such an approach is we do not know which of the two populations (or if both) have experienced selection causing the allele frequencies to differentiate. Using <em>three</em> populations, we can compute a statistic that isolates a single populations. Specifically we compute an estimate of how much differentiation occured on the branch leading to a particular popualtion in a three-population tree consiting of a focal population, a sister population, and an outgroup population. These <code>PBS</code> statistics are based on <span class="math">\(F_{ST}\)</span>, so we start by computing pairwise <span class="math">\(F_{ST}\)</span> values.</p>
+<p>One approach to detecting recent positive selection is to see if a local genomic region shows extensive differentiation between <em>two</em> populations (using a population differentiation statistic such as <span class="math">\(F_{ST}\)</span> or a more formal inferential methods like <code>BayesScan</code> not shown here). Let’s do this for the CHB vs FIN comparison for our focal region.</p>
 <div id="computing-pairwise-f_sts" class="section level3">
 <h3>Computing pairwise <span class="math">\(F_{ST}\)</span>s</h3>
+<pre class="bash"><code>
+# Fst between CHB and FIN
+plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
+          --fst \
+          --within chb_fin_clst.txt \
+          --double-id \
+          --id-delim . \
+          --out chb_fin_chr2_108013601_111013601_filtered \
+          --set-missing-var-ids @:#</code></pre>
+<div id="visualizing-pairwise-f_st-values" class="section level4">
+<h4>Visualizing pairwise <span class="math">\(F_{ST}\)</span> values</h4>
+<p>In another terminal window or screen open an R session that we will be using for the rest of the workshop. Now run these commands in the R session. Make sure your working directory in R is set to the data subdirectory. (Use the “Session” tab or setwd() command to change your working directory, e.g. setwd(“~/git/1000genomes_Selection_Exercise/data”)).</p>
+<pre class="r"><code>library(dplyr)
+library(ggplot2)
+
+# read data
+fst_chb_fin_df &lt;- read.table('chb_fin_chr2_108013601_111013601_filtered.fst', header = TRUE) %&gt;% 
+  rename(FST_CF = FST) %&gt;% 
+  filter(is.nan(FST_CF) == FALSE) %&gt;% 
+  select(SNP, POS, FST_CF)
+
+# Prepare the plot
+p &lt;- ggplot(fst_chb_fin_df, aes(x = POS, y = FST_CF)) + geom_point() + xlab('Position on chr2') + 
+      theme_bw() + ylab(&quot;&quot;) 
+# View the plot
+p
+</code></pre>
+</div>
+<div id="questions" class="section level4">
+<h4>Questions</h4>
+<ol style="list-style-type: decimal">
+<li>Suppose the 99.9th percentile of <span class="math">\(F_{ST}\)</span> between CHB and FIN genome-wide is 0.5. Do you see any variants in this 3Mb region that are among the most differentiated in the genome?<br /></li>
+<li>Can you assess from this data whether selection took place just in CHB, FIN, or both?</li>
+</ol>
+</div>
+</div>
+<div id="pbs" class="section level3">
+<h3>PBS</h3>
 <pre class="bash"><code># Fst between CHB and YRI
 plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
           --fst \
@@ -158,16 +192,8 @@ plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
           --id-delim . \
           --out chb_yri_chr2_108013601_111013601_filtered \
           --set-missing-var-ids @:#
-     
-# Fst between CHB and FIN
-plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
-          --fst \
-          --within chb_fin_clst.txt \
-          --double-id \
-          --id-delim . \
-          --out chb_fin_chr2_108013601_111013601_filtered \
-          --set-missing-var-ids @:#
-             
+          
+          
 # Fst between YRI and FIN
 plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
           --fst \
@@ -176,36 +202,7 @@ plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
           --id-delim . \
           --out yri_fin_chr2_108013601_111013601_filtered \
           --set-missing-var-ids @:#</code></pre>
-<div id="visualizing-pairwise-f_st-values" class="section level4">
-<h4>Visualizing pairwise <span class="math">\(F_{ST}\)</span> values</h4>
-<p>In another terminal window or screen open an R session that we will be using for the rest of the workshop. Now run these commands in the R session.</p>
-<pre class="r"><code>library(dplyr)
-
-# read data
-fst_chb_yri_df &lt;- read.table('chb_yri_chr2_108013601_111013601_filtered.fst', header = TRUE) %&gt;% rename(FST_CY = FST)
-fst_chb_fin_df &lt;- read.table('chb_fin_chr2_108013601_111013601_filtered.fst', header = TRUE) %&gt;% rename(FST_CF = FST)
-fst_yri_fin_df &lt;- read.table('yri_fin_chr2_108013601_111013601_filtered.fst', header = TRUE) %&gt;% rename(FST_YF = FST)
-
-# join data.frames, filter out rows with missing variants from any population, rename cols and select rows of interest for plotting later
-fst_df &lt;- fst_chb_yri_df %&gt;% 
-          inner_join(fst_chb_fin_df, by = c('CHR', 'SNP', 'POS')) %&gt;% 
-          inner_join(fst_yri_fin_df, by = c('CHR', 'SNP', 'POS')) %&gt;%
-          filter(is.nan(FST_CY) == FALSE, is.nan(FST_CF) == FALSE, is.nan(FST_YF) == FALSE) %&gt;%
-          select(SNP, POS, FST_CY, FST_CF, FST_YF)</code></pre>
-</div>
-<div id="add-code-to-make-plots-of-pairwise-fst-for-fin-vs-chb-and-narrative-to-say-how-we-see-pairwise-fst-values-high-but-which-population-is-it-occuring-in-motivate-computation-of-pbs" class="section level4">
-<h4>Add code to make plots of pairwise Fst for FIN vs CHB and narrative to say how we see pairwise fst values high but which population is it occuring in? Motivate computation of PBS</h4>
-</div>
-<div id="questions" class="section level4">
-<h4>Questions</h4>
-<ol style="list-style-type: decimal">
-<li>Suppose the 99.9th percentile of <span class="math">\(F_{ST}\)</span> between CHB and FIN genome-widew as 0.1. Do you see any variants in this 3Mb region that are among the most differentiated in the genome?<br /></li>
-<li>Can you assess from this data whether selection took place just in CHB, FIN, or both?</li>
-</ol>
-</div>
-</div>
-<div id="pbs" class="section level3">
-<h3>PBS</h3>
+<p>``<code>A drawback of such an approach is we do not know which of the two populations (or if both) have experienced selection causing the allele frequencies to differentiate.  Using *three* populations, we can compute a statistic that isolates a single populations.  Specifically we compute an estimate of how much differentiation occured on the branch leading to a particular popualtion in a three-population tree consiting of a focal population, a sister population, and an outgroup population.  These</code>PBS` statistics are based on <span class="math">\(F_{ST}\)</span>, so we start by computing pairwise <span class="math">\(F_{ST}\)</span> values.</p>
 <p>Let’s now compute the PBS statistic for the FIN and the CHB to see if we can determine which population the selection occurred in.</p>
 <p><span class="math">\[ T = -log(1 - Fst) \]</span> <span class="math">\[ PBS_{CYF} = \frac{T_{CY} + T_{CF} - T_{YF}}{2} \]</span></p>
 <pre class="r"><code># compute pbs and make a data frame that holds all the information we have computed thus far
@@ -237,19 +234,22 @@ cross_pop_df$std_PBS &lt;- with(cross_pop_df, ave(PBS, BINS, FUN=scale))</code><
 </div>
 <div id="ihs" class="section level2">
 <h2>iHS</h2>
-<p>Now’s let turn towards looking at haplotype-based signatures of selection. We’ll focus on the CHB for this analysis.</p>
-<pre class="bash"><code># keep CHB individuals from the filtered vcf and filter out rare variants (at maf &lt; 5%)
+<p>Now’s let turn towards looking at haplotype-based signatures of selection. We’ll focus on the CHB for this analysis, so we’ll begin by preparing a new data file with just the CHB individuals.</p>
+<p>We will filter the file to only include variants with minor allele frequency &gt;5%. In principle the rare variants increase our power, but for efficiency’s sake we’ll exclude them here, as most of the information for these statistics comes from common variants.</p>
+<pre class="bash"><code>
+# write a file of just IIDs from CHB 
+awk '($3 == &quot;CHB&quot;) {print $1}' chb_yri_fin_clst.txt &gt; chb_iids.txt
+
+# keep CHB individuals from the filtered vcf and filter out rare variants (at maf &lt; 5%)
 # this will be used for haplotype based selection analysis.
 bcftools view -S chb_iids.txt \
          -q '.05 minor' \
          -O z \
-         chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz &gt; \
-         chb_chr2_108013601_111013601_filtered.vcf.gz
-
-# write bim file from vcf (-H supress header)
-bcftools view chb_chr2_135108646_138108646_filtered.vcf.gz -H | \
-awk '{print $1, $3, &quot;0&quot;, $2, $4, $5}' &gt; chr2_108013601_111013601_filtered.bim
-
+         chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz &gt; chb_chr2_108013601_111013601_filtered.vcf.gz</code></pre>
+<p>Haplotype-based methods use recombination rates between markers to calibrate the extent of haplotype homozygosity observed. To that end, we need to set up a list of all the markers in the format of a plink <code>.bim</code> file, and interpolate a genetic map at each of those positions. Here are the steps:</p>
+<pre class="bash"><code># write bim file from vcf (-H supress header)
+bcftools view chb_chr2_108013601_111013601_filtered.vcf.gz \
+          -H | awk '{print $1, $3, &quot;0&quot;, $2, $4, $5}' &gt; chr2_108013601_111013601_filtered.bim
 
 # get genetic positions and interpolate genetic positions for variants not present in the genetic_map
 plink-1.9 --bim chr2_108013601_111013601_filtered.bim \
@@ -258,16 +258,24 @@ plink-1.9 --bim chr2_108013601_111013601_filtered.bim \
           --out chr2_108013601_111013601_filtered_gm
           
 # format as map file
-awk '{print $1, $2, $3, $4}' chr2_108013601_111013601_filtered_gm.bim &gt; chr2_108013601_111013601_filtered_gm.map</code></pre>
+awk '{print $1, $2, $3, $4}' chr2_108013601_111013601_filtered_gm.bim &gt; chr2_108013601_111013601_filtered_gm.map
+
+# Inspect the map file - the columns are &lt;CHR&gt; &lt;POS&gt; &lt;Position in centiMorgans&gt; &lt;Position in physical space&gt; 
+head chr2_108013601_111013601_filtered_gm.map</code></pre>
+<p>Now we can finally play! This selscan command will compute iHS values for us, and the norm command normalizes them to have mean 0 and standard deviation 1 (which is useful for assessing outlier values).</p>
+<p>This command will take about 5 minutes. If you’re short on time, the results have been copied to the <code>1000genomes_Selection_Exercise/results/</code> directory (<code>chb_chr2_108013601_111013601_filtered.ihs.out</code> and <code>chb_chr2_108013601_111013601_filtered.ihs.out.100bins.norm</code>).</p>
 <pre class="bash"><code># compute iHS! This will take about 5 minutes 
 selscan --ihs \
         --vcf chb_chr2_108013601_111013601_filtered.vcf.gz \
         --map chr2_108013601_111013601_filtered_gm.map \
-        --out chb_chr2_108013601_111013601_filtered   </code></pre>
-<p>Normalize values</p>
-<pre class="bash"><code>norm --ihs --files chb_chr2_108013601_111013601_filtered.ihs.out</code></pre>
+        --out chb_chr2_108013601_111013601_filtered   
+
+norm --ihs --files chb_chr2_108013601_111013601_filtered.ihs.out</code></pre>
 <div id="make-plots" class="section level4">
 <h4>Make plots</h4>
+<pre class="r"><code># read iHS data
+ihs_df &lt;- read.table(&quot;chb_chr2_108013601_111013601_filtered.ihs.out.100bins.norm&quot;, header = FALSE)
+colnames(ihs_df) &lt;- c(&quot;SNP&quot;, &quot;POS&quot;, &quot;FREQ&quot;, &quot;ihh1&quot;, &quot;ihh0&quot;, &quot;unstd_iHS&quot;, &quot;std_iHS&quot;, &quot;top&quot;)</code></pre>
 </div>
 <div id="questions-2" class="section level4">
 <h4>Questions</h4>
@@ -281,10 +289,8 @@ library(reshape2)
 ihs_df &lt;- read.table(&quot;chb_chr2_108013601_111013601_filtered.ihs.out.100bins.norm&quot;, header = FALSE)
 colnames(ihs_df) &lt;- c(&quot;SNP&quot;, &quot;POS&quot;, &quot;FREQ&quot;, &quot;ihh1&quot;, &quot;ihh0&quot;, &quot;unstd_iHS&quot;, &quot;std_iHS&quot;, &quot;top&quot;)
 
-# intersect iHS with cross population data
-selection_df &lt;- ihs_df %&gt;% 
-                inner_join(cross_pop_df, by = c(&quot;SNP&quot;, &quot;POS&quot;)) %&gt;% 
-                mutate(std_iHS = abs(std_iHS)) %&gt;%
+# Take the absolute value of 
+selection_df &lt;- ihs_df %&gt;% mutate(std_iHS = abs(std_iHS)) %&gt;%
                 mutate(std_PBS = abs(std_PBS))
 
 # melt data for plotting      
@@ -321,6 +327,7 @@ p3</code></pre>
 <div id="another-region" class="section level2">
 <h2>Another Region</h2>
 <p>Adapt the code you just ran using but now use this region (2:108013601-111013601) in the 1000genomes project. Instead of computing iHS for CHB compute it for FIN.</p>
+<p>Ideally feed them script that takes chr, start, stop and produces plots generated above –</p>
 <p><strong>Questions</strong></p>
 <ul>
 <li></li>
