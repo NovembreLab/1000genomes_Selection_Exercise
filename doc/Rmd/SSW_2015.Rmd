@@ -317,6 +317,8 @@ p3
 
 Adapt the code you just ran using but now use this region (2:108013601-111013601) in the 1000genomes project. Instead of computing iHS for CHB compute it for FIN.
 
+Ideally feed them script that takes chr, start, stop and produces plots generated above -- 
+
 **Questions**
 
 *
