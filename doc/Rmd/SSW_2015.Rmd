@@ -66,11 +66,8 @@ awk '($3 == "CHB" || $3 == "FIN") {print $0}' chb_yri_fin_clst.txt > chb_fin_cls
 # write a clst file for just YRI and FIN
 awk  '($3 == "YRI" || $3 == "FIN") {print $0}' chb_yri_fin_clst.txt > yri_fin_clst.txt
 
-# write a file of just IIDs from CHB 
-awk '($3 == "CHB") {print $1}' chb_yri_fin_clst.txt > chb_iids.txt
-
 # check if # individuals are correct
-wc -l chb_yri_fin_iids.txt chb_yri_clst.txt chb_fin_clst.txt yri_fin_clst.txt chb_iids.txt 
+wc -l chb_yri_fin_iids.txt chb_yri_clst.txt chb_fin_clst.txt yri_fin_clst.txt
 
 # Visually inspect the top and botom of the files. 
 head chb_yri_fin_iids.txt
@@ -104,9 +101,6 @@ bcftools view -v snps \
          chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz
 ```
 
-
-
-
 **Questions**
 
 *
@@ -115,20 +109,12 @@ bcftools view -v snps \
 
 ## Population-differentation-based selection scan
 
-One approach to detecting recent positive selection is to see if a local genomic region shows extensive differentiation between *two* populations (using a population differentiation statistic such as $F_{ST}$ or a more formal inferential methods like `BayesScan` not shown here).  A drawback of such an approach is we do not know which of the two populations (or if both) have experienced selection causing the allele frequencies to differentiate.  Using *three* populations, we can compute a statistic that isolates a single populations.  Specifically we compute an estimate of how much differentiation occured on the branch leading to a particular popualtion in a three-population tree consiting of a focal population, a sister population, and an outgroup population.  These `PBS` statistics are based on $F_{ST}$, so we start by computing pairwise $F_{ST}$ values. 
+One approach to detecting recent positive selection is to see if a local genomic region shows extensive differentiation between *two* populations (using a population differentiation statistic such as $F_{ST}$ or a more formal inferential methods like `BayesScan` not shown here).  Let's do this for the CHB vs FIN comparison for our focal region.
 
 ### Computing pairwise $F_{ST}$s
 
 ```bash
-# Fst between CHB and YRI
-plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
-          --fst \
-          --within chb_yri_clst.txt \
-          --double-id \
-          --id-delim . \
-          --out chb_yri_chr2_108013601_111013601_filtered \
-          --set-missing-var-ids @:#
-     
+
 # Fst between CHB and FIN
 plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
           --fst \
@@ -137,16 +123,8 @@ plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
           --id-delim . \
           --out chb_fin_chr2_108013601_111013601_filtered \
           --set-missing-var-ids @:#
-             
-# Fst between YRI and FIN
-plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
-          --fst \
-          --within yri_fin_clst.txt \
-          --double-id \
-          --id-delim . \
-          --out yri_fin_chr2_108013601_111013601_filtered \
-          --set-missing-var-ids @:#
-```
+```             
+
 
 #### Visualizing pairwise $F_{ST}$ values
 
@@ -177,6 +155,30 @@ fst_df <- fst_chb_yri_df %>%
 
 
 ### PBS
+
+```bash
+# Fst between CHB and YRI
+plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
+          --fst \
+          --within chb_yri_clst.txt \
+          --double-id \
+          --id-delim . \
+          --out chb_yri_chr2_108013601_111013601_filtered \
+          --set-missing-var-ids @:#
+          
+          
+# Fst between YRI and FIN
+plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
+          --fst \
+          --within yri_fin_clst.txt \
+          --double-id \
+          --id-delim . \
+          --out yri_fin_chr2_108013601_111013601_filtered \
+          --set-missing-var-ids @:#
+```
+          
+```
+A drawback of such an approach is we do not know which of the two populations (or if both) have experienced selection causing the allele frequencies to differentiate.  Using *three* populations, we can compute a statistic that isolates a single populations.  Specifically we compute an estimate of how much differentiation occured on the branch leading to a particular popualtion in a three-population tree consiting of a focal population, a sister population, and an outgroup population.  These `PBS` statistics are based on $F_{ST}$, so we start by computing pairwise $F_{ST}$ values. 
 
 Let's now compute the PBS statistic for the FIN and the CHB to see if we can determine which population the selection occurred in. 
 
@@ -220,9 +222,14 @@ cross_pop_df$std_PBS <- with(cross_pop_df, ave(PBS, BINS, FUN=scale))
 
 ## iHS
 
+
 Now's let turn towards looking at haplotype-based signatures of selection.  We'll focus on the CHB for this analysis. 
 
 ```bash
+
+# write a file of just IIDs from CHB 
+awk '($3 == "CHB") {print $1}' chb_yri_fin_clst.txt > chb_iids.txt
+
 # keep CHB individuals from the filtered vcf and filter out rare variants (at maf < 5%)
 # this will be used for haplotype based selection analysis.
 bcftools view -S chb_iids.txt \
