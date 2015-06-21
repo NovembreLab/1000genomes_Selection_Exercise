@@ -53,29 +53,11 @@ Here we use `awk` commands - `awk` is very useful unix-based tool for basic file
 
 ```bash
 # use awk to produce a file that has the format of a .clst.txt file, with IID | IID | CLST for CHB, YRI, FIN
-awk 'NR>1($2 == "CHB" || $2 == "YRI" || $2 == "FIN") {print $1, $1, $2}' integrated_call_samples_v3.20130502.ALL.panel > chb_yri_fin_clst.txt
-
-# write a file with just the IIDs 
-awk '{print $1}' chb_yri_fin_clst.txt > chb_yri_fin_iids.txt
-
-# write a clst file for just CHB and YRI 
-awk '($3 == "CHB" || $3 == "YRI") {print $0}' chb_yri_fin_clst.txt > chb_yri_clst.txt
-
-# write a clst file for just CHB and FIN
-awk '($3 == "CHB" || $3 == "FIN") {print $0}' chb_yri_fin_clst.txt > chb_fin_clst.txt
-
-# write a clst file for just YRI and FIN
-awk  '($3 == "YRI" || $3 == "FIN") {print $0}' chb_yri_fin_clst.txt > yri_fin_clst.txt
-
-# check if # individuals are correct
-wc -l chb_yri_fin_iids.txt chb_yri_clst.txt chb_fin_clst.txt yri_fin_clst.txt
+awk 'NR>1{print $1, $1, $2}' integrated_call_samples_v3.20130502.ALL.panel > 1kgv3_clst.txt
 
 # Visually inspect the top and botom of the files. 
-head chb_yri_fin_iids.txt
-tail chb_yri_fin_iids.txt
-
-head chb_yri_clst.txt
-tail chb_fin_clst.txt
+head 1kgv3_clst.txt
+tail 1kgv3_clst.txt
 ```
 
 ### Downloading data for a specific 3Mb genomic region [SSS 2015 read-only, data already in data/]
@@ -92,14 +74,37 @@ tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr2.phas
 We will use our list of individual ids from the YRI, FIN, and CHB to extract just those individuals from the larger 1000 genomes data.  We also want to filter out indels and multi-allelic sites. 
 
 ```bash
-# filter out indels (-V indels), multi-allelic sites (-m 2 -M 2), keep individuals (-S) from YRI, FIN, CHB.
-# this will be used for cross-population based selection analysis
+# filter out indels (-V indels), multi-allelic sites (-m 2 -M 2). (Approx 30 sec - 1 min)
 bcftools view -v snps \
          -m 2 -M 2 \
-         -S chb_yri_fin_iids.txt \
          -O z \
-         1000genomes_phase3_chr2_108013601_111013601.vcf.gz > chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz
+         1000genomes_phase3_chr2_108013601_111013601.vcf.gz > snv_1000genomes_chr2_108013601_111013601.vcf.gz
 ```
+
+Now we want to filter out sites that violate Hardy-Weinberg equilibrium.  We first calculate genotype genotypes within each cluster.
+```bash
+tag=chr2_108013601_111013601
+plink-1.9 --vcf snv_1000genome_$tag.vcf.gz \
+          --within 1kgv3_clst.txt \
+          --hardy midp\
+          --keep-cluster-names FIN \
+          --out tmp_fin
+plink-1.9 --vcf snv_1000genome_$tag.vcf.gz \
+          --within 1kgv3_clst.txt \
+          --hardy midp\
+          --keep-cluster-names CHB \
+          --out tmp_chb
+plink-1.9 --vcf snv_1000genome_$tag.vcf.gz \
+          --within 1kgv3_clst.txt \
+          --hardy midp\
+          --keep-cluster-names YRI \
+          --out tmp_yri
+awk '$9>1e-5{print $2}' tmp_fin.hwe tmp_chb.hwe tmp_yri.hwe
+
+```
+
+
+Note a more rigorous appraoch is to conduct a $\chi^2$ test for the joint set of genotype counts for each sub-population (in this case a 5 degree of freedom test).
 
 **Questions**
 
@@ -116,13 +121,14 @@ One approach to detecting recent positive selection is to see if a local genomic
 ```bash
 
 # Fst between CHB and FIN
-plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
+plink-1.9 --vcf snv_chr2_108013601_111013601_filtered.vcf.gz \
           --fst \
-          --within chb_fin_clst.txt \
+          --within 1kgv3_clst.txt \
           --double-id \
           --id-delim . \
           --out chb_fin_chr2_108013601_111013601_filtered \
-          --set-missing-var-ids @:#
+          --set-missing-var-ids @:# \
+          --keep-cluster-names FIN CHB
 ```             
 
 
@@ -160,21 +166,23 @@ p
 # Fst between CHB and YRI
 plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
           --fst \
-          --within chb_yri_clst.txt \
+          --within 1kv3_clst.txt \
           --double-id \
           --id-delim . \
           --out chb_yri_chr2_108013601_111013601_filtered \
-          --set-missing-var-ids @:#
+          --set-missing-var-ids @:# \
+          --keep-cluster-names CHB YRI
           
           
 # Fst between YRI and FIN
 plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
           --fst \
-          --within yri_fin_clst.txt \
+          --within 1kgv3_clst.txt \
           --double-id \
           --id-delim . \
           --out yri_fin_chr2_108013601_111013601_filtered \
-          --set-missing-var-ids @:#
+          --set-missing-var-ids @:# \
+          --keep-cluster-names YRI FIN
 ```
           
 ```
