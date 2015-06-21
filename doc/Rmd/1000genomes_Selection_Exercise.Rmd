@@ -2,7 +2,8 @@
 
 * write pltos to files for students who can't use R interactively
 * Give whole genome genetic map so they can analyze any region
-* still in progress (not tested). 
+* Deal with problem of normalizing iHS on region-specific files
+* Polarize vcf's to derived/ancestral
 * using EDAR as an example (http://www.snpedia.com/index.php/Rs3827760)
 * description / writing needs to be filled in 
 * try to find the clearest possible example at first and then give fuzzy ones
@@ -83,17 +84,17 @@ bcftools view -v snps -m 2 -M 2 -O z 1000genomes_phase3_chr2_108013601_111013601
 Now we want to filter out sites that violate Hardy-Weinberg equilibrium.  We first calculate genotype genotypes within each cluster.
 ```bash
 tag=chr2_108013601_111013601
-plink-1.9 --vcf snv_1000genome_$tag.vcf.gz \
+plink-1.9 --vcf snv_1000genomes_$tag.vcf.gz \
           --within 1kgv3_clst.txt \
           --hardy midp\
           --keep-cluster-names FIN \
           --out tmp_fin
-plink-1.9 --vcf snv_1000genome_$tag.vcf.gz \
+plink-1.9 --vcf snv_1000genomes_$tag.vcf.gz \
           --within 1kgv3_clst.txt \
           --hardy midp\
           --keep-cluster-names CHB \
           --out tmp_chb
-plink-1.9 --vcf snv_1000genome_$tag.vcf.gz \
+plink-1.9 --vcf snv_1000genomes_$tag.vcf.gz \
           --within 1kgv3_clst.txt \
           --hardy midp\
           --keep-cluster-names YRI \
@@ -276,7 +277,7 @@ norm --ihs --bins 20 --files CHB_${tag}_HWEfiltered.ihs.out
 ihs_df <- read.table("CHB_chr2_108013601_111013601_HWEfiltered.ihs.out.10bins.norm", header = FALSE)
 colnames(ihs_df) <- c("SNP", "POS", "FREQ", "ihh1", "ihh0", "unstd_iHS", "std_iHS", "top")
 
-ggplot(ihs_df, aes(x = POS, y = std_iHS)) + geom_point() + xlab('Position on chr2') + theme_bw() + ylab("|normalized iHS|") 
+ggplot(ihs_df, aes(x = POS, y = FREQ)) + geom_point() + xlab('Position on chr2') + theme_bw() + ylab("|normalized iHS|") 
 
 
 
@@ -284,12 +285,9 @@ ggplot(ihs_df, aes(x = POS, y = std_iHS)) + geom_point() + xlab('Position on chr
 selection_df <- ihs_df %>% mutate(std_iHS = abs(std_iHS))
 
 # plot Fst, PBS, and iHS
-iHSplot <- ggplot(selection_df, aes(x = POS, y = unstd_iHS)) + geom_point() + xlab('Position on chr2') + theme_bw() + ylab("|normalized iHS|") 
+iHS_plot <- ggplot(selection_df, aes(x = POS, y = unstd_iHS)) + geom_point() + xlab('Position on chr2') + theme_bw() + ylab("|normalized iHS|") 
 
-
-
-
-iHSplot
+IHS_plot + ggsave("../results/IHS_plot.png")
 ```
 
 **Questions**
