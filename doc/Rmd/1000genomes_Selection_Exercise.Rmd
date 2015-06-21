@@ -1,5 +1,7 @@
 # 1000genomes Selection Exercise
 
+* write pltos to files for students who can't use R interactively
+* Give whole genome genetic map so they can analyze any region
 * still in progress (not tested). 
 * using EDAR as an example (http://www.snpedia.com/index.php/Rs3827760)
 * description / writing needs to be filled in 
@@ -75,10 +77,7 @@ We will use our list of individual ids from the YRI, FIN, and CHB to extract jus
 
 ```bash
 # filter out indels (-V indels), multi-allelic sites (-m 2 -M 2). (Approx 30 sec - 1 min)
-bcftools view -v snps \
-         -m 2 -M 2 \
-         -O z \
-         1000genomes_phase3_chr2_108013601_111013601.vcf.gz > snv_1000genomes_chr2_108013601_111013601.vcf.gz
+bcftools view -v snps -m 2 -M 2 -O z 1000genomes_phase3_chr2_108013601_111013601.vcf.gz > snv_1000genomes_chr2_108013601_111013601.vcf.gz
 ```
 
 Now we want to filter out sites that violate Hardy-Weinberg equilibrium.  We first calculate genotype genotypes within each cluster.
@@ -99,7 +98,11 @@ plink-1.9 --vcf snv_1000genome_$tag.vcf.gz \
           --hardy midp\
           --keep-cluster-names YRI \
           --out tmp_yri
-awk '$9>1e-5{print $2}' tmp_fin.hwe tmp_chb.hwe tmp_yri.hwe
+# Pull out all SNPs that fail HWE (with a loose criterion) in at least one population test
+awk '$9<1e-5{print $2}' tmp_fin.hwe tmp_chb.hwe tmp_yri.hwe | sort | uniq > tmp.exclude.txt
+
+# Filter out HW failures 
+bcftools view snv_1000genomes_$tag.vcf.gz --exclude 'ID=@tmp.exclude.txt' -O z > snv_1000genomes_${tag}_HWEfiltered.vcf.gz
 
 ```
 
@@ -114,13 +117,10 @@ One approach to detecting recent positive selection is to see if a local genomic
 
 ```bash
 # Fst between CHB and FIN
-plink-1.9 --vcf snv_chr2_108013601_111013601_filtered.vcf.gz \
+plink-1.9 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
           --fst \
           --within 1kgv3_clst.txt \
-          --double-id \
-          --id-delim . \
-          --out chb_fin_chr2_108013601_111013601_filtered \
-          --set-missing-var-ids @:# \
+          --out CHB_FIN_${tag}_HWEfiltered \
           --keep-cluster-names FIN CHB
 ```             
 
@@ -135,17 +135,18 @@ library(ggplot2)
 library(reshape2)
 
 # read data
-fst_chb_fin_df <- read.table('chb_fin_chr2_108013601_111013601_filtered.fst', header = TRUE) %>% 
+fst_CHB_FIN_df <- read.table('CHB_FIN_chr2_108013601_111013601_HWEfiltered.fst', header = TRUE) %>% 
                   rename(FST_CF = FST) %>% 
                   filter(is.nan(FST_CF) == FALSE) %>% 
                   select(SNP, POS, FST_CF)
 
 # Prepare the plot
-p <- ggplot(fst_chb_fin_df, aes(x = POS, y = FST_CF)) + geom_point() + xlab('Position on chr2') + 
+fst_CHB_FIN_plot <- ggplot(fst_CHB_FIN_df, aes(x = POS, y = FST_CF)) + geom_point() + xlab('Position on chr2') + 
      theme_bw() + ylab("") 
 
 # View the plot
-p
+fst_CHB_FIN_plot + ggsave('../results/fst_CHB_FIN_plot.png',width=7,height=4)
+
 ```
 
 #### Questions
@@ -160,66 +161,60 @@ A drawback of such an approach is we do not know which of the two populations (o
 
 ```bash
 # Fst between CHB and YRI
-plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
+plink-1.9 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
           --fst \
-          --within 1kv3_clst.txt \
-          --double-id \
-          --id-delim . \
-          --out chb_yri_chr2_108013601_111013601_filtered \
-          --set-missing-var-ids @:# \
+          --within 1kgv3_clst.txt \
+          --out CHB_YRI_chr2_108013601_111013601_HWEfiltered \
           --keep-cluster-names CHB YRI
           
           
-# Fst between YRI and FIN
-plink-1.9 --vcf chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz \
+# Fst between FIN and YRI
+plink-1.9 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
           --fst \
           --within 1kgv3_clst.txt \
-          --double-id \
-          --id-delim . \
-          --out yri_fin_chr2_108013601_111013601_filtered \
-          --set-missing-var-ids @:# \
-          --keep-cluster-names YRI FIN
+          --out FIN_YRI_chr2_108013601_111013601_HWEfiltered \
+          --keep-cluster-names FIN YRI
 ```
 
 Let's now compute the PBS statistic for the FIN and the CHB to see if we can determine which population the selection occurred in. 
 
 $$ T = -log(1 - Fst) $$
-$$ PBS_{CHB} = \frac{T_{CY} + T_{CF} - T_{YF}}{2} $$
-$$ PBS_{FIN} = \frac{T_{FY} + T_{FC} - T_{YC}}{2} $$
+$$ PBS_{CHB} = \frac{T_{CY} + T_{CF} - T_{FY}}{2} $$
+$$ PBS_{FIN} = \frac{T_{FY} + T_{CF} - T_{CY}}{2} $$
 
 ```R
-fst_chb_yri_df <- read.table('chb_yri_chr2_108013601_111013601_filtered.fst', header = TRUE) %>% 
+fst_CHB_YRI_df <- read.table('CHB_YRI_chr2_108013601_111013601_HWEfiltered.fst', header = TRUE) %>% 
                   rename(FST_CY = FST) %>% 
                   filter(is.nan(FST_CY) == FALSE) %>% 
                   select(SNP, POS, FST_CY) 
               
-fst_yri_fin_df <- read.table('yri_fin_chr2_108013601_111013601_filtered.fst', header = TRUE) %>% 
-                  rename(FST_YF = FST) %>% 
-                  filter(is.nan(FST_YF) == FALSE) %>% 
-                  select(SNP, POS, FST_YF) 
+fst_FIN_YRI_df <- read.table('FIN_YRI_chr2_108013601_111013601_HWEfiltered.fst', header = TRUE) %>% 
+                  rename(FST_FY = FST) %>% 
+                  filter(is.nan(FST_FY) == FALSE) %>% 
+                  select(SNP, POS, FST_FY) 
 
 # join fst data frames and compute pbs                
 pbs_df <- fst_chb_fin_df %>%
-          inner_join(fst_chb_yri_df, by = c("SNP", "POS")) %>%
-          inner_join(fst_yri_fin_df, by = c("SNP", "POS")) %>%
-          mutate(T_CY = -log(1 - FST_CY), T_CF = -log(1 - FST_CF), T_YF = -log(1 - FST_YF)) %>%
-          mutate(PBS_CHB = (T_CY + T_CF - T_YF) / 2) %>%
-          mutate(PBS_FIN = (T_CF + T_YF - T_CY) / 2) %>%
+          inner_join(fst_CHB_YRI_df, by = c("SNP", "POS")) %>%
+          inner_join(fst_FIN_YRI_df, by = c("SNP", "POS")) %>%
+          mutate(T_CY = -log(1 - FST_CY), T_CF = -log(1 - FST_CF), T_FY = -log(1 - FST_FY)) %>%
+          mutate(PBS_CHB = (T_CY + T_CF - T_FY) / 2) %>%
+          mutate(PBS_FIN = (T_CF + T_FY - T_CY) / 2) %>%
           select(POS, PBS_CHB, PBS_FIN)
 
 # melt data for faceting in ggplot
 melted_pbs_df <- melt(pbs_df, id = c("POS"))
   
 # plot!        
-p <- ggplot(melted_pbs_df, aes(x = POS, y = value)) + geom_point() + xlab('Position on chr2') + 
+PBS_plot <- ggplot(melted_pbs_df, aes(x = POS, y = value)) + geom_point() + xlab('Position on chr2') + 
      theme_bw() + ylab("") + facet_grid(variable ~ .)
-p
+PBS_plot + ggsave('../results/PBS_plot.png',width=7,height=4)
 ```
 
 #### Questions
 
 1. Explain the difference or lack of difference you see between the PBS computed for CHB and Finlad?
-2. Draw the 3 population tree of (CHB, FIN, YRI) and mark which branch is extended. 
+2. Draw the 3 population tree of (CHB, FIN, YRI) and mark which branch is extended in this region. 
 
 ## iHS
 
@@ -230,61 +225,69 @@ We will filter the file to only include variants with minor allele frequency >5%
 ```bash
 
 # write a file of just IIDs from CHB 
-awk '($3 == "CHB") {print $1}' chb_yri_fin_clst.txt > chb_iids.txt
+awk '($3 == "CHB") {print $1}' 1kgv3_clst.txt > CHB_iids.txt
 
 # keep CHB individuals from the filtered vcf and filter out rare variants (at maf < 5%)
 # this will be used for haplotype based selection analysis.
-bcftools view -S chb_iids.txt \
+bcftools view -S CHB_iids.txt \
          -q '.05 minor' \
          -O z \
-         chb_yri_fin_chr2_108013601_111013601_filtered.vcf.gz > chb_chr2_108013601_111013601_filtered.vcf.gz
+         snv_1000genomes_${tag}_HWEfiltered.vcf.gz > CHB_${tag}_HWEfiltered.vcf.gz
 ```
 
 Haplotype-based methods use recombination rates between markers to calibrate the extent of haplotype homozygosity observed.  To that end, we need to set up a list of all the markers in the format of a plink `.bim` file, and interpolate a genetic map at each of those positions.  Here are the steps:  
 ```bash
 # write bim file from vcf (-H supress header)
-bcftools view chb_chr2_108013601_111013601_filtered.vcf.gz \
-          -H | awk '{print $1, $3, "0", $2, $4, $5}' > chr2_108013601_111013601_filtered.bim
+bcftools view CHB_${tag}_HWEfiltered.vcf.gz \
+          -H | awk '{print $1, $3, "0", $2, $4, $5}' > CHB_${tag}_HWEfiltered.bim
 
 # get genetic positions and interpolate genetic positions for variants not present in the genetic_map
-plink-1.9 --bim chr2_108013601_111013601_filtered.bim \
+plink-1.9 --bim CHB_${tag}_HWEfiltered.bim \
           --cm-map genetic_map_chr2_combined_b37.txt 2 \
           --make-just-bim \
-          --out chr2_108013601_111013601_filtered_gm
+          --out ${tag}_HWEfiltered_gm
           
 # format as map file
-awk '{print $1, $2, $3, $4}' chr2_108013601_111013601_filtered_gm.bim > chr2_108013601_111013601_filtered_gm.map
+awk '{print $1, $2, $3, $4}' ${tag}_HWEfiltered_gm.bim > ${tag}_HWEfiltered_gm.map
 
 # Inspect the map file - the columns are <CHR> <POS> <Position in centiMorgans> <Position in physical space> 
-head chr2_108013601_111013601_filtered_gm.map
+head ${tag}_HWEfiltered_gm.map
 ```
 
 Now we can finally play!  This selscan command will compute iHS values for us, and the norm command normalizes them to have mean 0 and standard deviation 1 (which is useful for assessing outlier values).
 
-This command will take about 5 minutes.  If you're short on time, the results have been copied to the `1000genomes_Selection_Exercise/results/` directory (`chb_chr2_108013601_111013601_filtered.ihs.out` and `chb_chr2_108013601_111013601_filtered.ihs.out.100bins.norm`). 
+This command will take about 5 minutes.  If you're short on time, the results have been copied to the `1000genomes_Selection_Exercise/results/` directory (`CHB_chr2_108013601_111013601_HWEfiltered.ihs.out` and `CHB_chr2_108013601_111013601_HWEfiltered.ihs.out.100bins.norm`). 
 
 ```bash
 # compute iHS! This will take about 5 minutes 
 selscan --ihs \
-        --vcf chb_chr2_108013601_111013601_filtered.vcf.gz \
-        --map chr2_108013601_111013601_filtered_gm.map \
-        --out chb_chr2_108013601_111013601_filtered   
+        --vcf CHB_${tag}_HWEfiltered.vcf.gz \
+        --map ${tag}_HWEfiltered_gm.map \
+        --out CHB_${tag}_HWEfiltered
 
-norm --ihs --files chb_chr2_108013601_111013601_filtered.ihs.out
+norm --ihs --bins 20 --files CHB_${tag}_HWEfiltered.ihs.out 
 ```
 
 #### Make plots
 
+
 ```R
 # read iHS data
-ihs_df <- read.table("chb_chr2_108013601_111013601_filtered.ihs.out.100bins.norm", header = FALSE)
+ihs_df <- read.table("CHB_chr2_108013601_111013601_HWEfiltered.ihs.out.10bins.norm", header = FALSE)
 colnames(ihs_df) <- c("SNP", "POS", "FREQ", "ihh1", "ihh0", "unstd_iHS", "std_iHS", "top")
+
+ggplot(ihs_df, aes(x = POS, y = std_iHS)) + geom_point() + xlab('Position on chr2') + theme_bw() + ylab("|normalized iHS|") 
+
+
 
 # Take the absolute value of iHS
 selection_df <- ihs_df %>% mutate(std_iHS = abs(std_iHS))
 
 # plot Fst, PBS, and iHS
-iHSplot <- ggplot(selection_df, aes(x = POS, y = std_iHS)) + geom_point() + xlab('Position on chr2') + theme_bw() + ylab("|normalized iHS|") 
+iHSplot <- ggplot(selection_df, aes(x = POS, y = unstd_iHS)) + geom_point() + xlab('Position on chr2') + theme_bw() + ylab("|normalized iHS|") 
+
+
+
 
 iHSplot
 ```
