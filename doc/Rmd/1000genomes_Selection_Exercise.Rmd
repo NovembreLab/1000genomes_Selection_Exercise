@@ -1,4 +1,4 @@
-# Understanding Natural Selection from Population Genomic Data
+# 1000genomes Selection Exercise
 
 * still in progress (not tested). 
 * using EDAR as an example (http://www.snpedia.com/index.php/Rs3827760)
@@ -140,7 +140,6 @@ p <- ggplot(fst_chb_fin_df, aes(x = POS, y = FST_CF)) + geom_point() + xlab('Pos
 
 # View the plot
 p
-
 ```
 
 #### Questions
@@ -269,9 +268,6 @@ norm --ihs --files chb_chr2_108013601_111013601_filtered.ihs.out
 #### Make plots
 
 ```R
-library(ggplot2)
-library(reshape2)
-
 # read iHS data
 ihs_df <- read.table("chb_chr2_108013601_111013601_filtered.ihs.out.100bins.norm", header = FALSE)
 colnames(ihs_df) <- c("SNP", "POS", "FREQ", "ihh1", "ihh0", "unstd_iHS", "std_iHS", "top")
