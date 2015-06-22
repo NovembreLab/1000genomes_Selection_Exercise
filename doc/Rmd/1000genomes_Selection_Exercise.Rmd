@@ -1,18 +1,7 @@
 # 1000genomes Selection Exercise
 
-* write pltos to files for students who can't use R interactively
-* Give whole genome genetic map so they can analyze any region
-* Deal with problem of normalizing iHS on region-specific files
-* Polarize vcf's to derived/ancestral
-* using EDAR as an example (http://www.snpedia.com/index.php/Rs3827760)
-* description / writing needs to be filled in 
-* try to find the clearest possible example at first and then give fuzzy ones
-* Add PBS and iHS references
-* For line about check # of individuals is correct - give directives as to what is right answer
-* Use environmental variables like $REGION = xx.  so that it easier to recycle code when they switch regions? 
-* What does it mean when PBS goes negative
 
-To get some exposure to different approaches for detecting recent positive selection from population genetic data, we will be using the 1000 Genomes data.  We will present two approaches for detecting recent positive selection.  The first is an approach based on differentiation between populations, that uses the PBS (population-branch statistic) to detect selection that occurred in the history of a particular population.  The second is an approach based on haplotype patterns - using the iHS statistic. 
+To get some exposure to different approaches for detecting recent positive selection from population genetic data, we will be using the 1000 Genomes data.  We will present two approaches for detecting recent positive selection.  The first is an approach based on differentiation between populations, that uses the PBS (population-branch statistic) to detect selection that occurred in the history of a particular population.  The second is an approach based on haplotype patterns - using the iHS statistic.  We'll suppose a particular gene is of interest (whose transcript start/stop is marked with vertical lines below)
 
 We will interact with the 1000 Genomes data using `vcf` (variant call format) files.  These files have one line per variant, and contain information about each individual's genotype as columns. These files are so large they are most often kept in a `gzip` compressed format, which you will recognize usually by seeing a filename that ends with `.vcf.gz`.  
 
@@ -107,7 +96,6 @@ bcftools view snv_1000genomes_$tag.vcf.gz --exclude 'ID=@tmp.exclude.txt' -O z >
 
 ```
 
-
 Note a more rigorous appraoch is to conduct a $\chi^2$ test for the joint set of genotype counts for each sub-population (in this case a 5 degree of freedom test).
 
 ## Population-differentation-based selection scan
@@ -143,7 +131,7 @@ fst_CHB_FIN_df <- read.table('CHB_FIN_chr2_108013601_111013601_HWEfiltered.fst',
 
 # Prepare the plot
 fst_CHB_FIN_plot <- ggplot(fst_CHB_FIN_df, aes(x = POS, y = FST_CF)) + geom_point() + xlab('Position on chr2') + 
-     theme_bw() + ylab("") 
+     theme_bw() + ylab("") + geom_vline(xintercept = 109510927)+geom_vline(xintercept = 109605828)
 
 # View the plot
 fst_CHB_FIN_plot + ggsave('../results/fst_CHB_FIN_plot.png',width=7,height=4)
@@ -208,14 +196,16 @@ melted_pbs_df <- melt(pbs_df, id = c("POS"))
   
 # plot!        
 PBS_plot <- ggplot(melted_pbs_df, aes(x = POS, y = value)) + geom_point() + xlab('Position on chr2') + 
-     theme_bw() + ylab("") + facet_grid(variable ~ .)
+     theme_bw() + ylab("") + facet_grid(variable ~ .)+ geom_vline(xintercept = 109510927)+geom_vline(xintercept = 109605828)
 PBS_plot + ggsave('../results/PBS_plot.png',width=7,height=4)
 ```
 
 #### Questions
 
-1. Explain the difference or lack of difference you see between the PBS computed for CHB and Finlad?
-2. Draw the 3 population tree of (CHB, FIN, YRI) and mark which branch is extended in this region. 
+1. What is the major difference between the PBS values in this region for CHB vs Finland? 
+2. Draw the 3 population tree of (CHB, FIN, YRI) and mark which branch is extended the most in this region. 
+3. In which population would one conclude that there has been the most accelerated differentiation?
+4. (Advanced) What are some possible interpretations for when the PBS statistic becomes negative? 
 
 ## iHS
 
@@ -265,50 +255,63 @@ selscan --ihs \
         --vcf CHB_${tag}_HWEfiltered.vcf.gz \
         --map ${tag}_HWEfiltered_gm.map \
         --out CHB_${tag}_HWEfiltered
-
-norm --ihs --bins 20 --files CHB_${tag}_HWEfiltered.ihs.out 
 ```
 
-#### Make plots
+Normally we would normalize the iHS -- but because we are only using a 3Mb region
+the normalization makes little sense.  Here's what the command would like if we actually ran it.
+```bash
+# norm --ihs --bins 20 --files CHB_${tag}_HWEfiltered.ihs.out 
+```
 
+#### Make plot of iHS scores
+
+Let's make a plot of the iHS values in this region. 
 
 ```R
 # read iHS data
-ihs_df <- read.table("CHB_chr2_108013601_111013601_HWEfiltered.ihs.out.10bins.norm", header = FALSE)
-colnames(ihs_df) <- c("SNP", "POS", "FREQ", "ihh1", "ihh0", "unstd_iHS", "std_iHS", "top")
+ihs_df <- read.table("CHB_chr2_108013601_111013601_HWEfiltered.ihs.out", header = FALSE)
+colnames(ihs_df) <- c("SNP", "POS", "FREQ", "ihh1", "ihh0", "unstd_iHS")
 
-ggplot(ihs_df, aes(x = POS, y = FREQ)) + geom_point() + xlab('Position on chr2') + theme_bw() + ylab("|normalized iHS|") 
-
-
-
-# Take the absolute value of iHS
-selection_df <- ihs_df %>% mutate(std_iHS = abs(std_iHS))
-
-# plot Fst, PBS, and iHS
-iHS_plot <- ggplot(selection_df, aes(x = POS, y = unstd_iHS)) + geom_point() + xlab('Position on chr2') + theme_bw() + ylab("|normalized iHS|") 
+IHS_plot<-ggplot(ihs_df, aes(x = POS, y = unstd_iHS)) + geom_point() + xlab('Position on chr2') + theme_bw() + ylab("|normalized iHS|") + geom_vline(xintercept = 109510927)+geom_vline(xintercept = 109605828)
 
 IHS_plot + ggsave("../results/IHS_plot.png")
 ```
 
-**Questions**
+#### Questions
+1.  Are there any provocative outliers among the iHS scores?
+2.  Suppose you are unconvinced that there are interesting patterns of iHS in this region - is it possible that the PBS signal in this region is real?  Put another way - does positive selection in the past necessarily leave a signature in the iHS score of a population observed today?
 
-*
-*
-*
+#### Make a plot of allele frequencies
 
-## Another Region 
+It also possible to make a plot representing allele frequencies in the region: 
+```R
+freq_plot<-ggplot(ihs_df, aes(x = POS, y = FREQ)) + geom_point() + xlab('Position on chr2') + theme_bw() + ylab("Frequency") + geom_vline(xintercept = 109510927)+geom_vline(xintercept = 109605828)
 
-Adapt the code you just ran using but now use this region (2:108013601-111013601) in the 1000genomes project. Instead of computing iHS for CHB compute it for FIN.
+freq_plot + ggsave("../results/freq_plot.png")
+```
+Or a histogram of the frequencies (an allele frequency spectrum):
 
-Ideally feed them script that takes chr, start, stop and produces plots generated above -- 
+```R
 
-**Questions**
+hist(ihs_df$FREQ,xlab="Non-reference frequency", ylab="# of SNPs",main="Allele frequency spectra",breaks=100)
 
-*
-*
-*
+png("allele_frequency_spectra.png",width=5in,height=3in)
+hist(ihs_df$FREQ,xlab="Non-reference frequency", ylab="# of SNPs",main="Allele frequency spectra",breaks=100)
+dev.off()
+```
 
-## Spandrels of San Marco (Caveats)
+#### Questions
+1.  Non-reference alleles are typically derived (i.e. novel alleles relative to the ancestral allele) - so for simplicity sake let's assume they are. Does the allele frequency distribution seen here seem consistent with selection?  Why or why not?
+
+## Additional Regions 
+
+The 1000 Genomes selection browser (http://hsb.upf.edu/) allows one to quickly browse various selections statistics that have been computed for major populations from the project.  
+
+Take a look at a few random regions of the genome of your choice.  Compare what you see for the iHS and Fst tracks for the region surrounding the lactase gene LCT (near the gene there are varaints affecting the persistence of lactase expression), SLC24A5 (a gene affecting skin pigmentation), and for KITLG (another gene affecting skin pigmentation).  These are all genes that have been argued to show signatures of recent positive selection in humans, presumably as adaptations to novel environments (specifically high latitudes with low sunlight in the case of the skin pigmentation, and to dairy culture in the case of lactase)
+
+## Being cautious about selective scans
+
+In a classic paper from 1979 Stephen J Gould and Richard Lewontin wrote eloquently about how easy it is to fall into the intellectual trap of taking an adaptationist worldview and explaining all features of organismal biology as due to the direct outcome of natural selection.   Some features may be indirectly selected or due to chance events and genetic drift. While population genetic approaches provide more rigor, the tests are still ultimately statistical, and there is often a non-negigible chance of confusing patterns due simply due to genetic drift with those of selection.  With that in mind, we should be critical (as with GWAS) about constructing just-so stories about a plausible gene without doing additional functional follow-up or gathering other lines of evidence to support a claim about recent positive selection acting on a locus. Some useful perspectives on selective sweeps are Teshima et al (2006, Genome Research) and Fu and Akey (2013, Annual Review of Genomics and Human Genetics)
 
 ## References
 
@@ -318,6 +321,9 @@ Ideally feed them script that takes chr, start, stop and produces plots generate
 * `selscan` : ZA Szpiech and RD Hernandez (2014) selscan: an efficient multi-threaded program 
   to calculate EHH-based scans for positive selection. Molecular Biology and Evolution, 
 	31: 2824-2827. (https://github.com/szpiech/selscan)
+* iHS: Voigt et al (2006) A Map of Recent Positive Selection in the Human Genome. PloS Genetics 4(3): e72.
+* PBS: Yi et al (2010) Sequencing of 50 Human Exomes Reveals Adaptation to High Altitude. Science 329:75-78.
+
 
 
 ## Appendix: Setting up your Environment 
@@ -393,4 +399,34 @@ mv bin/plink bin/plink-1.9
 # Add the current directory (bin) to the export path using this command
 export PATH=$(pwd):$PATH
 ```
+
+## Brief Answer Key:
+
+#### $F_{ST}$ plot questions
+1. Yes - There is a broad window of SNPs with a peak right in a specfic gene (marked by vertical lines)
+2. No - the population(s) in which selection is occuring is not clear. 
+
+#### PBS plot questions
+1. The signal of high PBS is broader and larger for CHB vs FIN.
+2. The branch to CHB is most extended
+3. CHB
+4. PBS can become negative because of sampling variance ($F_{ST}$ values estimated with noise), becuase of genetic drift, and when there is selection acting between the outgroup and sister population the focal population.
+
+#### iHS plot questions
+1. Yes, but not near our focal gene (marked by the vertical lines)
+2. Yes, it could have been a soft sweep that leaves a signature in PBS but not iHS.
+
+#### Frequency plot questions
+1. The allele frequency distribution shows many high frequency derived variants consistent with selection.  They also overlap the region where the PBS is high.
+
+
+
+## Answer Key: Plots
+
+![nil](../../results_answerkey/fst_CHB_FIN_plot.png)
+![nil](../../results_answerkey/PBS_plot.png)
+![nil](../../results_answerkey/IHS_plot.png)
+![nil](../../results_answerkey/freq_hist_plot.png)
+![nil](../../results_answerkey/freq_plot.png)
+
 

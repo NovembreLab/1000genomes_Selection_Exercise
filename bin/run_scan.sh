@@ -17,10 +17,10 @@ echo -e "\n* Preparing clst and iid files"
 awk 'NR>1{print $1, $1, $2}' integrated_call_samples_v3.20130502.ALL.panel > 1kgv3_clst.txt
 
 echo -e "\n* Downloading data"
-#tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr${CHR}.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz ${CHR}:${START}-${STOP} | bgzip -c > 1000genomes_phase3_${tag}.vcf.gz
+tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr${CHR}.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz ${CHR}:${START}-${STOP} | bgzip -c > 1000genomes_phase3_${tag}.vcf.gz
 
 echo -e "\n* Filtering to obtain SNVs (30secs)"
-#bcftools view -v snps -m 2 -M 2 -O z 1000genomes_phase3_${tag}.vcf.gz > snv_1000genomes_${tag}.vcf.gz
+bcftools view -v snps -m 2 -M 2 -O z 1000genomes_phase3_${tag}.vcf.gz > snv_1000genomes_${tag}.vcf.gz
 
 plink-1.9 --vcf snv_1000genomes_$tag.vcf.gz \
           --within 1kgv3_clst.txt \
@@ -45,7 +45,7 @@ awk '$9<1e-5{print $2}' tmp_$CLST1.hwe tmp_$CLST2.hwe tmp_$CLST3.hwe | sort | un
 
 # Filter out HW failures 
 echo -e "\n* Excluding SNPs failing HW test... (30 sec)"
-#bcftools view snv_1000genomes_$tag.vcf.gz --exclude 'ID=@tmp.exclude.txt' -O z > snv_1000genomes_${tag}_HWEfiltered.vcf.gz
+bcftools view snv_1000genomes_$tag.vcf.gz --exclude 'ID=@tmp.exclude.txt' -O z > snv_1000genomes_${tag}_HWEfiltered.vcf.gz
 
 echo -e "\n* Computing Fst's..."
 plink-1.9 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
@@ -91,10 +91,10 @@ plink-1.9 --bim CHB_${tag}_HWEfiltered.bim \
 # format as map file
 awk '{print $1, $2, $3, $4}' ${tag}_HWEfiltered_gm.bim > ${tag}_HWEfiltered_gm.map
 
-#selscan --ihs \
-#        --vcf ${IHS_CLST}_${tag}_HWEfiltered.vcf.gz \
-#        --map ${tag}_HWEfiltered_gm.map \
-#        --out ${IHS_CLST}_${tag}_HWEfiltered
+selscan --ihs \
+        --vcf ${IHS_CLST}_${tag}_HWEfiltered.vcf.gz \
+        --map ${tag}_HWEfiltered_gm.map \
+        --out ${IHS_CLST}_${tag}_HWEfiltered
 
 norm --ihs --bins 20 --files ${IHS_CLST}_${tag}_HWEfiltered.ihs.out 
 
