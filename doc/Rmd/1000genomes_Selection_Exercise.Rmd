@@ -295,7 +295,7 @@ Or a histogram of the frequencies (an allele frequency spectrum):
 
 hist(ihs_df$FREQ,xlab="Non-reference frequency", ylab="# of SNPs",main="Allele frequency spectra",breaks=100)
 
-png("allele_frequency_spectra.png",width=5in,height=3in)
+png("allele_frequency_spectra.png", width=5, height=3, units="in", res=300)
 hist(ihs_df$FREQ,xlab="Non-reference frequency", ylab="# of SNPs",main="Allele frequency spectra",breaks=100)
 dev.off()
 ```
