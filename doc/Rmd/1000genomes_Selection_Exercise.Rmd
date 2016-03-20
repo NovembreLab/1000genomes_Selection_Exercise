@@ -183,7 +183,7 @@ fst_FIN_YRI_df <- read.table('FIN_YRI_chr2_108013601_111013601_HWEfiltered.fst',
                   select(SNP, POS, FST_FY) 
 
 # join fst data frames and compute pbs                
-pbs_df <- fst_chb_fin_df %>%
+pbs_df <- fst_CHB_FIN_df %>%
           inner_join(fst_CHB_YRI_df, by = c("SNP", "POS")) %>%
           inner_join(fst_FIN_YRI_df, by = c("SNP", "POS")) %>%
           mutate(T_CY = -log(1 - FST_CY), T_CF = -log(1 - FST_CF), T_FY = -log(1 - FST_FY)) %>%
