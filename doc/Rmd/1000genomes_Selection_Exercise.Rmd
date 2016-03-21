@@ -1,3 +1,6 @@
+---
+output: pdf_document
+---
 # 1000genomes Selection Exercise
 
 
@@ -9,7 +12,7 @@ Before anything, we need to set up a unix-based analysis environment with the ap
 
 * `tabix`: For quickly retrieving specific lines from a `.vcf.gz` file.  It creates an index of a `.vcf.gz` file and then uses the index to quickly find the lines a user requests.
 * `bcftools`: For manipulating `vcf` files.  Here we use it for some basic filtering.
-* `plink2` / `plink-1.9`: Second-generation of the multi-faceted `plink` tool.  It facilitates a number of common analyses in statistical genetics and population genetics.  Here we use it to compute $F_{ST}$ which we will need to compute the PBS statistic.  We assume you will run it using the command `plink-1.9`. 
+* `plink2` / `plink-1.9`: Second-generation of the multi-faceted `plink` tool.  It facilitates a number of common analyses in statistical genetics and population genetics.  Here we use it to compute $F_{ST}$ which we will need to compute the PBS statistic.  We assume you will run it using the command `plink`. 
 * `selscan`: For computing haplotype-based statistics that are sensitive to signatures of selective sweeps (EHH, iHS, XP-EHH, nSL, for example)
 * `norm`: A program from the `selscan` package that will normalize iHS or XP-EHH values. 
 
@@ -73,17 +76,17 @@ bcftools view -v snps -m 2 -M 2 -O z 1000genomes_phase3_chr2_108013601_111013601
 Now we want to filter out sites that violate Hardy-Weinberg equilibrium.  We first calculate genotype genotypes within each cluster.
 ```bash
 tag=chr2_108013601_111013601
-plink-1.9 --vcf snv_1000genomes_$tag.vcf.gz \
+plink --vcf snv_1000genomes_$tag.vcf.gz \
           --within 1kgv3_clst.txt \
           --hardy midp\
           --keep-cluster-names FIN \
           --out tmp_fin
-plink-1.9 --vcf snv_1000genomes_$tag.vcf.gz \
+plink --vcf snv_1000genomes_$tag.vcf.gz \
           --within 1kgv3_clst.txt \
           --hardy midp\
           --keep-cluster-names CHB \
           --out tmp_chb
-plink-1.9 --vcf snv_1000genomes_$tag.vcf.gz \
+plink --vcf snv_1000genomes_$tag.vcf.gz \
           --within 1kgv3_clst.txt \
           --hardy midp\
           --keep-cluster-names YRI \
@@ -106,7 +109,7 @@ One approach to detecting recent positive selection is to see if a local genomic
 
 ```bash
 # Fst between CHB and FIN
-plink-1.9 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
+plink --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
           --fst \
           --within 1kgv3_clst.txt \
           --out CHB_FIN_${tag}_HWEfiltered \
@@ -150,7 +153,7 @@ A drawback of such an approach is we do not know which of the two populations (o
 
 ```bash
 # Fst between CHB and YRI
-plink-1.9 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
+plink --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
           --fst \
           --within 1kgv3_clst.txt \
           --out CHB_YRI_chr2_108013601_111013601_HWEfiltered \
@@ -158,7 +161,7 @@ plink-1.9 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
           
           
 # Fst between FIN and YRI
-plink-1.9 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
+plink --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
           --fst \
           --within 1kgv3_clst.txt \
           --out FIN_YRI_chr2_108013601_111013601_HWEfiltered \
@@ -233,7 +236,7 @@ bcftools view CHB_${tag}_HWEfiltered.vcf.gz \
           -H | awk '{print $1, $3, "0", $2, $4, $5}' > CHB_${tag}_HWEfiltered.bim
 
 # get genetic positions and interpolate genetic positions for variants not present in the genetic_map
-plink-1.9 --bim CHB_${tag}_HWEfiltered.bim \
+plink --bim CHB_${tag}_HWEfiltered.bim \
           --cm-map genetic_map_chr2_combined_b37.txt 2 \
           --make-just-bim \
           --out ${tag}_HWEfiltered_gm
@@ -317,7 +320,7 @@ In a classic paper from 1979 Stephen J Gould and Richard Lewontin wrote eloquent
 
 * `tabix` : (http://www.htslib.org/doc/tabix.html)
 * `bcftools` : (https://samtools.github.io/bcftools/bcftools.html)
-* `plink-1.9` : Chang CC, Chow CC, Tellier LCAM, Vattikuti S, Purcell SM, Lee JJ (2015) Second-generation PLINK: rising to the challenge of larger and richer datasets. GigaScience, 4.  (https://www.cog-genomics.org/plink2)
+* `plink` : Chang CC, Chow CC, Tellier LCAM, Vattikuti S, Purcell SM, Lee JJ (2015) Second-generation PLINK: rising to the challenge of larger and richer datasets. GigaScience, 4.  (https://www.cog-genomics.org/plink2)
 * `selscan` : ZA Szpiech and RD Hernandez (2014) selscan: an efficient multi-threaded program 
   to calculate EHH-based scans for positive selection. Molecular Biology and Evolution, 
 	31: 2824-2827. (https://github.com/szpiech/selscan)
@@ -393,40 +396,9 @@ mv selscan ../../../bin/
 cd ../../../
 ls bin/
 
-mv bin/plink bin/plink-1.9
+mv bin/plink bin/plink
 # you should see binaries for tabix, bcftools, plink, selscan, and norm
 
 # Add the current directory (bin) to the export path using this command
 export PATH=$(pwd):$PATH
 ```
-
-## Brief Answer Key:
-
-#### $F_{ST}$ plot questions
-1. Yes - There is a broad window of SNPs with a peak right in a specfic gene (marked by vertical lines)
-2. No - the population(s) in which selection is occuring is not clear. 
-
-#### PBS plot questions
-1. The signal of high PBS is broader and larger for CHB vs FIN.
-2. The branch to CHB is most extended
-3. CHB
-4. PBS can become negative because of sampling variance ($F_{ST}$ values estimated with noise), becuase of genetic drift, and when there is selection acting between the outgroup and sister population the focal population.
-
-#### iHS plot questions
-1. Yes, but not near our focal gene (marked by the vertical lines)
-2. Yes, it could have been a soft sweep that leaves a signature in PBS but not iHS.
-
-#### Frequency plot questions
-1. The allele frequency distribution shows many high frequency derived variants consistent with selection.  They also overlap the region where the PBS is high.
-
-
-
-## Answer Key: Plots
-
-![nil](../../results_answerkey/fst_CHB_FIN_plot.png)
-![nil](../../results_answerkey/PBS_plot.png)
-![nil](../../results_answerkey/IHS_plot.png)
-![nil](../../results_answerkey/freq_hist_plot.png)
-![nil](../../results_answerkey/freq_plot.png)
-
-
