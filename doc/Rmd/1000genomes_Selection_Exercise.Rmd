@@ -106,6 +106,7 @@ One approach to detecting recent positive selection is to see if a local genomic
 
 ```bash
 # Fst between CHB and FIN
+tag=chr2_108013601_111013601
 plink-1.9 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
           --fst \
           --within 1kgv3_clst.txt \
