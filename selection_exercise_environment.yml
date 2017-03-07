@@ -1,4 +1,4 @@
-name: foo
+name: selex
 channels:
 - !!python/unicode
   'bioconda'
@@ -169,5 +169,5 @@ dependencies:
   'r-magrittr=1.5=r3.3.2_2'
 - !!python/unicode
   'r-rcolorbrewer=1.1_2=r3.3.2_3'
-prefix: !!python/unicode '/home/evankoch/miniconda2/envs/foo'
+prefix: !!python/unicode '/home/evankoch/miniconda2/envs/selex'
 
