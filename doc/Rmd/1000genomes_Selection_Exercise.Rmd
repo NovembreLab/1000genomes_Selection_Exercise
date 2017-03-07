@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # 1000genomes Selection Exercise
 
 
@@ -9,7 +14,7 @@ Before anything, we need to set up a unix-based analysis environment with the ap
 
 * `tabix`: For quickly retrieving specific lines from a `.vcf.gz` file.  It creates an index of a `.vcf.gz` file and then uses the index to quickly find the lines a user requests.
 * `bcftools`: For manipulating `vcf` files.  Here we use it for some basic filtering.
-* `plink2` / `plink-1.9`: Second-generation of the multi-faceted `plink` tool.  It facilitates a number of common analyses in statistical genetics and population genetics.  Here we use it to compute $F_{ST}$ which we will need to compute the PBS statistic.  We assume you will run it using the command `plink-1.9`. 
+* `plink2` / `plink-1.9`: Second-generation of the multi-faceted `plink` tool.  It facilitates a number of common analyses in statistical genetics and population genetics.  Here we use it to compute $F_{ST}$ which we will need to compute the PBS statistic.  We assume you will run it using the command `plink2`. 
 * `selscan`: For computing haplotype-based statistics that are sensitive to signatures of selective sweeps (EHH, iHS, XP-EHH, nSL, for example)
 * `norm`: A program from the `selscan` package that will normalize iHS or XP-EHH values. 
 
@@ -19,15 +24,14 @@ As a disclaimer, in what follows - we take an approach that builds intuition and
 
 ### Preparing files that describe the 1000 Genomes individuals 
 
-To get started, we will want some basic information on the individuals in the 1000 Genomes data.  We also want to simplify our analysis by just focusing on individuals from the CHB (Han Chinese from Beijing), YRI (Yoruba from Ibaden, Nigerai), and FIN (Finnish from Finland).  Let's get started... 
+To get started, we will want some basic information on the individuals in the 1000 Genomes data.  We also want to simplify our analysis by just focusing on individuals from the CHB (Han Chinese from Beijing), YRI (Yoruba from Ibadan, Nigerai), and FIN (Finnish from Finland).  Let's get started... 
 
 #### Downloading Individual-Level Data [SSS 2015 read-only, data already in data/]
 
 We can download info on the 1000 Genomes phase III individuals with the following commands.  The `integrated_call_samples_v3.20130502.ALL.panel` file we are obtaining contains the sample id and associated population and gender info for each individual. 
 
-```bash
-cd data/
-
+```{bash, echo=FALSE, cache=TRUE}
+cd ~/1000genomes_Selection_Exercise/data
 # download 1000genomes_phase3 individual information
 wget ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/integrated_call_samples_v3.20130502.ALL.panel
 ```
@@ -43,7 +47,8 @@ The `.clst.txt` files define a "cluster" of individuals to consider as a single 
 
 Here we use `awk` commands - `awk` is very useful unix-based tool for basic file manipulation. 
 
-```bash
+```{bash, cache=TRUE}
+cd ~/1000genomes_Selection_Exercise/data
 # use awk to produce a file that has the format of a .clst.txt file, with IID | IID | CLST for CHB, YRI, FIN
 awk 'NR>1{print $1, $1, $2}' integrated_call_samples_v3.20130502.ALL.panel > 1kgv3_clst.txt
 
@@ -56,8 +61,8 @@ tail 1kgv3_clst.txt
 
 Now, let's download a 3Mb part of the the 1000 Genomes Phase3 project data to use. 
 
-```bash
-cd data/
+```{bash, cache=TRUE}
+cd ~/1000genomes_Selection_Exercise/data
 
 # download a 3MB region (chr2:108013601-111013601) from the 1000genomes project and store as .vcf.gz file
 tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr2.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz 2:108013601-111013601 | bgzip -c > 1000genomes_phase3_chr2_108013601_111013601.vcf.gz
@@ -65,30 +70,36 @@ tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr2.phas
 
 We will use our list of individual ids from the YRI, FIN, and CHB to extract just those individuals from the larger 1000 genomes data.  We also want to filter out indels and multi-allelic sites. 
 
-```bash
+```{bash, cache=TRUE}
 # filter out indels (-V indels), multi-allelic sites (-m 2 -M 2). (Approx 30 sec - 1 min)
+cd ~/1000genomes_Selection_Exercise/data
 bcftools view -v snps -m 2 -M 2 -O z 1000genomes_phase3_chr2_108013601_111013601.vcf.gz > snv_1000genomes_chr2_108013601_111013601.vcf.gz
 ```
 
+Try running `ls -thrl` to verify that the output file `snv_1000genomes_chr2_108013601_111013601.vcf.gz` is smaller than the input.
+
 Now we want to filter out sites that violate Hardy-Weinberg equilibrium.  We first calculate genotype genotypes within each cluster.
-```bash
+
+```{bash, cache=TRUE}
 tag=chr2_108013601_111013601
-plink-1.9 --vcf snv_1000genomes_$tag.vcf.gz \
+cd ~/1000genomes_Selection_Exercise/data
+plink2 --vcf snv_1000genomes_$tag.vcf.gz \
           --within 1kgv3_clst.txt \
           --hardy midp\
           --keep-cluster-names FIN \
           --out tmp_fin
-plink-1.9 --vcf snv_1000genomes_$tag.vcf.gz \
+plink2 --vcf snv_1000genomes_$tag.vcf.gz \
           --within 1kgv3_clst.txt \
           --hardy midp\
           --keep-cluster-names CHB \
           --out tmp_chb
-plink-1.9 --vcf snv_1000genomes_$tag.vcf.gz \
+plink2 --vcf snv_1000genomes_$tag.vcf.gz \
           --within 1kgv3_clst.txt \
           --hardy midp\
           --keep-cluster-names YRI \
           --out tmp_yri
-# Pull out all SNPs that fail HWE (with a loose criterion) in at least one population test
+
+# Pull out all of the IDs for SNPs that fail HWE (with a loose criterion) in at least one population
 awk '$9<1e-5{print $2}' tmp_fin.hwe tmp_chb.hwe tmp_yri.hwe | sort | uniq > tmp.exclude.txt
 
 # Filter out HW failures 
@@ -96,7 +107,7 @@ bcftools view snv_1000genomes_$tag.vcf.gz --exclude 'ID=@tmp.exclude.txt' -O z >
 
 ```
 
-Note a more rigorous appraoch is to conduct a $\chi^2$ test for the joint set of genotype counts for each sub-population (in this case a 5 degree of freedom test).
+We filtered out SNPs based on a criteria of $p<10^{-5}$, where the p-values were calculated using an exact test of Hardy-Weinberg equilibrium. Note that a more rigorous appraoch is to conduct a $\chi^2$ test for the joint set of genotype counts for each sub-population (in this case a 5 degree of freedom test).
 
 ## Population-differentation-based selection scan
 
@@ -104,25 +115,28 @@ One approach to detecting recent positive selection is to see if a local genomic
 
 ### Computing pairwise $F_{ST}$s
 
-```bash
+```{bash, cache=TRUE}
 # Fst between CHB and FIN
 tag=chr2_108013601_111013601
-plink-1.9 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
+cd ~/1000genomes_Selection_Exercise/data
+plink2 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
           --fst \
           --within 1kgv3_clst.txt \
           --out CHB_FIN_${tag}_HWEfiltered \
           --keep-cluster-names FIN CHB
 ```             
 
+Use `head` to take a look at the structure of this file.
 
 #### Visualizing pairwise $F_{ST}$ values
 
 In another terminal window or screen open an R session that we will be using for the rest of the workshop. Now run these commands in the R session.  Make sure your working directory in R is set to the data subdirectory.  (Use the "Session" tab or setwd() command to change your working directory, e.g. setwd("~/git/1000genomes_Selection_Exercise/data")).
 
-```R
-library(dplyr)
-library(ggplot2)
-library(reshape2)
+```{r}
+if(!require(dplyr)) install.pakckages("dplyr")
+if(!require(ggplot2)) install.packages("ggplot2")
+if(!require(reshape2)) {install.packages("stringi"); install.packages("reshape2")}
+setwd("~/1000genomes_Selection_Exercise/data")
 
 # read data
 fst_CHB_FIN_df <- read.table('CHB_FIN_chr2_108013601_111013601_HWEfiltered.fst', header = TRUE) %>% 
@@ -132,7 +146,7 @@ fst_CHB_FIN_df <- read.table('CHB_FIN_chr2_108013601_111013601_HWEfiltered.fst',
 
 # Prepare the plot
 fst_CHB_FIN_plot <- ggplot(fst_CHB_FIN_df, aes(x = POS, y = FST_CF)) + geom_point() + xlab('Position on chr2') + 
-     theme_bw() + ylab("") + geom_vline(xintercept = 109510927)+geom_vline(xintercept = 109605828)
+     theme_bw() + ylab("") + geom_vline(xintercept = 109510927) + geom_vline(xintercept = 109605828)
 
 # View the plot
 fst_CHB_FIN_plot + ggsave('../results/fst_CHB_FIN_plot.png',width=7,height=4)
@@ -144,14 +158,15 @@ fst_CHB_FIN_plot + ggsave('../results/fst_CHB_FIN_plot.png',width=7,height=4)
 1.  Suppose the 99.9th percentile of $F_{ST}$ between CHB and FIN genome-wide is 0.5.  Do you see any variants in this 3Mb region that are among the most differentiated in the genome?  
 2.  Can you assess from this data whether selection took place just in CHB, FIN, or both? 
 
-
 ### PBS
 
 A drawback of such an approach is we do not know which of the two populations (or if both) have experienced selection causing the allele frequencies to differentiate.  Using *three* populations, we can compute a statistic that isolates a single populations. Specifically we compute an estimate of how much differentiation occured on the branch leading to a particular popualtion in a three-population tree consiting of a focal population, a sister population, and an outgroup population.  These `PBS` statistics are based on $F_{ST}$, so we start by computing pairwise $F_{ST}$ values. 
 
-```bash
+```{bash, results="hide"}
 # Fst between CHB and YRI
-plink-1.9 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
+tag=chr2_108013601_111013601
+cd ~/1000genomes_Selection_Exercise/data
+plink2 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
           --fst \
           --within 1kgv3_clst.txt \
           --out CHB_YRI_chr2_108013601_111013601_HWEfiltered \
@@ -159,7 +174,7 @@ plink-1.9 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
           
           
 # Fst between FIN and YRI
-plink-1.9 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
+plink2 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
           --fst \
           --within 1kgv3_clst.txt \
           --out FIN_YRI_chr2_108013601_111013601_HWEfiltered \
@@ -172,7 +187,8 @@ $$ T = -log(1 - Fst) $$
 $$ PBS_{CHB} = \frac{T_{CY} + T_{CF} - T_{FY}}{2} $$
 $$ PBS_{FIN} = \frac{T_{FY} + T_{CF} - T_{CY}}{2} $$
 
-```R
+```{r}
+setwd("~/1000genomes_Selection_Exercise/data")
 fst_CHB_YRI_df <- read.table('CHB_YRI_chr2_108013601_111013601_HWEfiltered.fst', header = TRUE) %>% 
                   rename(FST_CY = FST) %>% 
                   filter(is.nan(FST_CY) == FALSE) %>% 
@@ -214,10 +230,13 @@ Now's let turn towards looking at haplotype-based signatures of selection.  We'l
 
 We will filter the file to only include variants with minor allele frequency >5%.  In principle the rare variants increase our power, but for efficiency's sake we'll exclude them here, as most of the information for these statistics comes from common variants. 
 
-```bash
-
+```{bash, cache=TRUE}
+tag=chr2_108013601_111013601
+cd ~/1000genomes_Selection_Exercise/data
 # write a file of just IIDs from CHB 
 awk '($3 == "CHB") {print $1}' 1kgv3_clst.txt > CHB_iids.txt
+
+head CHB_iids.txt
 
 # keep CHB individuals from the filtered vcf and filter out rare variants (at maf < 5%)
 # this will be used for haplotype based selection analysis.
@@ -227,14 +246,19 @@ bcftools view -S CHB_iids.txt \
          snv_1000genomes_${tag}_HWEfiltered.vcf.gz > CHB_${tag}_HWEfiltered.vcf.gz
 ```
 
-Haplotype-based methods use recombination rates between markers to calibrate the extent of haplotype homozygosity observed.  To that end, we need to set up a list of all the markers in the format of a plink `.bim` file, and interpolate a genetic map at each of those positions.  Here are the steps:  
-```bash
+Haplotype-based methods use recombination rates between markers to calibrate the extent of haplotype homozygosity observed.  To that end, we need to set up a list of all the markers in the format of a plink `.bim` file, and interpolate a genetic map at each of those positions.  Here are the steps:
+
+```{bash, cache=TRUE}
+tag=chr2_108013601_111013601
+cd ~/1000genomes_Selection_Exercise/data
 # write bim file from vcf (-H supress header)
 bcftools view CHB_${tag}_HWEfiltered.vcf.gz \
           -H | awk '{print $1, $3, "0", $2, $4, $5}' > CHB_${tag}_HWEfiltered.bim
+          
+head CHB_${tag}_HWEfiltered.bim
 
 # get genetic positions and interpolate genetic positions for variants not present in the genetic_map
-plink-1.9 --bim CHB_${tag}_HWEfiltered.bim \
+plink2 --bim CHB_${tag}_HWEfiltered.bim \
           --cm-map genetic_map_chr2_combined_b37.txt 2 \
           --make-just-bim \
           --out ${tag}_HWEfiltered_gm
@@ -250,7 +274,9 @@ Now we can finally play!  This selscan command will compute iHS values for us, a
 
 This command will take about 5 minutes.  If you're short on time, the results have been copied to the `1000genomes_Selection_Exercise/results/` directory (`CHB_chr2_108013601_111013601_HWEfiltered.ihs.out` and `CHB_chr2_108013601_111013601_HWEfiltered.ihs.out.100bins.norm`). 
 
-```bash
+```{bash, cache=TRUE}
+tag=chr2_108013601_111013601
+cd ~/1000genomes_Selection_Exercise/data
 # compute iHS! This will take about 5 minutes 
 selscan --ihs \
         --vcf CHB_${tag}_HWEfiltered.vcf.gz \
@@ -260,7 +286,7 @@ selscan --ihs \
 
 Normally we would normalize the iHS -- but because we are only using a 3Mb region
 the normalization makes little sense.  Here's what the command would like if we actually ran it.
-```bash
+```{bash}
 # norm --ihs --bins 20 --files CHB_${tag}_HWEfiltered.ihs.out 
 ```
 
@@ -268,7 +294,9 @@ the normalization makes little sense.  Here's what the command would like if we 
 
 Let's make a plot of the iHS values in this region. 
 
-```R
+```{r}
+setwd("~/1000genomes_Selection_Exercise/data")
+
 # read iHS data
 ihs_df <- read.table("CHB_chr2_108013601_111013601_HWEfiltered.ihs.out", header = FALSE)
 colnames(ihs_df) <- c("SNP", "POS", "FREQ", "ihh1", "ihh0", "unstd_iHS")
@@ -285,14 +313,16 @@ IHS_plot + ggsave("../results/IHS_plot.png")
 #### Make a plot of allele frequencies
 
 It also possible to make a plot representing allele frequencies in the region: 
-```R
+```{r}
+setwd("~/1000genomes_Selection_Exercise/data")
 freq_plot<-ggplot(ihs_df, aes(x = POS, y = FREQ)) + geom_point() + xlab('Position on chr2') + theme_bw() + ylab("Frequency") + geom_vline(xintercept = 109510927)+geom_vline(xintercept = 109605828)
 
 freq_plot + ggsave("../results/freq_plot.png")
 ```
 Or a histogram of the frequencies (an allele frequency spectrum):
 
-```R
+```{r}
+setwd("~/1000genomes_Selection_Exercise/data")
 
 hist(ihs_df$FREQ,xlab="Non-reference frequency", ylab="# of SNPs",main="Allele frequency spectra",breaks=100)
 
@@ -318,7 +348,7 @@ In a classic paper from 1979 Stephen J Gould and Richard Lewontin wrote eloquent
 
 * `tabix` : (http://www.htslib.org/doc/tabix.html)
 * `bcftools` : (https://samtools.github.io/bcftools/bcftools.html)
-* `plink-1.9` : Chang CC, Chow CC, Tellier LCAM, Vattikuti S, Purcell SM, Lee JJ (2015) Second-generation PLINK: rising to the challenge of larger and richer datasets. GigaScience, 4.  (https://www.cog-genomics.org/plink2)
+* `plink1.9` : Chang CC, Chow CC, Tellier LCAM, Vattikuti S, Purcell SM, Lee JJ (2015) Second-generation PLINK: rising to the challenge of larger and richer datasets. GigaScience, 4.  (https://www.cog-genomics.org/plink2)
 * `selscan` : ZA Szpiech and RD Hernandez (2014) selscan: an efficient multi-threaded program 
   to calculate EHH-based scans for positive selection. Molecular Biology and Evolution, 
 	31: 2824-2827. (https://github.com/szpiech/selscan)
@@ -333,7 +363,17 @@ In a classic paper from 1979 Stephen J Gould and Richard Lewontin wrote eloquent
 
 This section can be skipped for now as the software tools are already built on the cluster. This can be used if you'd like to use these methods later. For now, scoll down to *Downloading Data*.
 
-#### Download
+#### Download using conda
+Conda is an excellent way to install programs for an analysis in a way that you can easily share your enviroment. This way someone else can replicate your analysis (just like we did here!). To install everything necessary to run this analysis run the following commands in the terminal.
+
+```bash
+git clone https://github.com/NovembreLab/1000genomes_Selection_Exercise.git
+cd 1000genomes_Selection_Exercise
+conda env create -f selection_exercise_environment.yml
+source activate selex
+```
+
+#### Download from source
 
 ```bash
 mkdir src
