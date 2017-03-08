@@ -11,10 +11,8 @@ git clone https://github.com/NovembreLab/1000genomes_Selection_Exercise
 Then
 ```
 wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
-source Miniconda2-latest-Linux-x86_64.sh
-
-cd 1000genomes_Selection_Exercise
-module load Anaconda2
+chmod 755 Miniconda2-latest-Linux-x86_64.sh
+./Miniconda2-latest-Linux-x86_64.sh
 conda env create -f selection_exercise_environment.yml
 ```
 And then: 
