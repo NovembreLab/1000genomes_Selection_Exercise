@@ -14,6 +14,9 @@ Then
 wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
 chmod 755 Miniconda2-latest-Linux-x86_64.sh
 ./Miniconda2-latest-Linux-x86_64.sh
+```
+Agree to everything that the installation of conda asks you to do then run:
+```
 source ~/.bashrc
 conda env create -f selection_exercise_environment.yml
 ```
