@@ -1,7 +1,7 @@
 ---
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 # 1000genomes Selection Exercise
 
@@ -30,7 +30,7 @@ To get started, we will want some basic information on the individuals in the 10
 
 We can download info on the 1000 Genomes phase III individuals with the following commands.  The `integrated_call_samples_v3.20130502.ALL.panel` file we are obtaining contains the sample id and associated population and gender info for each individual. 
 
-```{bash, echo=FALSE, cache=TRUE}
+```bash
 cd ~/1000genomes_Selection_Exercise/data
 # download 1000genomes_phase3 individual information
 wget ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/integrated_call_samples_v3.20130502.ALL.panel
@@ -48,7 +48,7 @@ The `.clst.txt` files define a "cluster" of individuals to consider as a single 
 Here we use `awk` commands - `awk` is very useful unix-based tool for basic file manipulation. 
 
 ```{bash, cache=TRUE}
-cd ~/1000genomes_Selection_Exercise/data
+cd ~/data
 # use awk to produce a file that has the format of a .clst.txt file, with IID | IID | CLST for CHB, YRI, FIN
 awk 'NR>1{print $1, $1, $2}' integrated_call_samples_v3.20130502.ALL.panel > 1kgv3_clst.txt
 
@@ -61,8 +61,8 @@ tail 1kgv3_clst.txt
 
 Now, let's download a 3Mb part of the the 1000 Genomes Phase3 project data to use. 
 
-```{bash, cache=TRUE}
-cd ~/1000genomes_Selection_Exercise/data
+```bash
+cd ~/data
 
 # download a 3MB region (chr2:108013601-111013601) from the 1000genomes project and store as .vcf.gz file
 tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr2.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz 2:108013601-111013601 | bgzip -c > 1000genomes_phase3_chr2_108013601_111013601.vcf.gz
@@ -72,8 +72,8 @@ We will use our list of individual ids from the YRI, FIN, and CHB to extract jus
 
 ```{bash, cache=TRUE}
 # filter out indels (-V indels), multi-allelic sites (-m 2 -M 2). (Approx 30 sec - 1 min)
-cd ~/1000genomes_Selection_Exercise/data
-bcftools view -v snps -m 2 -M 2 -O z 1000genomes_phase3_chr2_108013601_111013601.vcf.gz > snv_1000genomes_chr2_108013601_111013601.vcf.gz
+cd ~/data
+../bin/bcftools view -v snps -m 2 -M 2 -O z 1000genomes_phase3_chr2_108013601_111013601.vcf.gz > snv_1000genomes_chr2_108013601_111013601.vcf.gz
 ```
 
 Try running `ls -thrl` to verify that the output file `snv_1000genomes_chr2_108013601_111013601.vcf.gz` is smaller than the input.
@@ -82,18 +82,18 @@ Now we want to filter out sites that violate Hardy-Weinberg equilibrium.  We fir
 
 ```{bash, cache=TRUE}
 tag=chr2_108013601_111013601
-cd ~/1000genomes_Selection_Exercise/data
-plink2 --vcf snv_1000genomes_$tag.vcf.gz \
+cd ~/data
+../bin/plink-1.9 --vcf snv_1000genomes_$tag.vcf.gz \
           --within 1kgv3_clst.txt \
           --hardy midp\
           --keep-cluster-names FIN \
           --out tmp_fin
-plink2 --vcf snv_1000genomes_$tag.vcf.gz \
+../bin/plink-1.9 --vcf snv_1000genomes_$tag.vcf.gz \
           --within 1kgv3_clst.txt \
           --hardy midp\
           --keep-cluster-names CHB \
           --out tmp_chb
-plink2 --vcf snv_1000genomes_$tag.vcf.gz \
+../bin/plink-1.9 --vcf snv_1000genomes_$tag.vcf.gz \
           --within 1kgv3_clst.txt \
           --hardy midp\
           --keep-cluster-names YRI \
@@ -103,7 +103,7 @@ plink2 --vcf snv_1000genomes_$tag.vcf.gz \
 awk '$9<1e-5{print $2}' tmp_fin.hwe tmp_chb.hwe tmp_yri.hwe | sort | uniq > tmp.exclude.txt
 
 # Filter out HW failures 
-bcftools view snv_1000genomes_$tag.vcf.gz --exclude 'ID=@tmp.exclude.txt' -O z > snv_1000genomes_${tag}_HWEfiltered.vcf.gz
+../bin/bcftools view snv_1000genomes_$tag.vcf.gz --exclude 'ID=@tmp.exclude.txt' -O z > snv_1000genomes_${tag}_HWEfiltered.vcf.gz
 
 ```
 
@@ -118,8 +118,8 @@ One approach to detecting recent positive selection is to see if a local genomic
 ```{bash, cache=TRUE}
 # Fst between CHB and FIN
 tag=chr2_108013601_111013601
-cd ~/1000genomes_Selection_Exercise/data
-plink2 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
+cd ~/data
+../bin/plink-1.9 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
           --fst \
           --within 1kgv3_clst.txt \
           --out CHB_FIN_${tag}_HWEfiltered \
@@ -130,13 +130,13 @@ Use `head` to take a look at the structure of this file.
 
 #### Visualizing pairwise $F_{ST}$ values
 
-In another terminal window or screen open an R session that we will be using for the rest of the workshop. Now run these commands in the R session.  Make sure your working directory in R is set to the data subdirectory.  (Use the "Session" tab or setwd() command to change your working directory, e.g. setwd("~/git/1000genomes_Selection_Exercise/data")).
+Make sure your working directory in R is set to the data subdirectory.  (Use the "Session" tab or setwd() command to change your working directory, e.g. setwd("~/git/1000genomes_Selection_Exercise/data")).
 
 ```{r}
 if(!require(dplyr)) install.pakckages("dplyr")
 if(!require(ggplot2)) install.packages("ggplot2")
 if(!require(reshape2)) {install.packages("stringi"); install.packages("reshape2")}
-setwd("~/1000genomes_Selection_Exercise/data")
+setwd("~/data")
 
 # read data
 fst_CHB_FIN_df <- read.table('CHB_FIN_chr2_108013601_111013601_HWEfiltered.fst', header = TRUE) %>% 
@@ -165,8 +165,8 @@ A drawback of such an approach is we do not know which of the two populations (o
 ```{bash, results="hide"}
 # Fst between CHB and YRI
 tag=chr2_108013601_111013601
-cd ~/1000genomes_Selection_Exercise/data
-plink2 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
+cd ~/data
+../bin/plink-1.9 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
           --fst \
           --within 1kgv3_clst.txt \
           --out CHB_YRI_chr2_108013601_111013601_HWEfiltered \
@@ -174,7 +174,7 @@ plink2 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
           
           
 # Fst between FIN and YRI
-plink2 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
+../bin/plink-1.9 --vcf snv_1000genomes_${tag}_HWEfiltered.vcf.gz \
           --fst \
           --within 1kgv3_clst.txt \
           --out FIN_YRI_chr2_108013601_111013601_HWEfiltered \
@@ -188,7 +188,7 @@ $$ PBS_{CHB} = \frac{T_{CY} + T_{CF} - T_{FY}}{2} $$
 $$ PBS_{FIN} = \frac{T_{FY} + T_{CF} - T_{CY}}{2} $$
 
 ```{r}
-setwd("~/1000genomes_Selection_Exercise/data")
+setwd("~/data")
 fst_CHB_YRI_df <- read.table('CHB_YRI_chr2_108013601_111013601_HWEfiltered.fst', header = TRUE) %>% 
                   rename(FST_CY = FST) %>% 
                   filter(is.nan(FST_CY) == FALSE) %>% 
@@ -232,7 +232,7 @@ We will filter the file to only include variants with minor allele frequency >5%
 
 ```{bash, cache=TRUE}
 tag=chr2_108013601_111013601
-cd ~/1000genomes_Selection_Exercise/data
+cd ~/data
 # write a file of just IIDs from CHB 
 awk '($3 == "CHB") {print $1}' 1kgv3_clst.txt > CHB_iids.txt
 
@@ -240,7 +240,7 @@ head CHB_iids.txt
 
 # keep CHB individuals from the filtered vcf and filter out rare variants (at maf < 5%)
 # this will be used for haplotype based selection analysis.
-bcftools view -S CHB_iids.txt \
+../bin/bcftools view -S CHB_iids.txt \
          -q '.05 minor' \
          -O z \
          snv_1000genomes_${tag}_HWEfiltered.vcf.gz > CHB_${tag}_HWEfiltered.vcf.gz
@@ -250,15 +250,15 @@ Haplotype-based methods use recombination rates between markers to calibrate the
 
 ```{bash, cache=TRUE}
 tag=chr2_108013601_111013601
-cd ~/1000genomes_Selection_Exercise/data
+cd ~/data
 # write bim file from vcf (-H supress header)
-bcftools view CHB_${tag}_HWEfiltered.vcf.gz \
+../bin/bcftools view CHB_${tag}_HWEfiltered.vcf.gz \
           -H | awk '{print $1, $3, "0", $2, $4, $5}' > CHB_${tag}_HWEfiltered.bim
           
 head CHB_${tag}_HWEfiltered.bim
 
 # get genetic positions and interpolate genetic positions for variants not present in the genetic_map
-plink2 --bim CHB_${tag}_HWEfiltered.bim \
+../bin/plink-1.9 --bim CHB_${tag}_HWEfiltered.bim \
           --cm-map genetic_map_chr2_combined_b37.txt 2 \
           --make-just-bim \
           --out ${tag}_HWEfiltered_gm
@@ -272,13 +272,13 @@ head ${tag}_HWEfiltered_gm.map
 
 Now we can finally play!  This selscan command will compute iHS values for us, and the norm command normalizes them to have mean 0 and standard deviation 1 (which is useful for assessing outlier values).
 
-This command will take about 5 minutes.  If you're short on time, the results have been copied to the `1000genomes_Selection_Exercise/results/` directory (`CHB_chr2_108013601_111013601_HWEfiltered.ihs.out` and `CHB_chr2_108013601_111013601_HWEfiltered.ihs.out.100bins.norm`). 
+This command will take about 5 minutes.
 
 ```{bash, cache=TRUE}
 tag=chr2_108013601_111013601
-cd ~/1000genomes_Selection_Exercise/data
+cd ~/data
 # compute iHS! This will take about 5 minutes 
-selscan --ihs \
+../bin/selscan --ihs \
         --vcf CHB_${tag}_HWEfiltered.vcf.gz \
         --map ${tag}_HWEfiltered_gm.map \
         --out CHB_${tag}_HWEfiltered
@@ -286,7 +286,7 @@ selscan --ihs \
 
 Normally we would normalize the iHS -- but because we are only using a 3Mb region
 the normalization makes little sense.  Here's what the command would like if we actually ran it.
-```{bash}
+```bash
 # norm --ihs --bins 20 --files CHB_${tag}_HWEfiltered.ihs.out 
 ```
 
@@ -295,7 +295,7 @@ the normalization makes little sense.  Here's what the command would like if we 
 Let's make a plot of the iHS values in this region. 
 
 ```{r}
-setwd("~/1000genomes_Selection_Exercise/data")
+setwd("~/data")
 
 # read iHS data
 ihs_df <- read.table("CHB_chr2_108013601_111013601_HWEfiltered.ihs.out", header = FALSE)
@@ -314,7 +314,7 @@ IHS_plot + ggsave("../results/IHS_plot.png")
 
 It also possible to make a plot representing allele frequencies in the region: 
 ```{r}
-setwd("~/1000genomes_Selection_Exercise/data")
+setwd("~/data")
 freq_plot<-ggplot(ihs_df, aes(x = POS, y = FREQ)) + geom_point() + xlab('Position on chr2') + theme_bw() + ylab("Frequency") + geom_vline(xintercept = 109510927)+geom_vline(xintercept = 109605828)
 
 freq_plot + ggsave("../results/freq_plot.png")
@@ -322,7 +322,7 @@ freq_plot + ggsave("../results/freq_plot.png")
 Or a histogram of the frequencies (an allele frequency spectrum):
 
 ```{r}
-setwd("~/1000genomes_Selection_Exercise/data")
+setwd("~/data")
 
 hist(ihs_df$FREQ,xlab="Non-reference frequency", ylab="# of SNPs",main="Allele frequency spectra",breaks=100)
 
@@ -440,34 +440,5 @@ mv bin/plink bin/plink-1.9
 # Add the current directory (bin) to the export path using this command
 export PATH=$(pwd):$PATH
 ```
-
-## Brief Answer Key:
-
-#### $F_{ST}$ plot questions
-1. Yes - There is a broad window of SNPs with a peak right in a specfic gene (marked by vertical lines)
-2. No - the population(s) in which selection is occuring is not clear. 
-
-#### PBS plot questions
-1. The signal of high PBS is broader and larger for CHB vs FIN.
-2. The branch to CHB is most extended
-3. CHB
-4. PBS can become negative because of sampling variance ($F_{ST}$ values estimated with noise), becuase of genetic drift, and when there is selection acting between the outgroup and sister population the focal population.
-
-#### iHS plot questions
-1. Yes, but not near our focal gene (marked by the vertical lines)
-2. Yes, it could have been a soft sweep that leaves a signature in PBS but not iHS.
-
-#### Frequency plot questions
-1. The allele frequency distribution shows many high frequency derived variants consistent with selection.  They also overlap the region where the PBS is high.
-
-
-
-## Answer Key: Plots
-
-![nil](../../results_answerkey/fst_CHB_FIN_plot.png)
-![nil](../../results_answerkey/PBS_plot.png)
-![nil](../../results_answerkey/IHS_plot.png)
-![nil](../../results_answerkey/freq_hist_plot.png)
-![nil](../../results_answerkey/freq_plot.png)
 
 
