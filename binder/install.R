@@ -1,2 +1,7 @@
-install.packages("tidyverse")
+#install.packages("tidyverse")
+devtools::install_version("rlang", version = "0.2.0", repos = "http://cran.us.r-project.org")
+install.packages("ggplot2")
+install.packages("stringi")
+install.packages("reshape2")
+install.packages("dplyr")
 install.packages("rmarkdown")
