@@ -133,7 +133,7 @@ Use `head` to take a look at the structure of this file.
 Make sure your working directory in R is set to the data subdirectory.  (Use the "Session" tab or setwd() command to change your working directory, e.g. setwd("~/git/1000genomes_Selection_Exercise/data")).
 
 ```{r}
-if(!require(dplyr)) install.pakckages("dplyr")
+if(!require(dplyr)) install.packages("dplyr")
 if(!require(ggplot2)) install.packages("ggplot2")
 if(!require(reshape2)) {install.packages("stringi"); install.packages("reshape2")}
 setwd("~/data")
